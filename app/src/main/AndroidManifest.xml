@@ -9,20 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        </activity>
+        <activity
+            android:name=".HomeIndustri"
+            android:label="Beranda" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Main2Activity" />
-        <activity
-            android:name=".HomeIndustri"
-            android:label="Beranda" />
+            </intent-filter></activity>
         <activity
             android:name=".home_siswa_1"
             android:label="Beranda" />
-        <activity android:name=".BelumInterview" />
         <activity android:name=".login" />
         <activity android:name=".register1" />
         <activity android:name=".register2"></activity>

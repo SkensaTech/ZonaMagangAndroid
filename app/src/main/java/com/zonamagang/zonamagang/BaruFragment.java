@@ -10,10 +10,20 @@ import android.view.ViewGroup;
 /**
  * Created by Denandra on 16/08/2016.
  */
-public class TabFragment extends Fragment{
+public class baruFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.custom_layout, container, false);
+        return inflater.inflate(R.layout.baru, container,false);
+    }
+
+    public static baruFragment newInstance(int text, String title){
+        baruFragment f = new baruFragment();
+        Bundle b = new Bundle();
+        b.putString("Baru",title);
+
+        f.setArguments(b);
+
+        return f;
     }
 }

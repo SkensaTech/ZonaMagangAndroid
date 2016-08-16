@@ -41,6 +41,9 @@ public class HomeIndustri extends AppCompatActivity {
 
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this,R.color.colorPrimary));
 
+        tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.textColor));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorPrimaryLight));
+
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 }

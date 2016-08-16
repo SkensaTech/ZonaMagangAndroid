@@ -14,7 +14,16 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return new TabFragment();
+        switch (position){
+            case 0:
+                return semuaFragment.newInstance(0, "Semua");
+            case 1:
+                return baruFragment.newInstance(1, "Baru");
+            case 2:
+                return sudahFragment.newInstance(2, "Sudah");
+            default:
+                return semuaFragment.newInstance(0,"Semua");
+        }
     }
 
     @Override
