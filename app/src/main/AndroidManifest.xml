@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".HomeIndustri"
+            android:label="Beranda"></activity>
     </application>
 
 </manifest>
