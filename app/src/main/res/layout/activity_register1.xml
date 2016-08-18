@@ -9,4 +9,60 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zonamagang.zonamagang.register1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Mendaftar sebagai :"
+        android:id="@+id/textView4"
+        android:textColor="grey"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="206dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SISWA"
+        android:id="@+id/button2"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="atau"
+        android:id="@+id/textView5"
+        android:textColor="grey"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INDUSTRI"
+        android:id="@+id/button3"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView5"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="REGISTER"
+        android:textSize="50dp"
+        android:textStyle="italic"
+        android:id="@+id/textView6"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp" />
+
 </RelativeLayout>

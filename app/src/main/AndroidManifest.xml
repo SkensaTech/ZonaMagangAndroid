@@ -24,7 +24,8 @@
             android:label="Beranda" />
         <activity android:name=".BelumInterview" />
         <activity android:name=".login" />
-        <activity android:name=".register1"></activity>
+        <activity android:name=".register1" />
+        <activity android:name=".register2"></activity>
     </application>
 
 </manifest>
