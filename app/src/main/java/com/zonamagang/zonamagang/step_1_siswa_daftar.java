@@ -2,6 +2,7 @@ package com.zonamagang.zonamagang;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.*;
 
 public class step_1_siswa_daftar extends AppCompatActivity {
 
