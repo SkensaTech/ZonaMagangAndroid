@@ -7,4 +7,5 @@
     <color name="textColor">#ffff</color>
     <color name="colorTextDark">#282829</color>
     <color name="colorToolbar">#FFA000</color>
+    <color name="loginText">#000000</color>
 </resources>
