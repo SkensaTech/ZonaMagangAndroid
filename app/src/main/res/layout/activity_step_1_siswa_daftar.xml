@@ -91,7 +91,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner3"
+            android:id="@+id/tanggal"
             android:layout_weight="1"
             android:dropDownWidth="100dp"
             android:width="100dp"
@@ -101,7 +101,7 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner4"
+            android:id="@+id/bulan"
             android:dropDownWidth="100dp"
             android:width="100dp"
             android:minWidth="100dp" />
@@ -110,7 +110,7 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner5"
+            android:id="@+id/tahun"
             android:dropDownWidth="100dp"
             android:width="100dp"
             android:minWidth="100dp" />
