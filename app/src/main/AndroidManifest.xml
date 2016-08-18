@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zonamagang.zonamagang">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Main2Activity" />
         <activity
             android:name=".HomeIndustri"
-            android:label="Beranda">
+            android:label="Beranda" />
+        <activity
+            android:name=".home_siswa_1"
+            android:label="Beranda"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -21,18 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".home_siswa_1"
-            android:label="Beranda"
-            android:launchMode="singleTop">
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        <activity android:name=".BelumInterview" />
         <activity android:name=".register1" />
         <activity android:name=".register2" />
-        <activity android:name=".DetailSiswaOlehIndustri"></activity>
     </application>
 
 </manifest>
