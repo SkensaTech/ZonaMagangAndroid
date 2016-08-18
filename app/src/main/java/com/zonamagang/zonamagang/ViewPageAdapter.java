@@ -27,6 +27,22 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
     }
 
     @Override
+    public CharSequence getPageTitle(int position){
+        if(position==0){
+            return "Semua";
+        }
+        if(position==1){
+            return "Belum";
+        }
+        if(position==2){
+            return "Sudah";
+        }
+        else{
+            return "";
+        }
+    }
+
+    @Override
     public int getCount() {
         return 3;
     }
