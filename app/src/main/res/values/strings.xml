@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ZonaMagang</string>
+    <string name="nama">NAMA INDUSTRI</string>
+    <string name="email_industri">Email : info@skensatech.com</string>
+    <string name="telp_industri">Telp : (0361)14045</string>
+    <string name="alamat_industri">Alamat : Jl Hos Cokroaminoto no 84</string>
+
 </resources>
