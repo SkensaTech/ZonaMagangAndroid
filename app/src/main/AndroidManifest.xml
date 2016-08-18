@@ -21,8 +21,8 @@
             android:label="Beranda" />
         <activity
             android:name=".home_siswa_1"
-            android:label="Beranda"></activity>
-        <activity android:name=".BelumInterview"></activity>
+            android:label="Beranda" />
+        <activity android:name=".BelumInterview" />
     </application>
 
 </manifest>
