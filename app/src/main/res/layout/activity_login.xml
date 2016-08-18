@@ -11,12 +11,13 @@
     android:background="@color/colorPrimaryDark">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MASUK"
         android:id="@+id/button"
         android:layout_centerVertical="true"
         android:textColor="#fefefe"
+        android:background="@color/colorPrimaryLight"
         android:layout_centerHorizontal="true" />
 
     <TextView android:id="@+id/link_to_register"
@@ -43,7 +44,8 @@
 
     <EditText
         android:hint="Password"
-        android:layout_marginTop="5sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginBottom="5sp"
         android:fontFamily="sans-serif-condensed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
