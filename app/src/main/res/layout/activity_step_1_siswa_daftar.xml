@@ -24,7 +24,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="LENGKAPI DATA DIRI"
                 android:gravity="center_horizontal"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorTextDark"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:hint="NISN"
                 android:ems="10"
                 android:id="@+id/nisn"
-                android:textColorHint="@color/colorText"
+                android:textColorHint="@color/colorTextDark"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
                 android:background="@color/colorWhite"/>
@@ -50,7 +50,7 @@
                 android:gravity="center_horizontal"
                 android:padding="10dp"
                 android:background="@color/colorWhite"
-                android:textColorHint="@color/colorText" />
+                android:textColorHint="@color/colorTextDark" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                 android:text="Jenis Kelamin"
                 android:gravity="center_horizontal"
                 android:background="@color/colorWhite"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/colorTextDark" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -74,12 +74,12 @@
                     android:text="Laki-laki"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:textColor="@color/colorText"/>
+                    android:textColor="@color/colorTextDark"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:text="Perempuan"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorText" />
+                    android:textColor="@color/colorTextDark" />
             </RadioGroup>
 
             <EditText
@@ -93,7 +93,7 @@
                 android:layout_marginTop="3dp"
                 android:padding="10dp"
                 android:id="@+id/alamat"
-                android:textColorHint="@color/colorText" />
+                android:textColorHint="@color/colorTextDark" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -105,7 +105,7 @@
                 android:layout_marginTop="3dp"
                 android:padding="10dp"
                 android:id="@+id/tempat_lahir"
-                android:textColorHint="@color/colorText" />
+                android:textColorHint="@color/colorTextDark" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -114,7 +114,7 @@
                 android:layout_marginTop="3dp"
                 android:text="Tanggal Lahir"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorTextDark"
                 android:gravity="center_horizontal"
                 android:background="@color/colorWhite"/>
 
@@ -129,7 +129,7 @@
                     android:background="@color/colorWhite"
                     android:id="@+id/tahun"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorText"/>
+                    android:textColorHint="@color/colorTextDark"/>
 
                 <Spinner
                     android:layout_weight="1"
@@ -138,7 +138,7 @@
                     android:background="@color/colorWhite"
                     android:id="@+id/bulan"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorText"/>
+                    android:textColorHint="@color/colorTextDark"/>
 
                 <Spinner
                     android:layout_weight="1"
@@ -147,7 +147,7 @@
                     android:background="@color/colorWhite"
                     android:id="@+id/tanggal"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorText"/>
+                    android:textColorHint="@color/colorTextDark"/>
             </LinearLayout>
 
         </LinearLayout>
