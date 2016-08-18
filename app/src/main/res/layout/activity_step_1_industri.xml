@@ -16,7 +16,8 @@
         android:text="Lengkapi Data Industri"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingTop="15dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,7 +28,8 @@
         android:layout_marginTop="35dp"
         android:layout_alignParentEnd="true"
         android:hint="Nama Industri"
-        android:text="Nama Industri" />
+        android:text="Nama Industri"
+        android:paddingTop="25dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -59,5 +61,22 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SElANJUTNYA"
+        android:id="@+id/buttonSelanjutnya"
+        android:layout_below="@+id/spinner2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp" />
 
 </RelativeLayout>
