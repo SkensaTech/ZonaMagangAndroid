@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Mendaftar sebagai :"
         android:id="@+id/textView4"
-        android:textColor="grey"
+        android:textColor="#525252"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="206dp" />
@@ -38,7 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="atau"
         android:id="@+id/textView5"
-        android:textColor="grey"
+        android:textColor="#525252"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true" />
 

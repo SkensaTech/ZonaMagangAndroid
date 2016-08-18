@@ -3,64 +3,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar">
-
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
+    tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
+    android:minWidth="100dp">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_below="@+id/toolbar"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Lengkapi Data Diri"
         android:id="@+id/textView"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:hint="NISN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
+        android:hint="NISN"
+        android:width="300dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
-        android:hint="Nama Siswa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
+        android:hint="Nama Lengkap"
+        android:width="300dp"
         android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Jenis Kelamin"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:id="@+id/radioGroup"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laki-laki"
+            android:id="@+id/radioButton"
+            android:layout_below="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perempuan"
+            android:id="@+id/radioButton2"
+            android:checked="false"
+            android:layout_below="@+id/textView4"
+            android:layout_toEndOf="@+id/radioGroup" />
+
+    </RadioGroup>
 
     <EditText
-        android:hint="Alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
-        android:layout_below="@+id/radioButton"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:hint="Alamat"
+        android:width="300dp"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignStart="@+id/radioGroup" />
 
-    <RadioButton
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Laki-laki"
-        android:id="@+id/radioButton"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:layout_below="@id/editText6"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:id="@+id/linearLayout">
 
-    <RadioButton
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tanggal"
+            android:layout_weight="1"
+            android:dropDownWidth="100dp"
+            android:width="100dp"
+            android:minWidth="100dp" />
+
+        <Spinner
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bulan"
+            android:dropDownWidth="100dp"
+            android:width="100dp"
+            android:minWidth="100dp" />
+
+        <Spinner
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tahun"
+            android:dropDownWidth="100dp"
+            android:width="100dp"
+            android:minWidth="100dp" />
+    </LinearLayout>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Perempuan"
-        android:id="@+id/radioButton2"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/textView"
-        android:checked="false" />
+        android:text="SELANJUTNYA"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="65dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText6"
+        android:hint="Tempat Lahir"
+        android:width="300dp"
+        android:layout_below="@+id/editText3"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3" />
 
 </RelativeLayout>

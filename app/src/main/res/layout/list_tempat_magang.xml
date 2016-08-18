@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:id="@+id/logomagang"
+        android:src="@drawable/logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/telp_ind" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/nama"
+        android:id="@+id/title_magang"
+        android:textColor="@color/colorTextDark"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/logomagang" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/alamat_industri"
+        android:id="@+id/alamat_ind"
+        android:textSize="12dp"
+        android:layout_below="@+id/title_magang"
+        android:layout_alignStart="@+id/title_magang"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/email_industri"
+        android:textSize="12dp"
+        android:id="@+id/email_ind"
+        android:layout_below="@+id/alamat_ind"
+        android:layout_alignStart="@+id/alamat_ind" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/telp_industri"
+        android:textSize="12dp"
+
+        android:id="@+id/telp_ind"
+        android:layout_below="@+id/email_ind"
+        android:layout_alignStart="@+id/email_ind" />
+
+</RelativeLayout>

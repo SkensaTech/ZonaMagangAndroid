@@ -8,4 +8,11 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listmagang"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
