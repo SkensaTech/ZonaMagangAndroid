@@ -18,8 +18,6 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_siswa_daftar);
 
-        EditText nisn = (EditText) findViewById(R.id.nisn);
-
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");

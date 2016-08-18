@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <include layout="@layout/toolbar"></include>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/textColor">
 
             <TextView
                 android:layout_width="match_parent"
@@ -24,7 +24,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="LENGKAPI DATA DIRI"
                 android:gravity="center_horizontal"
-                android:textColor="@color/colorTextDark"/>
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimaryText"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -34,52 +35,47 @@
                 android:hint="NISN"
                 android:ems="10"
                 android:id="@+id/nisn"
-                android:textColorHint="@color/colorTextDark"
-                android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:background="@color/colorWhite"/>
+                android:textColorHint="@color/colorSecondaryText"
+                android:padding="10dp"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPersonName"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="1dp"
                 android:hint="Nama Lengkap"
                 android:ems="10"
                 android:id="@+id/nama"
-                android:gravity="center_horizontal"
                 android:padding="10dp"
-                android:background="@color/colorWhite"
-                android:textColorHint="@color/colorTextDark" />
+                android:textColorHint="@color/colorSecondaryText" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_marginTop="3dp"
-                android:layout_height="30dp"
-                android:padding="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_height="45dp"
+                android:padding="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Jenis Kelamin"
-                android:gravity="center_horizontal"
-                android:background="@color/colorWhite"
-                android:textColor="@color/colorTextDark" />
+                android:textColor="@color/colorSecondaryText" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/colorWhite"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
+
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:text="Laki-laki"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    android:textColor="@color/colorTextDark"/>
+                    android:textColor="@color/colorSecondaryText"/>
+
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:text="Perempuan"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextDark" />
+                    android:textColor="@color/colorSecondaryText" />
             </RadioGroup>
 
             <EditText
@@ -88,35 +84,29 @@
                 android:inputType="textMultiLine"
                 android:ems="10"
                 android:hint="Alamat"
-                android:gravity="center_horizontal"
-                android:background="@color/colorWhite"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="1dp"
                 android:padding="10dp"
                 android:id="@+id/alamat"
-                android:textColorHint="@color/colorTextDark" />
+                android:textColorHint="@color/colorSecondaryText" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Tempat Lahir"
-                android:gravity="center_horizontal"
-                android:background="@color/colorWhite"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="1dp"
                 android:padding="10dp"
                 android:id="@+id/tempat_lahir"
-                android:textColorHint="@color/colorTextDark" />
+                android:textColorHint="@color/colorSecondaryText" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:padding="5dp"
-                android:layout_marginTop="3dp"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:layout_marginTop="1dp"
                 android:text="Tanggal Lahir"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorTextDark"
-                android:gravity="center_horizontal"
-                android:background="@color/colorWhite"/>
+                android:textColor="@color/colorSecondaryText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,31 +116,39 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:id="@+id/tahun"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorTextDark"/>
+                    android:textColor="@color/colorSecondaryText"/>
 
                 <Spinner
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:id="@+id/bulan"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorTextDark"/>
+                    android:textColorHint="@color/colorSecondaryText"/>
 
                 <Spinner
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:id="@+id/tanggal"
                     android:padding="10dp"
-                    android:textColorHint="@color/colorTextDark"/>
+                    android:textColorHint="@color/colorSecondaryText"/>
             </LinearLayout>
 
-        </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorPrimary"
+                android:shadowColor="@color/colorPrimary"
+                android:textColor="@color/textColor"
+                android:text="LANJUT"
+                android:id="@+id/button5"
+                android:layout_gravity="center_horizontal" />
 
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
