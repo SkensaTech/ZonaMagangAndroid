@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <ImageView
         android:layout_width="94dp"
@@ -17,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/nama"
+        tools:text="Nama Industri"
         android:id="@+id/title_magang"
         android:textColor="@color/colorTextDark"
         android:layout_alignParentTop="true"
@@ -27,9 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/alamat_industri"
+        tools:text="Alamat : Jl Hos Cokroaminoto No 84"
         android:id="@+id/alamat_ind"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:layout_below="@+id/title_magang"
         android:layout_alignStart="@+id/title_magang"
         android:layout_marginTop="5dp" />
@@ -38,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/email_industri"
-        android:textSize="12dp"
+        tools:text="Email : info@zonamagang.com"
+        android:textSize="12sp"
         android:id="@+id/email_ind"
         android:layout_below="@+id/alamat_ind"
         android:layout_alignStart="@+id/alamat_ind" />
@@ -48,8 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/telp_industri"
-        android:textSize="12dp"
+        tools:text="Telp : 0361 14045"
+        android:textSize="12sp"
 
         android:id="@+id/telp_ind"
         android:layout_below="@+id/email_ind"
