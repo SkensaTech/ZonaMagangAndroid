@@ -9,4 +9,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zonamagang.zonamagang.step_1_industri">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Lengkapi Data Industri"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNamaIndustri"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentEnd="true"
+        android:hint="Nama Industri"
+        android:text="Nama Industri" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAlamatIndustri"
+        android:hint="Alamat"
+        android:layout_below="@+id/editTextNamaIndustri"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/editTextNamaIndustri"
+        android:text="Alamat"
+        android:paddingTop="25dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editTextNoTelp"
+        android:layout_below="@+id/editTextAlamatIndustri"
+        android:layout_alignParentStart="true"
+        android:paddingTop="25dp"
+        android:text="No. Telp"
+        android:layout_alignEnd="@+id/editTextAlamatIndustri" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:spinnerMode="dropdown" />
+
 </RelativeLayout>
