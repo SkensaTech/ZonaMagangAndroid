@@ -5,4 +5,5 @@
     <color name="colorPrimaryLight">#7ED5D1</color>
     <color name="colorAccent">#E3E7DF</color>
     <color name="colorToolbar">#FFA000</color>
+    <color name="loginText">#000000</color>
 </resources>
