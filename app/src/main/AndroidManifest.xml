@@ -23,7 +23,8 @@
             android:name=".home_siswa_1"
             android:label="Beranda" />
         <activity android:name=".BelumInterview" />
-        <activity android:name=".ogin"></activity>
+        <activity android:name=".login" />
+        <activity android:name=".register1"></activity>
     </application>
 
 </manifest>
