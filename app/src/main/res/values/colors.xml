@@ -11,4 +11,7 @@
     <color name="colorTextDark">#282829</color>
     <color name="colorToolbar">#009688</color>
     <color name="loginText">#000000</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorText">#C4C4C4</color>
 </resources>
