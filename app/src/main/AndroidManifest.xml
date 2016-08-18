@@ -15,16 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main2Activity" />
-        <activity
-            android:name=".HomeIndustri"
-            android:label="Beranda" />
-        <activity
-            android:name=".home_siswa_1"
-            android:label="Beranda" />
-        <activity android:name=".BelumInterview" />
-        <activity android:name=".login" />
-        <activity android:name=".register1"></activity>
+        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".HomeIndustri"
+            android:label="Beranda"></activity>
+        <activity android:name=".home_siswa_1"
+            android:label="Beranda"
+            >
+
+        </activity>
     </application>
 
 </manifest>
