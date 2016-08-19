@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zonamagang.zonamagang.step_3_siswa">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:padding="16dp"
+            android:background="@color/textColor">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="PILIH FOTO"
+                android:id="@+id/textView"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorPrimaryText"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:id="@+id/step_3_siswa_logo"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorPrimary"
+                android:shadowColor="@color/colorPrimary"
+                android:textColor="@color/textColor"
+                android:text="Pilih Foto"
+                android:padding="8dp"
+                android:id="@+id/BtnSiswa_step_3_browse"
+                android:layout_gravity="center_horizontal"
+                android:onClick="showFileChooser"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SELESAI"
+                android:id="@+id/BtnSiswa_step_3_submit"
+                android:textSize="18dp"
+                android:padding="15dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorAccent"
+                android:textColor="#fefefe"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
