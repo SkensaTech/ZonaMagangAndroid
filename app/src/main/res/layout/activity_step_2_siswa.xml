@@ -39,6 +39,7 @@
                     android:textColor="@color/textColor"
                     android:layout_marginTop="40dp"
                     android:padding="10dp"
+                    android:gravity="center_horizontal"
                     android:id="@+id/spinnerProvinsi" />
 
                 <Spinner
