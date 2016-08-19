@@ -13,7 +13,7 @@ public class register2 extends AppCompatActivity {
         setContentView(R.layout.activity_register2);
 
         String s = getIntent().getStringExtra("jenis_daftar");
-        TextView daftaremail = (TextView) findViewById(R.id.reg);
-        daftaremail.setText(s);
+        TextView daftarTitle = (TextView) findViewById(R.id.reg);
+        daftarTitle.setText(s);
     }
 }
