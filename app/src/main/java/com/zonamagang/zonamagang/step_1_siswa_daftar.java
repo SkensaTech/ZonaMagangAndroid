@@ -24,7 +24,6 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         setSupportActionBar(x);
 
 
-
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");
