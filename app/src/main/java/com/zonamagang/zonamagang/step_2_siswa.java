@@ -18,6 +18,7 @@ public class step_2_siswa extends AppCompatActivity {
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     //provinsi
         Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         List<String> provinsis = new ArrayList<>();

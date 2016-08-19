@@ -35,16 +35,18 @@
 
         //activity step siswa daftar
         <activity android:name=".step_1_siswa_daftar"
-            android:label="Daftar Siswa">
-
-        </activity>
-
-        <activity android:name=".step_2_siswa"
-            android:label="Daftar Siswa">
+            android:label="Daftar Siswa"
+            android:parentActivityName=".register2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".step_2_siswa"
+            android:label="Daftar Siswa"
+            android:parentActivityName=".step_1_siswa_daftar">
+
         </activity>
 
 
