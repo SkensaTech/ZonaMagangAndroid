@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="DAFTER"
+        android:text="DAFTAR"
         android:textSize="50dp"
         android:textAlignment="center"
         android:id="@+id/reg"
