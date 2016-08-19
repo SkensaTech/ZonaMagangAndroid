@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
+    tools:context="com.zonamagang.zonamagang.step_1_industri"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -85,12 +85,11 @@
                 </LinearLayout>
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:layout_marginTop="32dp"
-                    android:background="@color/colorPrimary"
-                    android:shadowColor="@color/colorPrimary"
+                    android:background="@color/colorAccent"
                     android:textColor="@color/textColor"
                     android:text="LANJUT"
                     android:id="@+id/industri_step_1_submit"

@@ -20,21 +20,19 @@ public class register2 extends AppCompatActivity {
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String s = getIntent().getStringExtra("jenis_daftar");
-        EditText email = (EditText) findViewById(R.id.daftaremail);
-        email.setHint(s);
+
          daftar = (Button) findViewById(R.id.tomboldaftar);
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = getIntent().getStringExtra("jenis_daftar");
+                String ss = getIntent().getStringExtra("jenis_daftar");
                 Intent step1;
-                if (s.equals("siswa")){
+                if (ss.equals("siswa")){
                      step1 = new Intent(getApplicationContext(),step_1_siswa_daftar.class);
                     startActivity(step1);
 
-                } else  {
-                     step1 = new Intent(getApplicationContext(),step_1_industri.class);
+                } else if(ss.equals("industri"))  {
+                     step1 = new Intent(register2.this,step_1_industri.class);
                     startActivity(step1);
 
                 }
