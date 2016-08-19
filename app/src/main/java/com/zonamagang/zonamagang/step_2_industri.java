@@ -74,6 +74,6 @@ public class step_2_industri extends AppCompatActivity {
                 }// resultCode
             }// case 1
         }// switch, request code
-    }// public void onActivityResult
+    }
 
 }
