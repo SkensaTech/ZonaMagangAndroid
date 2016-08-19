@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,16 +23,18 @@ import java.net.URISyntaxException;
 
 public class step_2_industri extends AppCompatActivity {
 
-    private static final int FILE_SELECT_CODE = 0;
-    private static final String TAG ="step_2_industri";
     ImageView mLogo;
-    String fileLocation;
-    TextView kuota;
+    TextView mKuota;
+    TextView mProfil;
+    TextView mJobdesc;
+    TextView mKualifikasi;
+    Button mSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_industri);
+        this.layoutItems();
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -64,8 +67,7 @@ public class step_2_industri extends AppCompatActivity {
                             String filePath = cursor.getString(columnIndex);
                             cursor.close();
                             Bitmap bMap_image = BitmapFactory.decodeFile(filePath);
-                            ImageView img = (ImageView) findViewById(R.id.step_2_industri_logo);
-                            img.setImageBitmap(bMap_image);
+                            mLogo.setImageBitmap(bMap_image);
 
 
                         }catch(Exception e)
@@ -74,6 +76,15 @@ public class step_2_industri extends AppCompatActivity {
                 }// resultCode
             }// case 1
         }// switch, request code
+    }
+
+    private void layoutItems(){
+        mKuota = (TextView)findViewById(R.id.industri_step_2_kuota);
+        mProfil = (TextView)findViewById(R.id.industri_step_2_profil);
+        mJobdesc = (TextView)findViewById(R.id.industri_step_2_jobdesc);
+        mKualifikasi = (TextView)findViewById(R.id.industri_step_2_kualifikasi);
+        mLogo = (ImageView) findViewById(R.id.step_2_industri_logo);
+        mSubmit = (Button)findViewById(R.id.industri_step_2_submit);
     }
 
 }
