@@ -25,7 +25,6 @@ public class semuaFragment extends Fragment{
         semuaFragment f = new semuaFragment();
         Bundle b = new Bundle();
         b.putString("Semua",title);
-
         f.setArguments(b);
 
         return f;
