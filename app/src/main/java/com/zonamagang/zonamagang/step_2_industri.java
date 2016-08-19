@@ -32,7 +32,6 @@ public class step_2_industri extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_industri);
-
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         ActionBar ab = getSupportActionBar();
