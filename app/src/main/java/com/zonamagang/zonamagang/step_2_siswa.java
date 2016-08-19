@@ -18,6 +18,7 @@ public class step_2_siswa extends AppCompatActivity {
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     //provinsi
         Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         List<String> provinsis = new ArrayList<>();
@@ -52,7 +53,7 @@ public class step_2_siswa extends AppCompatActivity {
     //bidang
         Spinner bidang = (Spinner) findViewById(R.id.spinnerBidang);
         List<String> bidangs = new ArrayList<>();
-        bidangs.add("Sekolah");
+        bidangs.add("Bidang");
         bidangs.add("SMKN 1 Denpasar");
         bidangs.add("SMAN 1 Denpasar");
         bidangs.add("SLTB");
