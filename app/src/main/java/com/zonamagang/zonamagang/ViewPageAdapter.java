@@ -16,9 +16,9 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return baruFragment.newInstance(0, "Sudah");
+                return sudahFragment.newInstance(0, "Sudah");
             case 1:
-                return sudahFragment.newInstance(1, "Belum");
+                return baruFragment.newInstance(1, "Belum");
             default:
                 return semuaFragment.newInstance(0,"Sudah");
         }
