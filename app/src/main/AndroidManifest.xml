@@ -12,12 +12,6 @@
         <activity
             android:name=".HomeIndustri"
             android:label="Beranda">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.SEARCH" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".home_siswa_1"
@@ -33,6 +27,15 @@
             android:name=".DetailSiswaOlehIndustri"
             android:label="Denandra Prasetya">
 
+        </activity>
+        <activity android:name=".step_1_industri"
+            android:label="Register Industri">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

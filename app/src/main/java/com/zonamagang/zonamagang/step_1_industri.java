@@ -15,7 +15,7 @@ public class step_1_industri extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_industri);
 
-        Spinner kota = (Spinner) findViewById(R.id.kota);
+        Spinner kota = (Spinner) findViewById(R.id.industri_step_1_kota);
         List<String> kotas = new ArrayList<>();
         kotas.add("Kota/Kabupaten");
         kotas.add("Denpasar");
