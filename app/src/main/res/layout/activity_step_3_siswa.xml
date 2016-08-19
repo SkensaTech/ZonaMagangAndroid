@@ -37,7 +37,7 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:id="@+id/step_2_industri_logo"/>
+                android:id="@+id/step_3_siswa_logo"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                 android:textColor="@color/textColor"
                 android:text="Pilih Foto"
                 android:padding="8dp"
-                android:id="@+id/industri_step_1_browse"
+                android:id="@+id/BtnSiswa_step_3_browse"
                 android:layout_gravity="center_horizontal"
                 android:onClick="showFileChooser"/>
 
