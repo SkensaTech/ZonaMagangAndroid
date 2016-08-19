@@ -14,7 +14,7 @@ import android.widget.ListView;
 public class semuaFragment extends Fragment{
 
     ListView listView;
-
+    /** Fixed **/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -1,91 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:fillViewport="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <ScrollView
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:fillViewport="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="694dp"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@color/textColor">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="LENGKAPI DATA DIRI"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorPrimaryText"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="textPersonName"
-                android:layout_marginTop="40dp"
-                android:hint="Nama"
-                android:ems="10"
-                android:id="@+id/nama"
-                android:textColorHint="@color/colorSecondaryText"
-                android:padding="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="text"
-                android:layout_marginTop="1dp"
-                android:hint="Alamat"
-                android:ems="10"
-                android:id="@+id/nama"
-                android:padding="10dp"
-                android:textColorHint="@color/colorSecondaryText" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:layout_marginTop="1dp"
-                android:hint="No Telp"
-                android:ems="10"
-                android:id="@+id/nama"
-                android:padding="10dp"
-                android:textColorHint="@color/colorSecondaryText" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="694dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/textColor">
 
-                <Spinner
-                    android:layout_weight="1"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/kota"
+                    android:layout_height="30dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="LENGKAPI DATA INDUSTRI"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorPrimaryText"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="40dp"
+                    android:hint="Nama"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_nama"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:padding="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:layout_marginTop="16dp"
+                    android:hint="Alamat"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_alamat"
                     android:padding="10dp"
-                    android:textColor="@color/colorSecondaryText"/>
+                    android:textColorHint="@color/colorSecondaryText" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:layout_marginTop="16dp"
+                    android:hint="No Telp"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_telp"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorSecondaryText" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/industri_step_1_kota"
+                        android:padding="10dp"
+                        android:textColor="@color/colorSecondaryText"
+                        android:layout_marginTop="16dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/colorPrimary"
+                    android:shadowColor="@color/colorPrimary"
+                    android:textColor="@color/textColor"
+                    android:text="LANJUT"
+                    android:id="@+id/industri_step_1_submit"
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginTop="50dp"
-                android:background="@color/colorPrimary"
-                android:shadowColor="@color/colorPrimary"
-                android:textColor="@color/textColor"
-                android:text="LANJUT"
-                android:id="@+id/button5"
-                android:layout_gravity="center_horizontal" />
-
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
