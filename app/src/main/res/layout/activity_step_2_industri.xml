@@ -109,7 +109,7 @@
                     android:shadowColor="@color/colorPrimary"
                     android:textColor="@color/textColor"
                     android:text="LANJUT"
-                    android:id="@+id/industri_step_1_submit"
+                    android:id="@+id/industri_step_2_submit"
                     android:layout_gravity="center_horizontal" />
 
             </LinearLayout>

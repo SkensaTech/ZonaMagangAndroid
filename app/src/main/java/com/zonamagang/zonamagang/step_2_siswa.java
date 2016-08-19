@@ -27,7 +27,7 @@ public class step_2_siswa extends AppCompatActivity {
 
         //coding untuk jika button click
         Button y;
-        y =(Button) findViewById(R.id.BtnIndustri_step_2_submit);
+        y =(Button) findViewById(R.id.BtnSiswa_step_2_submit);
         y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
