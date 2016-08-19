@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">ZonaMagang</string>
     <string name="r_password">R-Password</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Create</item>
+        <item>Help</item>
+        <item>Read</item>
+    </string-array>
     <string-array name="tanggal">
         <item>01</item>
         <item>02</item>
