@@ -12,7 +12,10 @@
         <activity
             android:name=".HomeIndustri"
             android:label="Beranda">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".home_siswa_1"
@@ -23,10 +26,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
             </activity>
         <activity android:name=".register1" />
         <activity android:name=".step_1_siswa_daftar"
