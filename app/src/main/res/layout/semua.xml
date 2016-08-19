@@ -25,11 +25,12 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="12dp"
                         android:paddingLeft="24dp"
                         android:paddingRight="24dp"
+                        android:onClick="DetailSiswa"
                         android:paddingTop="12dp">
 
                         <ImageView
@@ -72,19 +73,19 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryDark"
                             android:textColor="#fff"
-                            android:text="DECLINE" />
+                            android:text="Tolak" />
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:textColor="#fff"
-                            android:text="ACCEPT" />
+                            android:text="Terima" />
 
                     </LinearLayout>
 
@@ -153,19 +154,19 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:textColor="#fff"
                             android:background="@color/colorPrimaryDark"
-                            android:text="DECLINE" />
+                            android:text="Tolak" />
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="ACCEPT" />
+                            android:text="Terima" />
 
                     </LinearLayout>
 

@@ -72,7 +72,7 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:textColor="#fff"
@@ -146,7 +146,7 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:layout_weight="1"
                             android:textColor="#fff"
                             android:background="@color/colorPrimary"
