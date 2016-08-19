@@ -1,82 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.zonamagang.zonamagang.step_1_industri">
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Lengkapi Data Industri"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="15dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextNamaIndustri"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentEnd="true"
-        android:hint="Nama Industri"
-        android:text="Nama Industri"
-        android:paddingTop="25dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextAlamatIndustri"
-        android:hint="Alamat"
-        android:layout_below="@+id/editTextNamaIndustri"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/editTextNamaIndustri"
-        android:text="Alamat"
-        android:paddingTop="25dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="694dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/textColor">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/editTextNoTelp"
-        android:layout_below="@+id/editTextAlamatIndustri"
-        android:layout_alignParentStart="true"
-        android:paddingTop="25dp"
-        android:text="No. Telp"
-        android:layout_alignEnd="@+id/editTextAlamatIndustri" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="LENGKAPI DATA INDUSTRI"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorPrimaryText"/>
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:spinnerMode="dropdown" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="40dp"
+                    android:hint="Nama"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_nama"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:padding="10dp"/>
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
-        android:spinnerMode="dropdown"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentStart="true" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:layout_marginTop="16dp"
+                    android:hint="Alamat"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_alamat"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorSecondaryText" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SElANJUTNYA"
-        android:id="@+id/buttonSelanjutnya"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:layout_marginTop="16dp"
+                    android:hint="No Telp"
+                    android:ems="10"
+                    android:id="@+id/industri_step_1_telp"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorSecondaryText" />
 
-</RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/industri_step_1_kota"
+                        android:padding="10dp"
+                        android:textColor="@color/colorSecondaryText"
+                        android:layout_marginTop="16dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/colorPrimary"
+                    android:shadowColor="@color/colorPrimary"
+                    android:textColor="@color/textColor"
+                    android:text="LANJUT"
+                    android:id="@+id/industri_step_1_submit"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

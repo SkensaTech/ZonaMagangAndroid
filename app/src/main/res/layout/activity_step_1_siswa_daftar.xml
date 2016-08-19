@@ -1,138 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
-    android:minWidth="100dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Lengkapi Data Diri"
-        android:id="@+id/textView"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:hint="NISN"
-        android:width="300dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:hint="Nama Lengkap"
-        android:width="300dp"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Jenis Kelamin"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
-    <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:id="@+id/radioGroup"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Laki-laki"
-            android:id="@+id/radioButton"
-            android:layout_below="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:checked="true" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perempuan"
-            android:id="@+id/radioButton2"
-            android:checked="false"
-            android:layout_below="@+id/textView4"
-            android:layout_toEndOf="@+id/radioGroup" />
-
-    </RadioGroup>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText3"
-        android:hint="Alamat"
-        android:width="300dp"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignStart="@+id/radioGroup" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editText6"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:id="@+id/linearLayout">
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tanggal"
-            android:layout_weight="1"
-            android:dropDownWidth="100dp"
-            android:width="100dp"
-            android:minWidth="100dp" />
-
-        <Spinner
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bulan"
-            android:dropDownWidth="100dp"
-            android:width="100dp"
-            android:minWidth="100dp" />
-
-        <Spinner
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tahun"
-            android:dropDownWidth="100dp"
-            android:width="100dp"
-            android:minWidth="100dp" />
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SELANJUTNYA"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp" />
-
-    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText6"
-        android:hint="Tempat Lahir"
-        android:width="300dp"
-        android:layout_below="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="694dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/textColor">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="LENGKAPI DATA DIRI"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimaryText"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:layout_marginTop="40dp"
+                android:hint="NISN"
+                android:ems="10"
+                android:id="@+id/nisn"
+                android:textColorHint="@color/colorSecondaryText"
+                android:padding="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPersonName"
+                android:layout_marginTop="1dp"
+                android:hint="Nama Lengkap"
+                android:ems="10"
+                android:id="@+id/nama"
+                android:padding="10dp"
+                android:textColorHint="@color/colorSecondaryText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="1dp"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Jenis Kelamin"
+                android:textColor="@color/colorSecondaryText" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Laki-laki"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/colorSecondaryText"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="Perempuan"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorSecondaryText" />
+            </RadioGroup>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:hint="Alamat"
+                android:layout_marginTop="1dp"
+                android:padding="10dp"
+                android:id="@+id/alamat"
+                android:textColorHint="@color/colorSecondaryText" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="Tempat Lahir"
+                android:layout_marginTop="1dp"
+                android:padding="10dp"
+                android:id="@+id/tempat_lahir"
+                android:textColorHint="@color/colorSecondaryText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:layout_marginTop="1dp"
+                android:text="Tanggal Lahir"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorSecondaryText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tahun"
+                    android:padding="10dp"
+                    android:textColor="@color/colorSecondaryText"/>
+
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bulan"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorSecondaryText"/>
+
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tanggal"
+                    android:padding="10dp"
+                    android:textColorHint="@color/colorSecondaryText"/>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorPrimary"
+                android:shadowColor="@color/colorPrimary"
+                android:textColor="@color/textColor"
+                android:text="LANJUT"
+                android:id="@+id/button5"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
