@@ -60,12 +60,9 @@
                 android:id="@+id/BtnSiswa_step_3_submit"
                 android:textSize="18dp"
                 android:padding="15dp"
-                android:layout_below="@+id/editText8"
                 android:layout_marginTop="50dp"
-                android:layout_alignEnd="@+id/editText8"
                 android:background="@color/colorAccent"
-                android:textColor="#fefefe"
-                android:layout_alignParentStart="true" />
+                android:textColor="#fefefe"/>
 
         </LinearLayout>
 

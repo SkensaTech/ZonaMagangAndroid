@@ -46,6 +46,13 @@
             android:parentActivityName=".step_1_siswa_daftar">
 
         </activity>
+
+        <activity android:name=".step_3_siswa"
+            android:label="Daftar Siswa"
+            android:parentActivityName=".step_2_siswa">
+
+        </activity>
+
     <activity android:name=".step_2_industri"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
