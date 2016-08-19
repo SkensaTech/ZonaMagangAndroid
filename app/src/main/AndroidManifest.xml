@@ -29,6 +29,9 @@
             </intent-filter>
             </activity>
         <activity android:name=".register1" />
+        <activity android:name=".step_1_siswa_daftar"
+            android:label="LENGKAPI DATA DIRI">
+        </activity>
         <activity android:name=".register2"></activity>
     </application>
 

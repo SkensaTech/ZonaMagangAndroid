@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:fillViewport="true">
-
-    <LinearLayout
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
@@ -18,7 +22,7 @@
             android:padding="16dp"
             android:background="@color/textColor">
 
-            <TextView
+            TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -62,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:gravity="center_horizontal">
 
                 <RadioButton
@@ -150,5 +155,5 @@
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
