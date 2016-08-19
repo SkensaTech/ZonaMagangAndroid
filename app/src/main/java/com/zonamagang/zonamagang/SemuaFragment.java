@@ -19,8 +19,6 @@ public class semuaFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.semua, container, false);
-
-
     }
 
     public static semuaFragment newInstance(int text, String title){
