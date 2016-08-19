@@ -17,7 +17,11 @@ public class register2 extends AppCompatActivity {
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         String s = getIntent().getStringExtra("jenis_daftar");
+        if (s=="siswa") {
+
+        }
     }
     //
 }
