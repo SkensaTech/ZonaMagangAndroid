@@ -21,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
         x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent register = new Intent(getApplicationContext(),register1.class);
                 startActivity(register);
+
             }
         });
        // Backendless.initApp(this,Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
