@@ -56,5 +56,5 @@ public class step_1_industri extends AppCompatActivity {
         mTelp = (EditText)findViewById(R.id.industri_step_1_telp);
         mKota = (Spinner)findViewById(R.id.industri_step_1_kota);
         mSubmit = (Button)findViewById(R.id.industri_step_1_submit);
-    }
+    }//
 }
