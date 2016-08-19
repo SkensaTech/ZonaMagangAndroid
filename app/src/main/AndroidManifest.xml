@@ -39,18 +39,26 @@
         </activity>
 
         <activity android:name=".step_1_siswa_daftar"
-            android:label="Daftar Siswa"
+            android:label="Langkah 1"
             android:parentActivityName=".register2">
 
         </activity>
         <activity android:name=".step_1_industri"
+            android:label="Langkah 1"
             android:parentActivityName=".register2"
             />
         <activity android:name=".step_2_siswa"
-            android:label="Daftar Siswa"
+            android:label="Langkah 2"
             android:parentActivityName=".step_1_siswa_daftar">
 
         </activity>
+
+        <activity android:name=".step_3_siswa"
+            android:label="Langkah 3"
+            android:parentActivityName=".step_2_siswa">
+
+        </activity>
+
     <activity android:name=".step_2_industri"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
