@@ -16,26 +16,21 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return semuaFragment.newInstance(0, "Semua");
+                return sudahFragment.newInstance(0, "Sudah");
             case 1:
-                return baruFragment.newInstance(1, "Baru");
-            case 2:
-                return sudahFragment.newInstance(2, "Sudah");
+                return baruFragment.newInstance(1, "Belum");
             default:
-                return semuaFragment.newInstance(0,"Semua");
+                return semuaFragment.newInstance(0,"Sudah");
         }
     }
 
     @Override
     public CharSequence getPageTitle(int position){
         if(position==0){
-            return "Semua";
+            return "Sudah";
         }
         if(position==1){
             return "Belum";
-        }
-        if(position==2){
-            return "Sudah";
         }
         else{
             return "";
@@ -44,6 +39,6 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

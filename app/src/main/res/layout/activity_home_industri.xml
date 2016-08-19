@@ -24,7 +24,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/toolbar"
-                android:background="@color/colorPrimaryDark" />
+                android:background="@color/colorPrimary" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewpager"
@@ -36,12 +36,4 @@
 
     </FrameLayout>
 
-</android.support.v4.widget.DrawerLayout><!--<RelativeLayout--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--tools:context="com.zonamagang.zonamagang.HomeIndustri">-->
-
-    <!--<include--><!--android:id="@+id/toolbar"--><!--layout="@layout/toolbar" />-->
-
-    <!--<android.support.design.widget.TabLayout--><!--android:id="@+id/tabs"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_alignParentLeft="true"--><!--android:layout_alignParentRight="true"--><!--android:layout_below="@+id/toolbar"--><!--android:background="@color/colorPrimary" />-->
-
-    <!--<android.support.v4.view.ViewPager--><!--android:id="@+id/viewpager"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_below="@+id/tabs" />-->
-
-    <!--</RelativeLayout>-->
+</android.support.v4.widget.DrawerLayout>

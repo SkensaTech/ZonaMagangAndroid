@@ -22,13 +22,14 @@
             android:padding="16dp"
             android:background="@color/textColor">
 
-            TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="LENGKAPI DATA DIRI"
+                android:id="@+id/textView"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
                 android:textColor="@color/colorPrimaryText"/>
 
             <EditText
@@ -145,13 +146,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:padding="10dp"
                 android:background="@color/colorPrimary"
                 android:shadowColor="@color/colorPrimary"
                 android:textColor="@color/textColor"
                 android:text="LANJUT"
-                android:id="@+id/button5"
+                android:id="@+id/industri_step_2_submit"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
