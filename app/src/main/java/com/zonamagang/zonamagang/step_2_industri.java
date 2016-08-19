@@ -73,9 +73,9 @@ public class step_2_industri extends AppCompatActivity {
                         }catch(Exception e)
                         {}
                     }
-                }// resultCode
-            }// case 1
-        }// switch, request code
+                }
+            }
+        }
     }
 
     private void layoutItems(){
