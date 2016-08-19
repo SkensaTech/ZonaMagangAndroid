@@ -12,11 +12,8 @@
         <activity
             android:name=".HomeIndustri"
             android:label="Beranda">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
         <activity
             android:name=".home_siswa_1"
             android:label="Beranda"
@@ -25,16 +22,24 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".MainActivity" >
 
-            </activity>
+        <activity android:name=".MainActivity" >
+        </activity>
+
         <activity android:name=".register1" />
+
         <activity android:name=".step_1_siswa_daftar"
             android:label="LENGKAPI DATA DIRI">
         </activity>
+
         <activity android:name=".register2"
             android:label="Daftar">
-
+        </activity>
+        <activity android:name=".step_2_siswa">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
