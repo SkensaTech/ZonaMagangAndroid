@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context="com.zonamagang.zonamagang.step_1_siswa_daftar"
+    tools:context="com.zonamagang.zonamagang.step_2_industri"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -9,6 +9,7 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -31,63 +32,71 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="LENGKAPI DATA INDUSTRI"
+                    android:text="DETAIL INFO MAGANG"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="20dp"
-                    android:textColor="@color/colorPrimaryText"/>
+                    android:textColor="@color/colorPrimaryText"
+                    />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="textPersonName"
                     android:layout_marginTop="40dp"
-                    android:hint="Nama"
+                    android:hint="Jumlah maks pendaftar"
                     android:ems="10"
-                    android:id="@+id/industri_step_1_nama"
-                    android:textColorHint="@color/colorSecondaryText"
-                    android:padding="10dp"/>
+                    android:id="@+id/industri_step_2_kuota"
+                    android:textColorHint="@color/colorSecondaryText"/>
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:inputType="textMultiLine"
                     android:layout_marginTop="16dp"
-                    android:hint="Alamat"
+                    android:hint="Profil"
                     android:ems="10"
-                    android:id="@+id/industri_step_1_alamat"
-                    android:padding="10dp"
+                    android:id="@+id/industri_step_2_profil"
                     android:textColorHint="@color/colorSecondaryText" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="number"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:inputType="textMultiLine"
                     android:layout_marginTop="16dp"
-                    android:hint="No Telp"
+                    android:hint="Job Description"
                     android:ems="10"
-                    android:id="@+id/industri_step_1_telp"
-                    android:padding="10dp"
+                    android:id="@+id/industri_step_2_jobdesc"
                     android:textColorHint="@color/colorSecondaryText" />
 
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Spinner
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/industri_step_1_kota"
-                        android:padding="10dp"
-                        android:textColor="@color/colorSecondaryText"
-                        android:layout_marginTop="16dp"/>
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="16dp"
+                    android:hint="Persyaratan Minimum"
+                    android:ems="10"
+                    android:id="@+id/industri_step_2_kualifikasi"
+                    android:padding="16dp"
+                    android:textColorHint="@color/colorSecondaryText" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/colorPrimary"
+                    android:shadowColor="@color/colorPrimary"
+                    android:textColor="@color/textColor"
+                    android:text="Pilih Logo Industri"
+                    android:padding="8dp"
+                    android:id="@+id/industri_step_1_browse"
+                    android:layout_gravity="center_horizontal" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:background="@color/colorPrimary"
                     android:shadowColor="@color/colorPrimary"
