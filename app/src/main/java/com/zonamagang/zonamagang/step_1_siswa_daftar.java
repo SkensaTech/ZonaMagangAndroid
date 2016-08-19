@@ -3,8 +3,10 @@ package com.zonamagang.zonamagang;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.*;
 import android.view.View;
 import android.widget.*;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,12 @@ public class step_1_siswa_daftar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_siswa_daftar);
+
+        android.support.v7.widget.Toolbar x = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(x);
+
+
+
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");

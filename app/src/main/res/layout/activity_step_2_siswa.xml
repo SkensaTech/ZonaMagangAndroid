@@ -40,7 +40,7 @@
                     android:layout_marginTop="40dp"
                     android:padding="10dp"
                     android:gravity="center_horizontal"
-                    android:id="@+id/spinnerProvinsi" />
+                    android:id="@+id/spinnerProvinsi"/>
 
                 <Spinner
                     android:layout_width="match_parent"
