@@ -6,6 +6,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
         android:layout_height="match_parent">
 
         <RelativeLayout
@@ -74,14 +75,16 @@
                             android:layout_height="32dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryDark"
-                            android:text="ACCEPT" />
+                            android:textColor="#fff"
+                            android:text="DECLINE" />
 
                         <Button
                             android:layout_width="0dp"
                             android:layout_height="32dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
-                            android:text="DECLINE" />
+                            android:textColor="#fff"
+                            android:text="ACCEPT" />
 
                     </LinearLayout>
 
@@ -152,15 +155,17 @@
                             android:layout_width="0dp"
                             android:layout_height="32dp"
                             android:layout_weight="1"
+                            android:textColor="#fff"
                             android:background="@color/colorPrimaryDark"
-                            android:text="ACCEPT" />
+                            android:text="DECLINE" />
 
                         <Button
                             android:layout_width="0dp"
                             android:layout_height="32dp"
                             android:layout_weight="1"
+                            android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="DECLINE" />
+                            android:text="ACCEPT" />
 
                     </LinearLayout>
 
