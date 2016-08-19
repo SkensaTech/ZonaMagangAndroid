@@ -43,6 +43,8 @@ public class step_2_industri extends AppCompatActivity {
 
     }
 
+    //UPLOAD FOTO
+
     public void showFileChooser(View view) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
@@ -77,6 +79,7 @@ public class step_2_industri extends AppCompatActivity {
             }
         }
     }
+    //END UPLOAD FOTO
 
     private void layoutItems(){
         mKuota = (TextView)findViewById(R.id.industri_step_2_kuota);
