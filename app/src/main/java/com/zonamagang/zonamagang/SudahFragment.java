@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * Created by Denandra on 16/08/2016.
  */
 public class sudahFragment extends Fragment {
-
+    /** Fixed **/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
