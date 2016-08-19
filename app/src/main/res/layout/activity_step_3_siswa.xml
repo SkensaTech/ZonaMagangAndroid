@@ -56,7 +56,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MENDAFTAR"
+                android:text="SELESAI"
                 android:id="@+id/BtnSiswa_step_3_submit"
                 android:textSize="18dp"
                 android:padding="15dp"
