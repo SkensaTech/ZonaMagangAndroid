@@ -1,5 +1,6 @@
 package com.zonamagang.zonamagang;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class step_1_siswa_daftar extends AppCompatActivity {
-
+    //deklarasi
+    Button y;
     int array_bulan;
 
     @Override
@@ -20,10 +22,23 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_siswa_daftar);
 
+        //coding untuk toolbar
         android.support.v7.widget.Toolbar x = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        //coding untuk jika button click
+        y =(Button) findViewById(R.id.BtnIndustri_step_1_submit);
+        y.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent z = new Intent(getApplicationContext(),step_2_siswa.class);
+                startActivity(z);
+            }
+        });
+
+        //coding untuk spinner
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");
@@ -64,5 +79,6 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         tanggals.add(""+array_bulan);
         ArrayAdapter<String> tanggal_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tanggals);
         tanggal.setAdapter(tanggal_adapter);
+
     }
 }

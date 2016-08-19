@@ -82,6 +82,12 @@
                     android:padding="16dp"
                     android:textColorHint="@color/colorSecondaryText" />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/step_2_industri_logo"/>
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,7 +98,8 @@
                     android:text="Pilih Logo Industri"
                     android:padding="8dp"
                     android:id="@+id/industri_step_1_browse"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="showFileChooser"/>
 
                 <Button
                     android:layout_width="match_parent"
