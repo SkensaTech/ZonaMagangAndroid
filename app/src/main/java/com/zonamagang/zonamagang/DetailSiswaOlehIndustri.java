@@ -26,5 +26,4 @@ public class DetailSiswaOlehIndustri extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

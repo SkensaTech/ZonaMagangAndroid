@@ -26,12 +26,21 @@
                 android:orientation="vertical"
                 android:padding="40dp">
 
-                <ImageView
-                    android:layout_width="100dp"
+                <!--<ImageView-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:layout_height="100dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:src="@drawable/profil" />-->
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xml:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profilePict"
                     android:layout_height="100dp"
+                    android:layout_width="100dp"
+                    android:src="@drawable/asu"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/profil" />
+                    android:layout_marginBottom="8dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,7 +82,8 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="Mulai Magang"
-                        android:textSize="16sp" />
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -98,7 +108,8 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="Selesai Magang"
-                        android:textSize="16sp" />
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -123,8 +134,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Bidang : RPL"
-                        android:textSize="16sp" />
+                        android:text="Bidang"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:layout_marginTop="32dp"
+                        android:textSize="16sp"
+                        android:text="Rekayasa Perangkat Lunak"/>
 
 
                 </android.support.v7.widget.CardView>
