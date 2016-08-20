@@ -11,8 +11,8 @@ public class akun_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_akun_user);
-        Toolbar xx = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(xx);
+        Toolbar xxx = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(xxx);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     @Override
