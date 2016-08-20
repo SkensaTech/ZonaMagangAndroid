@@ -40,43 +40,43 @@ public class step_2_siswa extends AppCompatActivity {
     //provinsi
         Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         List<String> provinsis = new ArrayList<>();
-        provinsis.add("Provinsi");
+        provinsis.add("--Pilih Provinsi--");
         provinsis.add("Bali");
         provinsis.add("Jawa");
         provinsis.add("Kalimantan");
-        ArrayAdapter<String> provinsi_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinsis);
+        ArrayAdapter<String> provinsi_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, provinsis);
         provinsi.setAdapter(provinsi_adapter);
 
     //kota
         Spinner kota = (Spinner) findViewById(R.id.spinnerKota);
         List<String> kotas = new ArrayList<>();
-        kotas.add("Kabupaten/Kota");
+        kotas.add("--Pilih Kabupaten/Kota--");
         kotas.add("Denpasar");
         kotas.add("Singaraja");
         kotas.add("Gianyar");
-        ArrayAdapter<String> kotas_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, kotas);
+        ArrayAdapter<String> kotas_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, kotas);
         kota.setAdapter(kotas_adapter);
 
     //sekolah
         Spinner sekolah = (Spinner) findViewById(R.id.spinnerSekolah);
         List<String> sekolahs = new ArrayList<>();
-        sekolahs.add("Sekolah");
+        sekolahs.add("--Pilih Sekolah--");
         sekolahs.add("SMKN 1 Denpasar");
         sekolahs.add("SMAN 1 Denpasar");
         sekolahs.add("SLTB");
 
-        ArrayAdapter<String> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sekolahs);
+        ArrayAdapter<String> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sekolahs);
         sekolah.setAdapter(sekolah_adapter);
 
     //bidang
         Spinner bidang = (Spinner) findViewById(R.id.spinnerBidang);
         List<String> bidangs = new ArrayList<>();
-        bidangs.add("Bidang");
-        bidangs.add("SMKN 1 Denpasar");
-        bidangs.add("SMAN 1 Denpasar");
-        bidangs.add("SLTB");
+        bidangs.add("--Pilih Bidang/Jurusan");
+        bidangs.add("Rekayasa Perangkat Lunak");
+        bidangs.add("Teknik Komputer Jaringan");
+        bidangs.add("Akomodasi Perhotelan");
 
-        ArrayAdapter<String> bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bidangs);
+        ArrayAdapter<String> bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bidangs);
         bidang.setAdapter(bidang_adapter);
     }
 }
