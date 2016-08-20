@@ -22,9 +22,7 @@ public class DetailSiswaOlehIndustri extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
-                Intent intent = new Intent(getApplicationContext(),HomeIndustri.class);
                 finish();
-                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
