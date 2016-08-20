@@ -122,7 +122,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view32"
+                    android:id="@+id/card_view3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/card_view2"
@@ -145,6 +145,62 @@
                         android:layout_marginTop="32dp"
                         android:textSize="16sp"
                         android:text="Rekayasa Perangkat Lunak"/>
+
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_view3"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    card_view:cardCornerRadius="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:text="Email"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:layout_marginTop="32dp"
+                        android:textSize="16sp"
+                        android:text="Denandra1628@gmail.com"/>
+
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_view4"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    card_view:cardCornerRadius="0dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:text="No Telpon"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:layout_marginTop="32dp"
+                        android:textSize="16sp"
+                        android:text="+6281338908416"/>
 
 
                 </android.support.v7.widget.CardView>
