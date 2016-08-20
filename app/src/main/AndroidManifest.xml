@@ -14,10 +14,7 @@
             android:label="Beranda"
             android:parentActivityName=".HomeIndustri">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,7 +51,10 @@
         <activity android:name=".step_2_siswa"
             android:label="Daftar Siswa"
             android:parentActivityName=".step_1_siswa_daftar">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".DetailSiswaOlehIndustri"/>
