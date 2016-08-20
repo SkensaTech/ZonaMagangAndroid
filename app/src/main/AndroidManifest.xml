@@ -41,7 +41,7 @@
         </activity>
 
 
-        //activity step siswa daftar
+        <!--activity step siswa daftar-->
         <activity android:name=".step_1_siswa_daftar"
             android:label="Langkah 1"
             android:parentActivityName=".register2">
@@ -58,6 +58,7 @@
             android:label="Langkah 3"
             android:parentActivityName=".step_2_siswa">
         </activity>
+        <!--end step siswa daftar-->
 
         <activity android:name=".DetailSiswaOlehIndustri"/>
 
