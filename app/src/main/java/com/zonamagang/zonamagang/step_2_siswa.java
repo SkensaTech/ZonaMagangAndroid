@@ -40,7 +40,6 @@ public class step_2_siswa extends AppCompatActivity {
     //provinsi
         Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         List<String> provinsis = new ArrayList<>();
-        provinsis.add("--Pilih Provinsi--");
         provinsis.add("Bali");
         provinsis.add("Jawa");
         provinsis.add("Kalimantan");
@@ -50,7 +49,6 @@ public class step_2_siswa extends AppCompatActivity {
     //kota
         Spinner kota = (Spinner) findViewById(R.id.spinnerKota);
         List<String> kotas = new ArrayList<>();
-        kotas.add("--Pilih Kabupaten/Kota--");
         kotas.add("Denpasar");
         kotas.add("Singaraja");
         kotas.add("Gianyar");
@@ -60,7 +58,6 @@ public class step_2_siswa extends AppCompatActivity {
     //sekolah
         Spinner sekolah = (Spinner) findViewById(R.id.spinnerSekolah);
         List<String> sekolahs = new ArrayList<>();
-        sekolahs.add("--Pilih Sekolah--");
         sekolahs.add("SMKN 1 Denpasar");
         sekolahs.add("SMAN 1 Denpasar");
         sekolahs.add("SLTB");
@@ -71,7 +68,6 @@ public class step_2_siswa extends AppCompatActivity {
     //bidang
         Spinner bidang = (Spinner) findViewById(R.id.spinnerBidang);
         List<String> bidangs = new ArrayList<>();
-        bidangs.add("--Pilih Bidang/Jurusan");
         bidangs.add("Rekayasa Perangkat Lunak");
         bidangs.add("Teknik Komputer Jaringan");
         bidangs.add("Akomodasi Perhotelan");
