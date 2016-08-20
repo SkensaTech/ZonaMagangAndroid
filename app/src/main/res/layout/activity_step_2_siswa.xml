@@ -34,38 +34,89 @@
                     android:gravity="center_horizontal"
                     android:textColor="@color/colorPrimaryText"/>
 
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/textColor"
-                    android:layout_marginTop="40dp"
-                    android:padding="10dp"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/spinnerProvinsi"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:padding="0dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Provinsi"
+                    android:id="@+id/textViewProvinsi"/>
                 <Spinner
+                    style="@style/SpinnerTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:layout_marginTop="16dp"
-                    android:padding="10dp"
-                    android:id="@+id/spinnerKota" />
+                    android:id="@+id/spinnerProvinsi"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="5dp" />
 
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/textColor"
-                    android:layout_marginTop="16dp"
-                    android:padding="10dp"
-                    android:id="@+id/spinnerSekolah" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:padding="0dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Kabupaten/Kota"
+                    android:id="@+id/textViewKota"/>
                 <Spinner
+                    style="@style/SpinnerTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColor"
-                    android:layout_marginTop="16dp"
-                    android:padding="10dp"
-                    android:id="@+id/spinnerBidang" />
+                    android:id="@+id/spinnerKota"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="5dp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:padding="0dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Sekolah"
+                    android:id="@+id/textViewSekolah"/>
+                <Spinner
+                    style="@style/SpinnerTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:id="@+id/spinnerSekolah"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="5dp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:padding="0dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Bidang/Jurusan"
+                    android:id="@+id/textViewBidang"/>
+                <Spinner
+                    style="@style/SpinnerTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:id="@+id/spinnerBidang"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="5dp"/>
 
 
                 <Button
