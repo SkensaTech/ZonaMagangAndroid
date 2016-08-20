@@ -14,7 +14,10 @@
             android:label="Beranda"
             android:parentActivityName=".HomeIndustri">
 
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,33 +44,21 @@
         </activity>
 
 
-        <!--activity step siswa daftar-->
+        //activity step siswa daftar
         <activity android:name=".step_1_siswa_daftar"
-            android:label="Langkah 1"
+            android:label="Daftar Siswa"
             android:parentActivityName=".register2">
 
         </activity>
 
         <activity android:name=".step_2_siswa"
-            android:label="Langkah 2"
+            android:label="Daftar Siswa"
             android:parentActivityName=".step_1_siswa_daftar">
-
         </activity>
-
-        <activity android:name=".step_3_siswa"
-            android:label="Langkah 3"
-            android:parentActivityName=".step_2_siswa">
-        </activity>
-        <!--end step siswa daftar-->
 
         <activity android:name=".DetailSiswaOlehIndustri"/>
 
-        <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
     </application>
 
 </manifest>
