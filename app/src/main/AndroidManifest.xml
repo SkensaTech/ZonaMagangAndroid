@@ -61,7 +61,8 @@
         <activity android:name=".step_1_industri"></activity>
         <activity android:name=".step_2_industri"></activity>
         <activity android:name=".DetailSiswaOlehIndustri" />
-        <activity android:name=".Notifikasi_Industri" />
+        <activity android:name=".Notifikasi_Industri"
+            android:label="Notifikasi"/>
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri"></activity>
     </application>
