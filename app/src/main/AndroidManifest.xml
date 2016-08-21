@@ -58,13 +58,16 @@
             android:parentActivityName=".step_2_siswa" />
         <activity android:name=".step_1_industri" />
         <activity android:name=".step_2_industri" />
-        <activity android:name=".DetailSiswaOlehIndustri" />
+        <activity android:name=".DetailSiswaOlehIndustri"
+            android:label="Detail Siswa"/>
         <activity
             android:name=".Notifikasi_Industri"
             android:label="Notifikasi" />
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri" />
-        <activity android:name=".UpdateAkun"></activity>
+        <activity
+            android:name=".UpdateAkun"
+            android:label="Update Akun"></activity>
     </application>
 
 </manifest>
