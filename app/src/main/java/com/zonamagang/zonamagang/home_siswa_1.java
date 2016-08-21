@@ -104,8 +104,24 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (position == 1){
-                            Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
+                            Intent intent = new Intent(home_siswa_1.this,cari_industri.class);
                             startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 2){
+                            Intent itent = new Intent(home_siswa_1.this,home_siswa_1.class);
+                            startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 3){
+                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
+                            startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 4){
+                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
+                            startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 5){
+                            Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
+                            startActivity(itent);
                         }
 
 
