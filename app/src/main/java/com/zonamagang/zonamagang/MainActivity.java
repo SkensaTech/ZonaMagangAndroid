@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.backendless.Backendless;
 
-//import com.backenSdless.Backendless;
 
 public class MainActivity extends AppCompatActivity {
     TextView x;
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-       // Backendless.initApp(this,Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
 
 
     }

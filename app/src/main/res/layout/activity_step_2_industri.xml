@@ -41,7 +41,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:layout_marginTop="40dp"
                     android:hint="Jumlah maks pendaftar"
                     android:ems="10"
@@ -58,6 +58,18 @@
                     android:ems="10"
                     android:id="@+id/industri_step_2_profil"
                     android:textColorHint="@color/colorSecondaryText" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/industri_step_2_parent_bidang"
+                    android:layout_marginTop="16dp" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/industri_step_2_bidang"
+                    android:layout_marginTop="16dp" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -110,7 +122,8 @@
                     android:textColor="@color/textColor"
                     android:text="LANJUT"
                     android:id="@+id/industri_step_2_submit"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="onSubmit" />
 
             </LinearLayout>
         </LinearLayout>

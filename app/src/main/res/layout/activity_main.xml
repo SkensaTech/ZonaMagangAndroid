@@ -28,7 +28,6 @@
 
     <EditText
         android:hint="E-mail"
-        android:fontFamily="casual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10sp"
@@ -39,11 +38,11 @@
         android:id="@+id/login_email"
         android:textColorHint="#dcdcdc"
         android:textAlignment="center"
-        android:background="#fefefe" />
+        android:background="#fefefe"
+        android:fontFamily="sans-serif"/>
 
     <EditText
         android:hint="Password"
-        android:fontFamily="casual"
         android:layout_width="match_parent"
         android:textAlignment="center"
         android:layout_height="wrap_content"
@@ -55,40 +54,62 @@
         android:id="@+id/login_password"
         android:layout_marginTop="3dp"
         android:textColorHint="#dcdcdc"
-        android:background="#fefefe" />
+        android:background="#fefefe"
+        android:fontFamily="sans-serif"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Masuk"
-        android:fontFamily="casual"
         android:textStyle="bold"
         android:padding="15dp"
         android:id="@+id/button"
         android:background="@color/colorAccent"
         android:layout_marginTop="16dp"
         android:textColor="#fefefe"
+        android:textSize="18sp"
         style="@style/Widget.AppCompat.Button.Borderless"
         />
 
-    <TextView android:id="@+id/link_to_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Belum Punya Akun?"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#fefefe" />
+        <!--divider-->
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/industri"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorUnderlineDivider" />
+        <!--end divider-->
 
-    <TextView
-        android:id="@+id/buatakun"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Buat Sekarang!"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#fefefe"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal">
+
+            <TextView android:id="@+id/link_to_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum punya akun?"
+                android:gravity="center"
+                android:textSize="19sp"
+                android:textColor="#fefefe"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/buatakun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buat Sekarang!"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:textColor="#fefefe"
+                android:paddingTop="20dp"
+                android:paddingLeft="4dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
 </LinearLayout>
