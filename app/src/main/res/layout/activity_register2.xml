@@ -7,88 +7,82 @@
     android:background="#fff"
     tools:context="com.zonamagang.zonamagang.register2">
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
-
+    android:id="@+id/toolbar"
+    layout="@layout/toolbar" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/logoteal"
-
-                />
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/logoteal" />
 
             <EditText
-        android:hint="E-mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:inputType="textEmailAddress"
-        android:ems="10" android:padding="15dp"
-        android:id="@+id/daftaremail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:layout_alignParentEnd="true" />
+            android:hint="E-mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:padding="15dp"
+            android:id="@+id/daftaremail"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="17dp"
+            android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:hint="Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/daftarpwd"
-        android:padding="15dp"
-        android:fontFamily="sans-serif"
+            <EditText
+                android:hint="Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/daftarpwd"
+                android:padding="15dp"
+                android:fontFamily="sans-serif"
+                android:layout_below="@+id/daftaremail"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true" />
 
-        android:layout_below="@+id/daftaremail"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+            <EditText
+                android:hint="Re-Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:ems="10"
+                android:id="@+id/daftarrepwd"
+                android:layout_below="@+id/editText7"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/editText7" />
 
-    <EditText
-        android:hint="Re-Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:ems="10"
-        android:id="@+id/daftarrepwd"
-        android:layout_below="@+id/editText7"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/editText7" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MENDAFTAR"
-        android:id="@+id/tomboldaftar"
-        android:textSize="18dp"
-        android:padding="15dp"
-        android:layout_below="@+id/editText8"
-        android:layout_marginTop="50dp"
-        android:layout_alignEnd="@+id/editText8"
-        android:background="@color/colorAccent"
-        android:textColor="#fefefe"
-        android:layout_alignParentStart="true" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DAFTAR"
+                android:id="@+id/tomboldaftar"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:padding="15dp"
+                android:layout_below="@+id/editText8"
+                android:layout_marginTop="50dp"
+                android:layout_alignEnd="@+id/editText8"
+                android:background="@color/colorAccent"
+                android:textColor="#fefefe"
+                android:layout_alignParentStart="true" />
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 </LinearLayout>
