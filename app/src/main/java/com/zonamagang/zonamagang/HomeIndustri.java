@@ -110,6 +110,7 @@ public class HomeIndustri extends AppCompatActivity {
 //                                break;
 //                        }
                         if (position == 1){
+                            finish();
                             Intent intent = new Intent(HomeIndustri.this,HomeIndustri.class);
                             startActivity(intent);
                         }
