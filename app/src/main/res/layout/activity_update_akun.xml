@@ -87,20 +87,20 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Email"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Email"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:inputType="textEmailAddress"
-                        android:hint="info@bamboomedia.com"
-                        android:textSize="16sp" />
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:hint="info@bamboomedia.com"
+                            android:inputType="textEmailAddress"
+                            android:textSize="16sp" />
 
                     </RelativeLayout>
 
@@ -119,20 +119,20 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="No Telp"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="No Telp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:layout_marginTop="32dp"
-                        android:hint="0361 - 14045"
-                        android:textSize="16sp" />
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:hint="0361 - 14045"
+                            android:inputType="number"
+                            android:textSize="16sp" />
 
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
@@ -153,12 +153,12 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas malesuada hendrerit. Fusce in bibendum arcu. Phasellus sed enim arcu. Nullam sit amet gravida sem, vitae condimentum felis. Ut sodales metus at tellus rhoncus, in volutpat tellus imperdiet. Etiam vitae diam vitae nisl cursus accumsan."
                         android:padding="12dp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas malesuada hendrerit. Fusce in bibendum arcu. Phasellus sed enim arcu. Nullam sit amet gravida sem, vitae condimentum felis. Ut sodales metus at tellus rhoncus, in volutpat tellus imperdiet. Etiam vitae diam vitae nisl cursus accumsan."
                         android:textSize="16sp" />
 
                 </android.support.v7.widget.CardView>
@@ -179,13 +179,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Pellentesque egestas malesuada hendrerit.\n Fusce in bibendum arcu. "
                         android:padding="12dp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Pellentesque egestas malesuada hendrerit.\n Fusce in bibendum arcu. "
                         android:textSize="16sp" />
+
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -204,15 +205,20 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:hint="Lorem ipsum dolor sit amet : PHP \n HTML \n CSS \ Java"
                         android:padding="12dp"
-                        android:text="Lorem ipsum dolor sit amet : PHP \n HTML \n CSS \ Java"
                         android:textSize="16sp" />
+
                 </android.support.v7.widget.CardView>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>
