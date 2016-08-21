@@ -90,6 +90,7 @@
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:textColor="#fff"
+                            android:id="@+id/tglInterview"
                             android:text="Tentukan Waktu Interview" />
 
                     </LinearLayout>

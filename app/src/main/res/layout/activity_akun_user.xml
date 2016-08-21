@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.zonamagang.zonamagang.DetailSiswaOlehIndustri">
-
+    tools:context="com.zonamagang.zonamagang.akun_user">
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
+        layout="@layout/toolbar"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
 
-        <RelativeLayout
+        >
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
             <LinearLayout
-                android:id="@+id/top1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical"
-                android:padding="40dp">
-
-                <!--<ImageView-->
-                    <!--android:layout_width="100dp"-->
-                    <!--android:layout_height="100dp"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:src="@drawable/profil" />-->
-
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:layout_height="110dp"
+                android:background="@color/primary"
+                android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    xml:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profilePict"
-                    android:layout_height="100dp"
-                    android:layout_width="100dp"
-                    android:src="@drawable/asu"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"/>
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/gambarSiswa2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/pict"
+                    app:civ_border_width="0dp"
+                    android:layout_marginRight="16dp"
+                    app:civ_border_color="#FF000000"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
-                    android:text="Denandra Prasetya Laksmaputra"
-                    android:textColor="@color/textColor"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="SMKN 1 Denpasar"
-                    android:textColor="@color/textColor" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="PT Bamboo Media"
+                        android:textColor="#FEFEFE"
+                        android:id="@+id/textView2" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#FEFEFE"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Jl Hayam Wuruk no 69 Denpasar"
+                        android:textSize="17sp"
+                        android:id="@+id/textView7" />
+
+                </LinearLayout>
             </LinearLayout>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/top1"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                >
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view1"
@@ -81,20 +86,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Mulai Magang"
+                        android:text="Email"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:padding="12dp"
-                        android:text="Senin 21 Agustus 2016"
+                        android:text="info@bamboomedia.com"
                         android:textSize="16sp" />
-
                 </android.support.v7.widget.CardView>
-
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view2"
                     android:layout_width="match_parent"
@@ -107,25 +109,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Selesai Magang"
+                        android:text="No Telp"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:padding="12dp"
-                        android:text="Sabtu 1 September 2016"
+                        android:text="0361 - 14045"
                         android:textSize="16sp" />
-
                 </android.support.v7.widget.CardView>
-
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_view2"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     card_view:cardCornerRadius="0dp">
@@ -134,26 +132,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Bidang"
+                        android:text="Profil"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:padding="12dp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas malesuada hendrerit. Fusce in bibendum arcu. Phasellus sed enim arcu. Nullam sit amet gravida sem, vitae condimentum felis. Ut sodales metus at tellus rhoncus, in volutpat tellus imperdiet. Etiam vitae diam vitae nisl cursus accumsan."
                         android:textSize="16sp"
-                        android:text="Rekayasa Perangkat Lunak"/>
-
-
+                        />
                 </android.support.v7.widget.CardView>
-
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_view3"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     card_view:cardCornerRadius="0dp">
@@ -162,26 +156,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Email"
+                        android:text="Deskripsi Kerjaan"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:padding="12dp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Pellentesque egestas malesuada hendrerit.\n Fusce in bibendum arcu. "
                         android:textSize="16sp"
-                        android:text="Denandra1628@gmail.com"/>
-
-
+                        />
                 </android.support.v7.widget.CardView>
-
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_view4"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     card_view:cardCornerRadius="0dp">
@@ -190,24 +180,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="No Telpon"
+                        android:text="Kemampuan Minimal"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
+                        android:padding="12dp"
+                        android:text="Lorem ipsum dolor sit amet : PHP \n HTML \n CSS \ Java"
                         android:textSize="16sp"
-                        android:text="+6281338908416"/>
-
-
+                        />
                 </android.support.v7.widget.CardView>
-
             </LinearLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
-
-</RelativeLayout>
+</LinearLayout>

@@ -44,7 +44,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         tahuns.add("Tahun");
         for (int i = 1999; i <= 2016; i++)
             tahuns.add(""+i);
-        ArrayAdapter<String> tahun_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tahuns);
+        ArrayAdapter<String> tahun_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tahuns);
         tahun.setAdapter(tahun_adapter);
 
         Spinner bulan = (Spinner) findViewById(R.id.bulan);
@@ -52,7 +52,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         bulans.add("Bulan");
         bulans.add("Jan");
         bulans.add("Feb");
-        ArrayAdapter<String> bulan_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bulans);
+        ArrayAdapter<String> bulan_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bulans);
         bulan.setAdapter(bulan_adapter);
         bulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -77,7 +77,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
 //            tanggals.add(""+i);
         tanggals.add("Tanggal");
         tanggals.add(""+array_bulan);
-        ArrayAdapter<String> tanggal_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tanggals);
+        ArrayAdapter<String> tanggal_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tanggals);
         tanggal.setAdapter(tanggal_adapter);
 
     }

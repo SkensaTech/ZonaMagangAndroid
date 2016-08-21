@@ -52,16 +52,43 @@ public class HomeIndustri extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Test 1");
-        SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Test 2");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Beranda");
+        SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Nitifikasi");
+        SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Akun Saya");
+        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
+        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Keluar");
+
+        AccountHeader headerProfile = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.bg)
+                .addProfiles(
+                        new ProfileDrawerItem()
+                                .withName("Denandra Prasetya")
+                                .withEmail("denandra1628@gmail.com")
+                                .withIcon(getResources().getDrawable(R.drawable.asu))
+                )
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile profile, boolean current) {
+                        return false;
+                    }
+                })
+                .build();
 
         result = new DrawerBuilder()
+                .withAccountHeader(headerProfile)
                 .withActivity(this)
                 .withToolbar(myToolbar)
                 .addDrawerItems(
                         item1,
                         new DividerDrawerItem(),
                         item2,
+                        new DividerDrawerItem(),
+                        item3,
+                        new DividerDrawerItem(),
+                        item4,
+                        new DividerDrawerItem(),
+                        item5,
                         new DividerDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {

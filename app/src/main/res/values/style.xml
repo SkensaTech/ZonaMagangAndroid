@@ -9,4 +9,10 @@
 
     </style>
 
+    <!---Tema untuk spinner-->
+    <style name="SpinnerTheme" parent="Base.Widget.AppCompat.Spinner.Underlined">
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">@color/colorPrimaryLight</item>
+    </style>
 </resources>
