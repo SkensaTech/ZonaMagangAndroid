@@ -197,50 +197,37 @@ public class step_2_industri extends AppCompatActivity {
     }
 
     public void saveIndustriInfo(){
-        Backendless.UserService.login( email, pass, new AsyncCallback<BackendlessUser>()
-        {
-            public void handleResponse( BackendlessUser user )
+
+
+        tb_industri saveIndustri = new tb_industri();
+        saveIndustri.setId_industri(id_industri);
+        saveIndustri.setId_user(id_user);
+        kuota = Integer.parseInt(mKuota.getText().toString());
+        profil = mProfil.getText().toString();
+        jobdesc = mJobdesc.getText().toString();
+        kualifikasi = mKualifikasi.getText().toString();
+        saveIndustri.setNama(nama);
+        saveIndustri.setAlamat(alamat);
+        saveIndustri.setProfil(profil);
+        saveIndustri.setProvinsi(provinsi);
+        saveIndustri.setNo_telp(telp);
+        saveIndustri.setKota(kota);
+        saveIndustri.setKualifikasi(kualifikasi);
+        saveIndustri.setKuota(kuota);
+        saveIndustri.setJobdesc(jobdesc);
+
+        // save object asynchronously
+        Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
+            public void handleResponse( tb_industri response )
             {
-                id_user = Integer.parseInt(user.getProperty("id_user").toString());
-
-
-                tb_industri saveIndustri = new tb_industri();
-                saveIndustri.setId_industri(id_industri);
-                saveIndustri.setId_user(id_user);
-                kuota = Integer.parseInt(mKuota.getText().toString());
-                profil = mProfil.getText().toString();
-                jobdesc = mJobdesc.getText().toString();
-                kualifikasi = mKualifikasi.getText().toString();
-                saveIndustri.setNama(nama);
-                saveIndustri.setAlamat(alamat);
-                saveIndustri.setProfil(profil);
-                saveIndustri.setProvinsi(provinsi);
-                saveIndustri.setNo_telp(telp);
-                saveIndustri.setKota(kota);
-                saveIndustri.setKualifikasi(kualifikasi);
-                saveIndustri.setKuota(kuota);
-                saveIndustri.setJobdesc(jobdesc);
-
-                // save object asynchronously
-                Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
-                    public void handleResponse( tb_industri response )
-                    {
-                        // new Contact instance has been saved
-                        Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
-                        startActivity(loginIntent);
-                    }
-
-                    public void handleFault( BackendlessFault fault )
-                    {
-                        Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
+                // new Contact instance has been saved
+                Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
+                startActivity(loginIntent);
             }
 
             public void handleFault( BackendlessFault fault )
             {
-                // login failed, to get the error code call fault.getCode()
-                Toast.makeText(step_2_industri.this,"Login Error !"+fault.getCode(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

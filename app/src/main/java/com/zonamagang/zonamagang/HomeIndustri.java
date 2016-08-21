@@ -9,7 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -120,6 +124,25 @@ public class HomeIndustri extends AppCompatActivity {
                         else if (drawerItem.getIdentifier() == 4){
                             Intent intent = new Intent(HomeIndustri.this,TentangKami.class);
                             startActivity(intent);
+                        }
+                        else if(drawerItem.getIdentifier() == 5){
+                            setContentView(R.layout.loading_screen);
+
+                            Backendless.UserService.logout(new AsyncCallback<Void>()
+                            {
+                                public void handleResponse( Void response )
+                                {
+                                    // user has been logged out.
+                                    Intent MainActivityIntent = new Intent(HomeIndustri.this,MainActivity.class);
+                                    startActivity(MainActivityIntent);
+                                }
+
+                                public void handleFault( BackendlessFault fault )
+                                {
+                                    // something went wrong and logout failed, to get the error code call fault.getCode()
+                                    Toast.makeText(HomeIndustri.this,"Logout failed",Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
                         return false;
                     }
