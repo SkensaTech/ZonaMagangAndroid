@@ -40,28 +40,47 @@
                             android:src="@drawable/siswa_profile" />
 
                         <TextView
-                            android:id="@+id/namaSiswa"
+                            android:id="@+id/namaIndustri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:layout_toRightOf="@+id/gambarSiswa"
-                            android:text="Denandra Prasetya" />
+                            android:text="PT. Bamboomedia" />
 
                         <TextView
-                            android:id="@+id/sekolahSiswa"
+                            android:id="@+id/alamatIndustri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/namaSiswa"
+                            android:layout_below="@+id/namaIndustri"
                             android:layout_marginBottom="8dp"
                             android:layout_toRightOf="@id/gambarSiswa"
-                            android:text="SMKN 1 Denpasar" />
+                            android:text="Jl. Merdeka No. 18" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/sekolahSiswa"
+                            android:layout_below="@+id/alamatIndustri"
                             android:layout_toRightOf="@+id/gambarSiswa"
-                            android:text="RPL" />
+                            android:id="@+id/telpIndustri"
+                            android:text="081999589207"
+                            android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/telpIndustri"
+                            android:layout_toRightOf="@+id/gambarSiswa"
+                            android:id="@+id/emailIndustri"
+                            android:text="bamboomedia@gmail.com"
+                            android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emailIndustri"
+                            android:layout_toRightOf="@+id/gambarSiswa"
+                            android:id="@+id/kuotaIndustri"
+                            android:text="Kuota 3 Orang" />
 
                     </RelativeLayout>
 
@@ -72,11 +91,11 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="40dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
                             android:textColor="#fff"
-                            android:text="Tentukan Waktu Interview" />
+                            android:text="BOOKING" />
 
                     </LinearLayout>
 
@@ -113,28 +132,47 @@
                             android:src="@drawable/siswa_profile" />
 
                         <TextView
-                            android:id="@+id/namaSiswa2"
+                            android:id="@+id/namaIndustri2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:layout_toRightOf="@+id/gambarSiswa2"
-                            android:text="Denandra Prasetya2" />
+                            android:text="PT. Bamboomedia" />
 
                         <TextView
-                            android:id="@+id/sekolahSiswa2"
+                            android:id="@+id/alamatIndustri2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/namaSiswa2"
+                            android:layout_below="@+id/namaIndustri2"
                             android:layout_marginBottom="8dp"
                             android:layout_toRightOf="@id/gambarSiswa2"
-                            android:text="SMKN 1 Denpasar" />
+                            android:text="Jl. Merdeka No. 18" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/sekolahSiswa2"
+                            android:layout_below="@+id/alamatIndustri2"
                             android:layout_toRightOf="@+id/gambarSiswa2"
-                            android:text="RPL" />
+                            android:id="@+id/telpIndustri2"
+                            android:text="081999589207"
+                            android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/telpIndustri2"
+                            android:layout_toRightOf="@+id/gambarSiswa2"
+                            android:id="@+id/emailIndustri2"
+                            android:text="bamboomedia@gmail.com"
+                            android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emailIndustri2"
+                            android:layout_toRightOf="@+id/gambarSiswa2"
+                            android:id="@+id/kuotaIndustri2"
+                            android:text="Kuota 3 Orang" />
 
                     </RelativeLayout>
 
@@ -146,11 +184,11 @@
 
                         <Button
                             android:layout_width="0dp"
-                            android:layout_height="32dp"
+                            android:layout_height="40dp"
                             android:layout_weight="1"
                             android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="Tentukan Waktu interview" />
+                            android:text="BOOKING" />
 
                     </LinearLayout>
 

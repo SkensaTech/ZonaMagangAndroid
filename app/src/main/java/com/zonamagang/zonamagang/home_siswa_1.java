@@ -63,15 +63,15 @@ public class home_siswa_1 extends AppCompatActivity {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Cari Industri");
         SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Beranda");
         SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Notifikasi");
-        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
         SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
+        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
         SecondaryDrawerItem item6 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(6).withName("Keluar");
 
         AccountHeader headerprofil = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bg)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Denandra Prasetya").withEmail("Denandra1628@gmail.com").withIcon(getResources().getDrawable(R.drawable.asu))
+                        new ProfileDrawerItem().withName("Wahyu Baskara").withEmail("wahyubaskara@outlook.com").withIcon(getResources().getDrawable(R.drawable.asu))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -107,6 +107,7 @@ public class home_siswa_1 extends AppCompatActivity {
                             Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
                             startActivity(intent);
                         }
+
 
                         return false;
                     }
