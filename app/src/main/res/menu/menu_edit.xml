@@ -5,9 +5,8 @@
     tools:context=".home_siswa_1"
     >
     <item
-        android:id="@+id/searchbox"
+        android:id="@+id/edit_icon"
         android:title="Cari"
-        android:icon="@drawable/search"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:icon="@drawable/ic_mode_edit_white_24dp"
         app:showAsAction="ifRoom|collapseActionView"/>
 </menu>

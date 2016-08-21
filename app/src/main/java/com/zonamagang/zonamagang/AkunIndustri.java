@@ -3,9 +3,10 @@ package com.zonamagang.zonamagang;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toolbar;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -97,10 +98,22 @@ public class AkunIndustri extends AppCompatActivity {
                 .build();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_edit, menu);
+
+        return true;
+    }
+
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.edit_icon:
+                Intent intent = new Intent(AkunIndustri.this, UpdateAkun.class);
+                startActivity(intent);
         }
         return super.onContextItemSelected(item);
     }
