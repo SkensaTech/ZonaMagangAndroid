@@ -30,6 +30,7 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
 import com.zonamagang.zonamagang.Model.User;
 import com.zonamagang.zonamagang.Model.tb_bidang;
+import com.zonamagang.zonamagang.Model.tb_bidang_industri;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_parent_bidang;
 
@@ -52,7 +53,7 @@ public class step_2_industri extends AppCompatActivity {
     String email,pass,nama,alamat,telp,kota;
     //step2:
     String profil,jobdesc,kualifikasi,provinsi="Bali";
-    int id_industri,id_bidang,id_user,kuota;
+    int id_industri,id_bidang,id_user,kuota,id_bidang_industri;
 
     //etc :
     int id_parent_bidang;
@@ -93,22 +94,26 @@ public class step_2_industri extends AppCompatActivity {
     }
 
     public void onSubmit(View view){
-
+        setContentView(R.layout.loading_screen);
         //check last user
         Backendless.Persistence.of( User.class).findLast( new AsyncCallback<User>(){
             @Override
             public void handleResponse( User industriInfo )
             {
                 id_user = industriInfo.getId_user() + 1;
+                step_2_industri.this.addUserInfo();
 
             }
             @Override
             public void handleFault( BackendlessFault fault )
             {
                 id_user = 1;
+                step_2_industri.this.addUserInfo();
             }
         });
+    }
 
+    public void addUserInfo(){
         BackendlessUser user = new BackendlessUser();
         user.setProperty( "email", email);
         user.setProperty("status_aktif",1);
@@ -133,14 +138,13 @@ public class step_2_industri extends AppCompatActivity {
     }
 
     public void addIndustriInfo(){
-        setContentView(R.layout.loading_screen);
         Backendless.Persistence.of( tb_industri.class).findLast( new AsyncCallback<tb_industri>(){
             @Override
             public void handleResponse( tb_industri industriInfo )
             {
                 id_industri = industriInfo.getId_industri() + 1;
 
-                step_2_industri.this.saveIndustriInfo();
+                step_2_industri.this.getLastTbBidangIndustri();
 
             }
             @Override
@@ -148,7 +152,46 @@ public class step_2_industri extends AppCompatActivity {
             {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
                 id_industri = 1;
+                step_2_industri.this.getLastTbBidangIndustri();
+            }
+        });
+    }
+
+    public void getLastTbBidangIndustri(){
+        Backendless.Persistence.of( tb_bidang_industri.class).findLast( new AsyncCallback<tb_bidang_industri>(){
+            @Override
+            public void handleResponse( tb_bidang_industri item )
+            {
+                id_bidang_industri = item.getId_bidang_industri() + 1;
+                step_2_industri.this.addTbBidangIndustriInfo();
+            }
+            @Override
+            public void handleFault( BackendlessFault fault )
+            {
+                id_bidang_industri = 1;
+                step_2_industri.this.addTbBidangIndustriInfo();
+            }
+        });
+    }
+
+    public void addTbBidangIndustriInfo(){
+        tb_bidang_industri bidangIndustriInfo = new tb_bidang_industri();
+        bidangIndustriInfo.setId_bidang(id_bidang);
+        bidangIndustriInfo.setId_bidang_industri(id_bidang_industri);
+        bidangIndustriInfo.setId_industri(id_industri);
+
+        // save object asynchronously
+        Backendless.Persistence.save( bidangIndustriInfo, new AsyncCallback<tb_bidang_industri>() {
+            public void handleResponse( tb_bidang_industri response )
+            {
+                // new Contact instance has been saved
                 step_2_industri.this.saveIndustriInfo();
+            }
+
+            public void handleFault( BackendlessFault fault )
+            {
+                // an error has occurred, the error code can be retrieved with fault.getCode()
+                Toast.makeText(step_2_industri.this,"Error = "+fault.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -159,43 +202,45 @@ public class step_2_industri extends AppCompatActivity {
             public void handleResponse( BackendlessUser user )
             {
                 id_user = Integer.parseInt(user.getProperty("id_user").toString());
+
+
+                tb_industri saveIndustri = new tb_industri();
+                saveIndustri.setId_industri(id_industri);
+                saveIndustri.setId_user(id_user);
+                kuota = Integer.parseInt(mKuota.getText().toString());
+                profil = mProfil.getText().toString();
+                jobdesc = mJobdesc.getText().toString();
+                kualifikasi = mKualifikasi.getText().toString();
+                saveIndustri.setNama(nama);
+                saveIndustri.setAlamat(alamat);
+                saveIndustri.setProfil(profil);
+                saveIndustri.setProvinsi(provinsi);
+                saveIndustri.setNo_telp(telp);
+                saveIndustri.setKota(kota);
+                saveIndustri.setKualifikasi(kualifikasi);
+                saveIndustri.setKuota(kuota);
+                saveIndustri.setJobdesc(jobdesc);
+
+                // save object asynchronously
+                Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
+                    public void handleResponse( tb_industri response )
+                    {
+                        // new Contact instance has been saved
+                        Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
+                        startActivity(loginIntent);
+                    }
+
+                    public void handleFault( BackendlessFault fault )
+                    {
+                        Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             public void handleFault( BackendlessFault fault )
             {
                 // login failed, to get the error code call fault.getCode()
                 Toast.makeText(step_2_industri.this,"Login Error !"+fault.getCode(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        tb_industri saveIndustri = new tb_industri();
-        saveIndustri.setId_industri(id_industri);
-        saveIndustri.setId_user(id_user);
-        kuota = Integer.parseInt(mKuota.getText().toString());
-        profil = mProfil.getText().toString();
-        jobdesc = mJobdesc.getText().toString();
-        kualifikasi = mKualifikasi.getText().toString();
-        saveIndustri.setNama(nama);
-        saveIndustri.setAlamat(alamat);
-        saveIndustri.setProfil(profil);
-        saveIndustri.setProvinsi(provinsi);
-        saveIndustri.setNo_telp(telp);
-        saveIndustri.setKota(kota);
-        saveIndustri.setKualifikasi(kualifikasi);
-        saveIndustri.setKuota(kuota);
-        saveIndustri.setJobdesc(jobdesc);
-
-        // save object asynchronously
-        Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
-            public void handleResponse( tb_industri response )
-            {
-                // new Contact instance has been saved
-                Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
-                startActivity(loginIntent);
-            }
-
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
