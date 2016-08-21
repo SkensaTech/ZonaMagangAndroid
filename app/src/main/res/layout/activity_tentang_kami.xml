@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutTentangKami"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    android:id="@+id/layoutTentangKami"
     tools:context="com.zonamagang.zonamagang.Notifikasi_Industri">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-50dp"
         android:text="Zona Magang"
         android:textColor="#fff"
-        android:layout_marginTop="-50dp"
-        android:layout_centerVertical="true"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/logo"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Version 1"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="-25dp"
-        android:textColor="#ebebeb"
-        android:layout_centerVertical="true"/>
+        android:text="Version 1"
+        android:textColor="#ebebeb" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="60dp"
-        android:text="© 2016 SkensaTech"/>
+        android:text="© 2016 SkensaTech"
+        android:textColor="#fff" />
 
 </RelativeLayout>
