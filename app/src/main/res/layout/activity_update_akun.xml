@@ -98,7 +98,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="32dp"
-                            android:hint="info@bamboomedia.com"
+                            android:text="info@bamboomedia.com"
                             android:inputType="textEmailAddress"
                             android:textSize="16sp" />
 
@@ -130,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="32dp"
-                            android:hint="0361 - 14045"
+                            android:text="0361 - 14045"
                             android:inputType="number"
                             android:textSize="16sp" />
 
@@ -157,7 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas malesuada hendrerit. Fusce in bibendum arcu. Phasellus sed enim arcu. Nullam sit amet gravida sem, vitae condimentum felis. Ut sodales metus at tellus rhoncus, in volutpat tellus imperdiet. Etiam vitae diam vitae nisl cursus accumsan."
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas malesuada hendrerit. Fusce in bibendum arcu. Phasellus sed enim arcu. Nullam sit amet gravida sem, vitae condimentum felis. Ut sodales metus at tellus rhoncus, in volutpat tellus imperdiet. Etiam vitae diam vitae nisl cursus accumsan."
                         android:padding="12dp"
                         android:textSize="16sp" />
 
@@ -183,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Pellentesque egestas malesuada hendrerit.\n Fusce in bibendum arcu. "
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Pellentesque egestas malesuada hendrerit.\n Fusce in bibendum arcu. "
                         android:padding="12dp"
                         android:textSize="16sp" />
 
@@ -209,7 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:hint="Lorem ipsum dolor sit amet : PHP \n HTML \n CSS \ Java"
+                        android:text="Lorem ipsum dolor sit amet : PHP \n HTML \n CSS \ Java"
                         android:padding="12dp"
                         android:textSize="16sp" />
 
@@ -220,5 +220,11 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_Savebutton"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|end" />
 
 </LinearLayout>
