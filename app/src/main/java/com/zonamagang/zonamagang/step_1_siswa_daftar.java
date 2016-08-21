@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.*;
 import android.widget.Toolbar;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class step_1_siswa_daftar extends AppCompatActivity {
     //deklarasi
+    String email,password;
     Button y;
+    String selectedItem="";
     int array_bulan;
 
     @Override
@@ -37,21 +40,47 @@ public class step_1_siswa_daftar extends AppCompatActivity {
                 startActivity(z);
             }
         });
+        //Passing form sebelumnya
+        email = getIntent().getStringExtra("email");
+        password = getIntent().getStringExtra("pass");
 
         //coding untuk spinner
-        Spinner tahun = (Spinner) findViewById(R.id.tahun);
+        final Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");
-        for (int i = 1999; i <= 2016; i++)
+        for (int i = 1990; i <= 2002; i++)
             tahuns.add(""+i);
         ArrayAdapter<String> tahun_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tahuns);
         tahun.setAdapter(tahun_adapter);
+        tahun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+                selectedItem = tahun.getSelectedItem().toString();
+
+
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+
+            }
+        });
         Spinner bulan = (Spinner) findViewById(R.id.bulan);
         List<String> bulans = new ArrayList<>();
         bulans.add("Bulan");
-        bulans.add("Jan");
-        bulans.add("Feb");
+        bulans.add("Januari");
+        bulans.add("Februari");
+        bulans.add("Maret");
+        bulans.add("April");
+        bulans.add("Mei");
+        bulans.add("Juni");
+        bulans.add("Juli");
+        bulans.add("Agustus");
+        bulans.add("September");
+        bulans.add("Oktober");
+        bulans.add("November");
+        bulans.add("Desember");
         ArrayAdapter<String> bulan_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bulans);
         bulan.setAdapter(bulan_adapter);
         bulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
