@@ -19,12 +19,18 @@ public class step_1_industri extends AppCompatActivity {
     EditText mTelp;
     Spinner mKota;
     Button mSubmit;
+    //Sebelumnya :
+    String email,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_industri);
         this.layoutItems();
+
+        //get value sebelumnya
+        email = getIntent().getStringExtra("email");
+        pass = getIntent().getStringExtra("pass");
 
         Spinner kota = (Spinner) findViewById(R.id.industri_step_1_kota);
         List<String> kotas = new ArrayList<>();
@@ -47,6 +53,10 @@ public class step_1_industri extends AppCompatActivity {
         step2Intent.putExtra("alamat",mAlamat.getText().toString());
         step2Intent.putExtra("telp",mTelp.getText().toString());
         step2Intent.putExtra("kota",mKota.getSelectedItem().toString());
+
+        //before
+        step2Intent.putExtra("email",email);
+        step2Intent.putExtra("pass",pass);
         startActivity(step2Intent);
     }
 
