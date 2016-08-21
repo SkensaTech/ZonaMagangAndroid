@@ -1,5 +1,6 @@
 package com.zonamagang.zonamagang;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -52,11 +53,11 @@ public class HomeIndustri extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Beranda");
-        SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Nitifikasi");
-        SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Akun Saya");
-        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
-        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Keluar");
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Beranda");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Notifikasi");
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Akun Saya");
+        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
+        final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Keluar");
 
         AccountHeader headerProfile = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -94,6 +95,32 @@ public class HomeIndustri extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+//                        switch (position) {
+//                            case 1:
+//                                Intent intent = new Intent(HomeIndustri.this, HomeIndustri.class);
+//                                startActivity(intent);
+//                                break;
+//                            case 2:
+//                                Intent intent2 = new Intent(HomeIndustri.this,TentangKami.class);
+//                                startActivity(intent2);
+//                                break;
+//                        }
+                        if (position == 1){
+                            Intent intent = new Intent(HomeIndustri.this,HomeIndustri.class);
+                            startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 2){
+                            Intent itent = new Intent(HomeIndustri.this,Notifikasi_Industri.class);
+                            startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 3){
+                            Intent intent = new Intent(HomeIndustri.this,AkunIndustri.class);
+                            startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 4){
+                            Intent intent = new Intent(HomeIndustri.this,TentangKami.class);
+                            startActivity(intent);
+                        }
                         return false;
                     }
                 })

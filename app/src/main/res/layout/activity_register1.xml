@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Daftar sebagai :"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:textColor="#fefefe"
         android:textSize="20sp"
         android:id="@+id/textView6"
@@ -48,7 +46,7 @@
         android:text="SISWA"
         android:id="@+id/siswa"
         android:textSize="18sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:padding="15dp"
         android:background="@color/colorAccent"
         android:textColor="#fefefe"
@@ -63,7 +61,7 @@
         android:layout_height="wrap_content"
         android:text="INDUSTRI"
         android:textSize="18sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:padding="15dp"
         android:background="@color/colorAccent"
         android:textColor="#fefefe"
@@ -74,7 +72,16 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="9dp" />
 
-
+        <!--divider-->
+            <View
+                android:id="@+id/view1"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/industri"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorUnderlineDivider" />
+        <!--end divider-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,14 +89,13 @@
                 android:gravity="center_horizontal">
 
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sudah punya akun?"
                     android:textColor="#fefefe"
-                    android:layout_marginTop="30dp"
-                    android:paddingTop="30dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="20dp"
                     android:textSize="19sp"
                     android:id="@+id/textView"
                     android:layout_gravity="center_horizontal"/>
@@ -102,7 +108,7 @@
                     android:text="Masuk."
                     android:textColor="#fefefe"
                     android:layout_marginTop="20dp"
-                    android:paddingTop="30dp"
+                    android:paddingTop="20dp"
                     android:textSize="19sp"
                     android:textStyle="bold"
                     android:id="@+id/signin"
@@ -110,6 +116,7 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
