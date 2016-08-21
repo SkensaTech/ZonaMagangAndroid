@@ -95,18 +95,7 @@ public class HomeIndustri extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-//                        switch (position) {
-//                            case 1:
-//                                Intent intent = new Intent(HomeIndustri.this, HomeIndustri.class);
-//                                startActivity(intent);
-//                                break;
-//                            case 2:
-//                                Intent intent2 = new Intent(HomeIndustri.this,TentangKami.class);
-//                                startActivity(intent2);
-//                                break;
-//                        }
                         if (position == 1){
-                            finish();
                             Intent intent = new Intent(HomeIndustri.this,HomeIndustri.class);
                             startActivity(intent);
                         }

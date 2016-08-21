@@ -1,6 +1,7 @@
 package com.zonamagang.zonamagang;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +13,11 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
@@ -32,7 +35,7 @@ public class Notifikasi_Industri extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Beranda");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Notifikasi");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withBadgeStyle(new BadgeStyle().withTextColor(Color.RED)).withIdentifier(2).withName("Notifikasi");
         final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Akun Saya");
         final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
         final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Keluar");
@@ -73,21 +76,24 @@ public class Notifikasi_Industri extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (position == 1){
-                            finish();
                             Intent intent = new Intent(Notifikasi_Industri.this,HomeIndustri.class);
                             startActivity(intent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 2){
                             Intent itent = new Intent(Notifikasi_Industri.this,Notifikasi_Industri.class);
                             startActivity(itent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
                             Intent intent = new Intent(Notifikasi_Industri.this,AkunIndustri.class);
                             startActivity(intent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 4){
                             Intent intent = new Intent(Notifikasi_Industri.this,TentangKami.class);
                             startActivity(intent);
+                            finish();
                         }
                         return false;
                     }

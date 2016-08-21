@@ -71,32 +71,25 @@ public class AkunIndustri extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-//                        switch (position) {
-//                            case 1:
-//                                Intent intent = new Intent(HomeIndustri.this, HomeIndustri.class);
-//                                startActivity(intent);
-//                                break;
-//                            case 2:
-//                                Intent intent2 = new Intent(HomeIndustri.this,TentangKami.class);
-//                                startActivity(intent2);
-//                                break;
-//                        }
                         if (position == 1){
-                            finish();
                             Intent intent = new Intent(AkunIndustri.this,HomeIndustri.class);
                             startActivity(intent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 2){
                             Intent itent = new Intent(AkunIndustri.this,Notifikasi_Industri.class);
                             startActivity(itent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
                             Intent intent = new Intent(AkunIndustri.this,AkunIndustri.class);
                             startActivity(intent);
+                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 4){
                             Intent intent = new Intent(AkunIndustri.this,TentangKami.class);
                             startActivity(intent);
+                            finish();
                         }
                         return false;
                     }

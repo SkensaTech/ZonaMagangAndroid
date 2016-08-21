@@ -6,8 +6,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="12dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,40 +25,32 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/detailSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="12dp"
                         android:paddingLeft="24dp"
-                        android:id="@+id/detailSiswa"
                         android:paddingRight="24dp"
                         android:paddingTop="12dp">
 
-                        <!--<ImageView-->
-                            <!--android:id="@+id/gambarSiswa"-->
-                            <!--android:layout_width="80dp"-->
-                            <!--android:layout_height="80dp"-->
-                            <!--android:layout_marginRight="8dp"-->
-                            <!--android:src="@drawable/siswa_profile" />-->
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/gambarSiswa"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/asu"
-                            app:civ_border_width="0dp"
                             android:layout_marginRight="16dp"
-                            app:civ_border_color="#FF000000"/>
+                            android:src="@drawable/asu"
+                            app:civ_border_color="#FF000000"
+                            app:civ_border_width="0dp" />
 
                         <TextView
                             android:id="@+id/namaSiswa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
                             android:layout_toRightOf="@+id/gambarSiswa"
-                            android:text="Aasddsade ads" />
+                            android:text="Aasddsade ads"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/sekolahSiswa"
@@ -85,13 +77,13 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/tglInterview"
                             android:layout_width="0dp"
                             android:layout_height="45dp"
                             android:layout_weight="1"
                             android:background="@color/colorPrimary"
-                            android:textColor="#fff"
-                            android:id="@+id/tglInterview"
-                            android:text="Tentukan Waktu Interview" />
+                            android:text="Tentukan Waktu Interview"
+                            android:textColor="#fff" />
 
                     </LinearLayout>
 
@@ -120,32 +112,24 @@
                         android:paddingRight="24dp"
                         android:paddingTop="12dp">
 
-                        <!--<ImageView-->
-                            <!--android:id="@+id/gambarSiswa2"-->
-                            <!--android:layout_width="80dp"-->
-                            <!--android:layout_height="80dp"-->
-                            <!--android:layout_marginRight="8dp"-->
-                            <!--android:src="@drawable/siswa_profile" />-->
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/gambarSiswa2"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/pict"
-                            app:civ_border_width="0dp"
                             android:layout_marginRight="16dp"
-                            app:civ_border_color="#FF000000"/>
+                            android:src="@drawable/pict"
+                            app:civ_border_color="#FF000000"
+                            app:civ_border_width="0dp" />
 
                         <TextView
                             android:id="@+id/namaSiswa2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
                             android:layout_toRightOf="@+id/gambarSiswa2"
-                            android:text="Denandra Prasetya" />
+                            android:text="Denandra Prasetya"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/sekolahSiswa2"
@@ -175,9 +159,9 @@
                             android:layout_width="0dp"
                             android:layout_height="45dp"
                             android:layout_weight="1"
-                            android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="Tentukan Waktu interview" />
+                            android:text="Tentukan Waktu interview"
+                            android:textColor="#fff" />
 
                     </LinearLayout>
 
@@ -205,32 +189,24 @@
                         android:paddingRight="24dp"
                         android:paddingTop="12dp">
 
-                        <!--<ImageView-->
-                        <!--android:id="@+id/gambarSiswa2"-->
-                        <!--android:layout_width="80dp"-->
-                        <!--android:layout_height="80dp"-->
-                        <!--android:layout_marginRight="8dp"-->
-                        <!--android:src="@drawable/siswa_profile" />-->
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/gambarSiswa3"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/pict"
-                            app:civ_border_width="0dp"
                             android:layout_marginRight="16dp"
-                            app:civ_border_color="#FF000000"/>
+                            android:src="@drawable/pict"
+                            app:civ_border_color="#FF000000"
+                            app:civ_border_width="0dp" />
 
                         <TextView
                             android:id="@+id/namaSiswa3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
                             android:layout_toRightOf="@+id/gambarSiswa3"
-                            android:text="Denandra Prasetya" />
+                            android:text="Denandra Prasetya"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/sekolahSiswa3"
@@ -260,9 +236,9 @@
                             android:layout_width="0dp"
                             android:layout_height="45dp"
                             android:layout_weight="1"
-                            android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="Tentukan Waktu interview" />
+                            android:text="Tentukan Waktu interview"
+                            android:textColor="#fff" />
 
                     </LinearLayout>
 
@@ -290,32 +266,24 @@
                         android:paddingRight="24dp"
                         android:paddingTop="12dp">
 
-                        <!--<ImageView-->
-                        <!--android:id="@+id/gambarSiswa2"-->
-                        <!--android:layout_width="80dp"-->
-                        <!--android:layout_height="80dp"-->
-                        <!--android:layout_marginRight="8dp"-->
-                        <!--android:src="@drawable/siswa_profile" />-->
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/gambarSiswa4"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/pict"
-                            app:civ_border_width="0dp"
                             android:layout_marginRight="16dp"
-                            app:civ_border_color="#FF000000"/>
+                            android:src="@drawable/pict"
+                            app:civ_border_color="#FF000000"
+                            app:civ_border_width="0dp" />
 
                         <TextView
                             android:id="@+id/namaSiswa4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
                             android:layout_toRightOf="@+id/gambarSiswa4"
-                            android:text="Denandra Prasetya" />
+                            android:text="Denandra Prasetya"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/sekolahSiswa4"
@@ -345,9 +313,9 @@
                             android:layout_width="0dp"
                             android:layout_height="45dp"
                             android:layout_weight="1"
-                            android:textColor="#fff"
                             android:background="@color/colorPrimary"
-                            android:text="Tentukan Waktu interview" />
+                            android:text="Tentukan Waktu interview"
+                            android:textColor="#fff" />
 
                     </LinearLayout>
 
