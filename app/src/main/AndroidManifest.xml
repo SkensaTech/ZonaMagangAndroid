@@ -12,12 +12,12 @@
             android:name=".HomeIndustri"
             android:label="Beranda"
             android:parentActivityName=".HomeIndustri">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zonamagang.zonamagang.HomeIndustri" />
@@ -30,7 +30,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,6 +58,8 @@
             android:name=".step_3_siswa"
             android:label="Daftar Siswa"
             android:parentActivityName=".step_2_siswa" />
+        <activity android:name=".step_1_industri"></activity>
+        <activity android:name=".step_2_industri"></activity>
         <activity android:name=".DetailSiswaOlehIndustri" />
         <activity android:name=".Notifikasi_Industri" />
         <activity android:name=".TentangKami" />
