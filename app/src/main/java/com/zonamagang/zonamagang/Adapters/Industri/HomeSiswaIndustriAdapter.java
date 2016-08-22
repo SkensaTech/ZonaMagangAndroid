@@ -80,7 +80,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
+                // TODO Auto-generated method stub.
 
             }
         });
