@@ -144,6 +144,11 @@ public class home_siswa_1 extends AppCompatActivity {
                             Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
                             startActivity(itent);
                         }
+                        else if (drawerItem.getIdentifier() == 5){
+                            finish();
+                            Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
+                            startActivity(intent);
+                        }
                         else if(drawerItem.getIdentifier() == 6){
                             setContentView(R.layout.loading_screen);
                             Backendless.UserService.logout(new AsyncCallback<Void>()
