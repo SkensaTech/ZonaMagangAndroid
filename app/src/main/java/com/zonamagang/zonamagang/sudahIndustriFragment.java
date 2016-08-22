@@ -21,7 +21,7 @@ public class sudahIndustriFragment extends Fragment {
     public static sudahIndustriFragment newInstance(int text, String title){
         sudahIndustriFragment f = new sudahIndustriFragment();
         Bundle b = new Bundle();
-        b.putString("Sudah",title);
+        b.putString("Terdaftar",title);
 
         f.setArguments(b);
 

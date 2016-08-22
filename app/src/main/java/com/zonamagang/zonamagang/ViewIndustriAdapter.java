@@ -16,21 +16,21 @@ public class ViewIndustriAdapter extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return sudahIndustriFragment.newInstance(0, "Sudah");
+                return baruIndustriFragment.newInstance(0, "Terbaru");
             case 1:
-                return baruIndustriFragment.newInstance(1, "Belum");
+                return sudahIndustriFragment.newInstance(1, "Terdaftar");
             default:
-                return sudahIndustriFragment.newInstance(0,"Sudah");
+                return baruIndustriFragment.newInstance(0,"Terbaru");
         }
     }
 
     @Override
     public CharSequence getPageTitle(int position){
         if(position==0){
-            return "Sudah";
+            return "Terbaru";
         }
         if(position==1){
-            return "Belum";
+            return "Terdaftar";
         }
         else{
             return "";

@@ -104,7 +104,7 @@ public class baruIndustriFragment extends Fragment {
     public static baruIndustriFragment newInstance(int text, String title){
         baruIndustriFragment f = new baruIndustriFragment();
         Bundle b = new Bundle();
-        b.putString("Sudah",title);
+        b.putString("Terbaru",title);
 
         f.setArguments(b);
 
