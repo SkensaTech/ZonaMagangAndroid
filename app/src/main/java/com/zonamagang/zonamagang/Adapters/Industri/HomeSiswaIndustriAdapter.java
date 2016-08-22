@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.zonamagang.zonamagang.R;
+import com.zonamagang.zonamagang.detail_industri;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -65,6 +66,8 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
 
         id_industri = industriNow.getId_industri();
 
+        Toast.makeText(getContext(),"id_industri = "+id_industri,Toast.LENGTH_LONG).show();
+
         Button siswa_layout_belum_btnDaftar = (Button) listItemView.findViewById(R.id.siswa_layout_belum_btnDaftar);
 
 
@@ -84,7 +87,9 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub.
-
+                Intent detailIndustriIntent = new Intent(getContext(), detail_industri.class);
+                detailIndustriIntent.putExtra("id_industri",id_industri);
+                getContext().startActivity(detailIndustriIntent);
 
             }
         });
