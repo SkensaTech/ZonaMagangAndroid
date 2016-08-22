@@ -1,78 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:orientation="vertical"
     tools:context="com.zonamagang.zonamagang.register1">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
-    <ImageView
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="48dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Daftar sebagai :"
-        android:textStyle="normal"
-        android:textColor="#fefefe"
-        android:textSize="20sp"
-        android:id="@+id/textView6"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="64dp"
+                android:layout_marginTop="48dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Daftar sebagai :"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#fefefe"
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
 
+            <Button
+                android:id="@+id/siswa"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:padding="15dp"
+                android:text="SISWA"
+                android:textColor="#fefefe"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SISWA"
-        android:id="@+id/siswa"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:background="@color/colorAccent"
-        android:textColor="#fefefe"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+            <Button
+                android:id="@+id/industri"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/button2"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView5"
+                android:layout_marginTop="9dp"
+                android:background="@color/colorAccent"
+                android:padding="15dp"
+                android:text="INDUSTRI"
+                android:textColor="#fefefe"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="INDUSTRI"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:background="@color/colorAccent"
-        android:textColor="#fefefe"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:id="@+id/industri"
-        android:layout_below="@+id/textView5"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="9dp" />
-
-        <!--divider-->
+            <!--divider-->
             <View
                 android:id="@+id/view1"
                 android:layout_width="fill_parent"
@@ -81,32 +87,32 @@
                 android:layout_below="@+id/industri"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorUnderlineDivider" />
-        <!--end divider-->
+            <!--end divider-->
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sudah punya akun?"
-                    android:textColor="#fefefe"
-                    android:layout_marginTop="20dp"
-                    android:paddingTop="20dp"
-                    android:textSize="19sp"
-                    android:id="@+id/textView"
-                    android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:paddingTop="20dp"
+                android:text="Sudah punya akun?"
+                android:textColor="#fefefe"
+                android:textSize="19sp" />
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="Masuk."
-                    android:textColor="#fefefe"
-                    android:paddingTop="5dp"
-                    android:textSize="19sp"
-                    android:textStyle="bold"
-                    android:id="@+id/signin"
-                    android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:paddingTop="-5dp"
+                android:text="Masuk"
+                android:textColor="#fefefe"
+                android:textSize="19sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

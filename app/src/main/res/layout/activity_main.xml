@@ -23,9 +23,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginBottom="48dp"
-                android:layout_marginTop="48dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="88dp"
+                android:layout_marginTop="80dp"
                 android:src="@drawable/logo" />
 
             <EditText
@@ -36,10 +36,10 @@
                 android:fontFamily="sans-serif"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
-                android:paddingBottom="15sp"
+                android:paddingBottom="10sp"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"
-                android:paddingTop="15sp"
+                android:paddingTop="10sp"
                 android:textAlignment="center"
                 android:textColorHint="#dcdcdc" />
 
@@ -52,10 +52,10 @@
                 android:fontFamily="sans-serif"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:paddingBottom="15sp"
+                android:paddingBottom="10sp"
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"
-                android:paddingTop="15sp"
+                android:paddingTop="10sp"
                 android:textAlignment="center"
                 android:textColorHint="#dcdcdc" />
 
@@ -67,7 +67,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/colorAccent"
                 android:onClick="doLogin"
-                android:padding="15dp"
+                android:padding="8dp"
                 android:text="Masuk"
                 android:textColor="#fefefe"
                 android:textSize="18sp"
@@ -90,8 +90,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:paddingTop="20dp"
                 android:text="Belum punya akun?"
                 android:textColor="#fefefe"
                 android:textSize="19sp" />
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingTop="5dp"
+                android:layout_marginTop="2dp"
                 android:text="Buat Sekarang!"
                 android:textColor="#fefefe"
                 android:textSize="19sp"
