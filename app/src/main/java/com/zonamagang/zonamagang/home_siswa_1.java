@@ -125,7 +125,7 @@ public class home_siswa_1 extends AppCompatActivity {
                             {
                                 public void handleResponse( Void response )
                                 {
-                                    // user has been logged out.
+                                    // user has been logged out..
                                     Intent MainActivityIntent = new Intent(home_siswa_1.this,MainActivity.class);
                                     startActivity(MainActivityIntent);
                                 }
