@@ -52,7 +52,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="PT Bamboo Media"
                         android:textColor="#FEFEFE"
-                        android:id="@+id/textView2" />
+                        android:id="@+id/detail_industri_nama" />
 
                     <TextView
                         android:layout_width="wrap_content"

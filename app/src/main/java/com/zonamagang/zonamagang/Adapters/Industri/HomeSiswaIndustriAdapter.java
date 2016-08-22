@@ -30,6 +30,8 @@ import java.util.ArrayList;
  */
 public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
 
+    int id_industri;
+
     public HomeSiswaIndustriAdapter(Activity context, ArrayList<CustomIndustri> industri){super(context,0,industri);}
 
     @Override
@@ -61,9 +63,10 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
         String logoUrl = industriNow.getLogo();
         Picasso.with(getContext()).load(logoUrl).into(logo);
 
-        int id_industri = industriNow.getId_industri();
+        id_industri = industriNow.getId_industri();
 
         Button siswa_layout_belum_btnDaftar = (Button) listItemView.findViewById(R.id.siswa_layout_belum_btnDaftar);
+
 
         siswa_layout_belum_btnDaftar.setOnClickListener(new View.OnClickListener() {
 
@@ -81,6 +84,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub.
+
 
             }
         });
