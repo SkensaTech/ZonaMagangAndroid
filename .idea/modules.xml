@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ZonaMagang.iml" filepath="$PROJECT_DIR$/ZonaMagang.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZonaMagang.iml" filepath="$PROJECT_DIR$/ZonaMagang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZonaMagang1.iml" filepath="$PROJECT_DIR$/ZonaMagang1.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZonaMagang2.iml" filepath="$PROJECT_DIR$/ZonaMagang2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

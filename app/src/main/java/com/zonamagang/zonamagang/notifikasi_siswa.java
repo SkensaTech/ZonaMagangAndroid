@@ -76,22 +76,22 @@ public class notifikasi_siswa extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (position == 1){
-                            Intent intent = new Intent(Notifikasi_Industri.this,HomeIndustri.class);
+                            Intent intent = new Intent(notifikasi_siswa.this,HomeIndustri.class);
                             startActivity(intent);
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 2){
-                            Intent itent = new Intent(Notifikasi_Industri.this,Notifikasi_Industri.class);
+                            Intent itent = new Intent(notifikasi_siswa.this,Notifikasi_Industri.class);
                             startActivity(itent);
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
-                            Intent intent = new Intent(Notifikasi_Industri.this,AkunIndustri.class);
+                            Intent intent = new Intent(notifikasi_siswa.this,AkunIndustri.class);
                             startActivity(intent);
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 4){
-                            Intent intent = new Intent(Notifikasi_Industri.this,TentangKami.class);
+                            Intent intent = new Intent(notifikasi_siswa.this,TentangKami.class);
                             startActivity(intent);
                             finish();
                         }
