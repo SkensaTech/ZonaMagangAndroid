@@ -1,7 +1,5 @@
 package com.zonamagang.zonamagang;
 
-import android.app.VoiceInteractor;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -12,7 +10,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,14 +24,14 @@ import com.backendless.BackendlessCollection;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.files.BackendlessFile;
 import com.backendless.persistence.BackendlessDataQuery;
-import com.zonamagang.zonamagang.Model.User;
+import com.zonamagang.zonamagang.Model.last_id;
 import com.zonamagang.zonamagang.Model.tb_bidang;
 import com.zonamagang.zonamagang.Model.tb_bidang_industri;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_parent_bidang;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -52,8 +49,10 @@ public class step_2_industri extends AppCompatActivity {
     //Sebelumnya :
     String email,pass,nama,alamat,telp,kota;
     //step2:
-    String profil,jobdesc,kualifikasi,provinsi="Bali";
+    String profil,jobdesc,kualifikasi,provinsi="Bali",logo;
     int id_industri,id_bidang,id_user,kuota,id_bidang_industri;
+    Bitmap bMap_image;
+    tb_industri saveIndustri;
 
     //etc :
     int id_parent_bidang;
@@ -96,9 +95,9 @@ public class step_2_industri extends AppCompatActivity {
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
         //check last user
-        Backendless.Persistence.of( User.class).findLast( new AsyncCallback<User>(){
+        Backendless.Persistence.of( last_id.class).findLast(new AsyncCallback<last_id>(){
             @Override
-            public void handleResponse( User industriInfo )
+            public void handleResponse( last_id industriInfo )
             {
                 id_user = industriInfo.getId_user() + 1;
                 step_2_industri.this.addUserInfo();
@@ -107,6 +106,7 @@ public class step_2_industri extends AppCompatActivity {
             @Override
             public void handleFault( BackendlessFault fault )
             {
+                Toast.makeText(step_2_industri.this,"findLast user failed, "+fault.getMessage(),Toast.LENGTH_LONG).show();
                 id_user = 1;
                 step_2_industri.this.addUserInfo();
             }
@@ -168,6 +168,7 @@ public class step_2_industri extends AppCompatActivity {
             @Override
             public void handleFault( BackendlessFault fault )
             {
+                Toast.makeText(step_2_industri.this,"findLast industri failed, "+fault.getMessage(),Toast.LENGTH_LONG).show();
                 id_bidang_industri = 1;
                 step_2_industri.this.addTbBidangIndustriInfo();
             }
@@ -199,7 +200,7 @@ public class step_2_industri extends AppCompatActivity {
     public void saveIndustriInfo(){
 
 
-        tb_industri saveIndustri = new tb_industri();
+        saveIndustri = new tb_industri();
         saveIndustri.setId_industri(id_industri);
         saveIndustri.setId_user(id_user);
         kuota = Integer.parseInt(mKuota.getText().toString());
@@ -215,10 +216,47 @@ public class step_2_industri extends AppCompatActivity {
         saveIndustri.setKualifikasi(kualifikasi);
         saveIndustri.setKuota(kuota);
         saveIndustri.setJobdesc(jobdesc);
+        Backendless.Files.Android.upload( bMap_image,
+                Bitmap.CompressFormat.PNG,
+                100,
+                id_user+"_industri_logo.png",
+                "mypics",
+                new AsyncCallback<BackendlessFile>()
+                {
+                    @Override
+                    public void handleResponse( final BackendlessFile backendlessFile )
+                    {
+                        logo = backendlessFile.getFileURL();
+                        step_2_industri.this.saveIndustri.setLogo(logo);
+                        // save object asynchronously
+                        Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
+                            public void handleResponse( tb_industri response )
+                            {
+                                step_2_industri.this.registerSuccess();
+                            }
 
+                            public void handleFault( BackendlessFault fault )
+                            {
+                                Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void handleFault( BackendlessFault backendlessFault )
+                    {
+                        Toast.makeText( step_2_industri.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
+                    }
+                });
+    }
+
+    public void registerSuccess(){
+
+        last_id last_id_user = new last_id();
+        last_id_user.setId_user(id_user);
         // save object asynchronously
-        Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
-            public void handleResponse( tb_industri response )
+        Backendless.Persistence.save( last_id_user, new AsyncCallback<last_id>() {
+            public void handleResponse( last_id response )
             {
                 // new Contact instance has been saved
                 Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
@@ -227,9 +265,10 @@ public class step_2_industri extends AppCompatActivity {
 
             public void handleFault( BackendlessFault fault )
             {
-                Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                // an error has occurred, the error code can be retrieved with fault.getCode()
             }
         });
+
     }
 
     public void eventListeners(){
@@ -356,7 +395,7 @@ public class step_2_industri extends AppCompatActivity {
                             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                             String filePath = cursor.getString(columnIndex);
                             cursor.close();
-                            Bitmap bMap_image = BitmapFactory.decodeFile(filePath);
+                            bMap_image = BitmapFactory.decodeFile(filePath);
                             mLogo.setImageBitmap(bMap_image);
 
 
