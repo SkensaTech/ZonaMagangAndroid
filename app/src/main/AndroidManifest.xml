@@ -12,11 +12,6 @@
             android:name=".HomeIndustri"
             android:label="Beranda"
             android:parentActivityName=".HomeIndustri">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -26,6 +21,12 @@
             android:name=".home_siswa_1"
             android:label="Beranda"
             android:launchMode="singleTop">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
