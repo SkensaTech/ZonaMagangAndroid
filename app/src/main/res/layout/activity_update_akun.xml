@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.zonamagang.zonamagang.akun_user">
 
@@ -41,7 +42,7 @@
                     app:civ_border_width="0dp" />
 
                 <EditText
-                    android:id="@+id/textView2"
+                    android:id="@+id/detail_industri_nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/gambarSiswa2"
@@ -55,7 +56,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView2"
+                    android:layout_below="@+id/detail_industri_nama"
                     android:layout_marginTop="2dp"
                     android:layout_toRightOf="@id/gambarSiswa2"
                     android:hint="Jl Hayam Wuruk no 69"
@@ -226,5 +227,12 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="bottom|end" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/ok24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        app:fabSize="normal"/>
 
 </LinearLayout>

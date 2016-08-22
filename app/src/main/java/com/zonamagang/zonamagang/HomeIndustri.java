@@ -50,13 +50,18 @@ public class HomeIndustri extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
-
     private Drawer result = null;
+
     BackendlessUser userInfo;
+
     String nama,email,logo;
+
     int id_user;
+
     public static final String TAG = "Home";
+
     Toolbar myToolbar;
+
     View homeIndustri;
 
     @Override
@@ -114,10 +119,10 @@ public class HomeIndustri extends AppCompatActivity {
 
         });
 
-        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Beranda");
-        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Notifikasi");
-        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Akun Saya");
-        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
+        final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp)).withName("Beranda");
+        final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withIcon(getResources().getDrawable(R.drawable.ic_notifications_black_24dp)).withName("Notifikasi");
+        final PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withIcon(getResources().getDrawable(R.drawable.ic_account_box_black_24dp)).withName("Akun Saya");
+        final PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withIcon(getResources().getDrawable(R.drawable.ic_supervisor_account_black_24dp)).withName("Tentang Kami");
         final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Keluar");
 
         AccountHeader headerProfile = new AccountHeaderBuilder()

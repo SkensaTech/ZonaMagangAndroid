@@ -8,7 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -21,14 +25,25 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import com.zonamagang.zonamagang.Model.tb_industri;
+
 public class notifikasi_siswa extends AppCompatActivity {
 
     private Drawer result = null;
 
+    String nama, no_telp, alamat, email, logo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Backendless.initApp(this,Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
         setContentView(R.layout.activity_notifikasi_siswa);
+
+        nama = getIntent().getStringExtra("nama");
+        no_telp = getIntent().getStringExtra("no_telp");
+        alamat = getIntent().getStringExtra("alamat");
+        email = getIntent().getStringExtra("email");
+        logo = getIntent().getStringExtra("logo");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,14 +55,30 @@ public class notifikasi_siswa extends AppCompatActivity {
         final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Tentang Kami");
         final PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("Keluar");
 
+        Backendless.Persistence.of(tb_industri.class).findFirst(new AsyncCallback<tb_industri>() {
+            @Override
+            public void handleResponse(tb_industri response) {
+                nama = response.getNama();
+                no_telp = response.getNo_telp();
+                alamat = response.getAlamat();
+                email = response.getEmail();
+                logo = response.getLogo();
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(notifikasi_siswa.this,"Findfirst industri gagal, "+fault.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
         AccountHeader headerProfile = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bg)
                 .addProfiles(
                         new ProfileDrawerItem()
-                                .withName("Denandra Prasetya")
-                                .withEmail("denandra1628@gmail.com")
-                                .withIcon(getResources().getDrawable(R.drawable.asu))
+                                .withName(nama)
+                                .withEmail(email)
+                                .withIcon(logo)
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -81,12 +112,12 @@ public class notifikasi_siswa extends AppCompatActivity {
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 2){
-                            Intent itent = new Intent(notifikasi_siswa.this,Notifikasi_Industri.class);
+                            Intent itent = new Intent(notifikasi_siswa.this,notifikasi_siswa.class);
                             startActivity(itent);
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
-                            Intent intent = new Intent(notifikasi_siswa.this,AkunIndustri.class);
+                            Intent intent = new Intent(notifikasi_siswa.this,akun_user.class);
                             startActivity(intent);
                             finish();
                         }

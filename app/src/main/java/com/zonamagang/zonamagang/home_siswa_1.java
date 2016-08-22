@@ -44,7 +44,7 @@ public class home_siswa_1 extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ViewPageAdapter adapter;
+    private ViewIndustriAdapter adapter;
     private Drawer result = null;
     String email, foto, nama;
     @Override
@@ -65,7 +65,7 @@ public class home_siswa_1 extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        adapter = new ViewPageAdapter(getSupportFragmentManager());
+        adapter = new ViewIndustriAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
@@ -90,11 +90,11 @@ public class home_siswa_1 extends AppCompatActivity {
 
         });
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Cari Industri");
-        SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Beranda");
-        SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Notifikasi");
-        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
-        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
+        SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withIcon(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp)).withName("Beranda");
+        SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withIcon(getResources().getDrawable(R.drawable.ic_notifications_black_24dp)).withName("Notifikasi");
+        SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withIcon(getResources().getDrawable(R.drawable.ic_supervisor_account_black_24dp)).withName("Tentang Kami");
+        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withIcon(getResources().getDrawable(R.drawable.ic_account_box_black_24dp)).withName("Akun Saya");
         SecondaryDrawerItem item6 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(6).withName("Keluar");
 
         AccountHeader headerprofil = new AccountHeaderBuilder()
@@ -137,7 +137,21 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem.getIdentifier() == 1){
-                            Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
+                            Intent intent = new Intent(home_siswa_1.this, search_filter.class);
+                            startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 2){
+                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
+                            startActivity(itent);
+                            finish();
+                        }
+                        else if(drawerItem.getIdentifier() == 4){
+                            Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
+                            startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 5){
+                            finish();
+                            Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
                             startActivity(intent);
                         }
                         else if(drawerItem.getIdentifier() == 6){

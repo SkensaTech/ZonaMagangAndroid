@@ -18,10 +18,10 @@ public class sudahIndustriFragment extends Fragment {
         return inflater.inflate(R.layout.siswa_layout_sudah,container,false);
     }
 
-    public static sudahFragment newInstance(int text, String title){
-        sudahFragment f = new sudahFragment();
+    public static sudahIndustriFragment newInstance(int text, String title){
+        sudahIndustriFragment f = new sudahIndustriFragment();
         Bundle b = new Bundle();
-        b.putString("Sudah",title);
+        b.putString("Terdaftar",title);
 
         f.setArguments(b);
 
