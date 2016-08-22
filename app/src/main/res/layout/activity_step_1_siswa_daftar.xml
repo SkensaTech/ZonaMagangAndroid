@@ -46,7 +46,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:inputType="textPersonName"
                 android:layout_marginTop="3dp"
                 android:hint="Nama Lengkap"
                 android:ems="10"
@@ -70,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="left"
+                android:id="@+id/jeniskelamin"
                 android:layout_marginLeft="2dp">
 
                 <RadioButton
