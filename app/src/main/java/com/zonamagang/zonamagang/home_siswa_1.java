@@ -4,6 +4,8 @@ package com.zonamagang.zonamagang;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -17,7 +19,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -29,16 +36,25 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
+import com.mikepenz.materialdrawer.util.DrawerImageLoader;
+import com.squareup.picasso.Picasso;
+
 public class home_siswa_1 extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
     private Drawer result = null;
+    String email, foto, nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
+
+        email = getIntent().getStringExtra("email");
+        nama = getIntent().getStringExtra("nama");
+        foto = getIntent().getStringExtra("foto");
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -60,18 +76,35 @@ public class home_siswa_1 extends AppCompatActivity {
         tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.textColor));
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorPrimaryLight));
 
+        DrawerImageLoader.init(new AbstractDrawerImageLoader() {
+            @Override
+            public void set(ImageView imageView, Uri uri, Drawable placeholder) {
+                Picasso.with(imageView.getContext()).load(uri).placeholder(placeholder).into(imageView);
+            }
+
+            @Override
+            public void cancel(ImageView imageView) {
+                Picasso.with(imageView.getContext()).cancelRequest(imageView);
+            }
+
+
+        });
+
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Cari Industri");
         SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Beranda");
         SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Notifikasi");
-        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
         SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
+        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
         SecondaryDrawerItem item6 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(6).withName("Keluar");
 
         AccountHeader headerprofil = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bg)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Wahyu Baskara").withEmail("wahyubaskara@outlook.com").withIcon(getResources().getDrawable(R.drawable.asu))
+                        new ProfileDrawerItem()
+                                .withName(nama)
+                                .withEmail(email)
+                                .withIcon(foto)
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -103,11 +136,28 @@ public class home_siswa_1 extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (position == 1){
+                        if (drawerItem.getIdentifier() == 1){
                             Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
                             startActivity(intent);
                         }
+                        else if(drawerItem.getIdentifier() == 6){
+                            setContentView(R.layout.loading_screen);
+                            Backendless.UserService.logout(new AsyncCallback<Void>()
+                            {
+                                public void handleResponse( Void response )
+                                {
+                                    // user has been logged out..
+                                    Intent MainActivityIntent = new Intent(home_siswa_1.this,MainActivity.class);
+                                    startActivity(MainActivityIntent);
+                                }
 
+                                public void handleFault( BackendlessFault fault )
+                                {
+                                    // something went wrong and logout failed, to get the error code call fault.getCode()
+                                    Toast.makeText(home_siswa_1.this,"Logout failed",Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
 
                         return false;
                     }

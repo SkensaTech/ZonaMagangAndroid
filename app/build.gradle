@@ -31,6 +31,7 @@ dependencies {
     compile ('com.mikepenz:materialdrawer:5.4.0@aar'){
         transitive = true
     }
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     compile 'com.mikepenz:fontawesome-typeface:4.6.0.3@aar'
 }

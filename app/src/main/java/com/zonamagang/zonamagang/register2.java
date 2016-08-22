@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class register2 extends AppCompatActivity {
     Button daftar;
@@ -29,24 +30,28 @@ public class register2 extends AppCompatActivity {
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString();
-                String pass = mPass.getText().toString();
+                EditText formnama = (EditText) findViewById(R.id.daftaremail);
+                EditText formpwd = (EditText) findViewById(R.id.daftarpwd);
+                EditText repwd = (EditText) findViewById(R.id.daftarrepwd);
+                String kosong = null;
+                        String email = mEmail.getText().toString();
+                        String pass = mPass.getText().toString();
 
-                String ss = getIntent().getStringExtra("jenis_daftar");
-                Intent step1;
-                if (ss.equals("siswa")){
-                    step1 = new Intent(getApplicationContext(),step_1_siswa_daftar.class);
-                    step1.putExtra("email",email);
-                    step1.putExtra("pass",pass);
-                    startActivity(step1);
+                        String ss = getIntent().getStringExtra("jenis_daftar");
+                        Intent step1;
+                        if (ss.equals("siswa")){
+                            step1 = new Intent(getApplicationContext(),step_1_siswa_daftar.class);
+                            step1.putExtra("email",email);
+                            step1.putExtra("pass",pass);
+                            startActivity(step1);
 
-                } else if(ss.equals("industri"))  {
-                     step1 = new Intent(register2.this,step_1_industri.class);
-                    step1.putExtra("email",email);
-                    step1.putExtra("pass",pass);
-                    startActivity(step1);
+                        } else if(ss.equals("industri"))  {
+                            step1 = new Intent(register2.this,step_1_industri.class);
+                            step1.putExtra("email",email);
+                            step1.putExtra("pass",pass);
+                            startActivity(step1);
 
-                }
+                        }
             }
         });
 

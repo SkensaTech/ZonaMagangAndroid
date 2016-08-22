@@ -25,9 +25,14 @@ public class tb_industri
   private Integer id_industri;
   private String jobdesc;
   private String profil;
+  private String logo;
   public String getObjectId()
   {
     return objectId;
+  }
+
+  public String getLogo() {
+    return logo;
   }
 
   public Integer getKuota()
@@ -160,7 +165,11 @@ public class tb_industri
     return profil;
   }
 
-  public void setProfil( String profil )
+  public void setLogo(String logo) {
+    this.logo = logo;
+  }
+
+  public void setProfil(String profil )
   {
     this.profil = profil;
   }
