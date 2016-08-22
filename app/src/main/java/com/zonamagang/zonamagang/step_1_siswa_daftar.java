@@ -138,6 +138,9 @@ public class step_1_siswa_daftar extends AppCompatActivity {
 
     }
 
-
-
+    public void onBackPressed(){
+        finish();
+        Intent intent = new Intent(step_1_siswa_daftar.this,register1.class);
+        startActivity(intent);
+    }
 }

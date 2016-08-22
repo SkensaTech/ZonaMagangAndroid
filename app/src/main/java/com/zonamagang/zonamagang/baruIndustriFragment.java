@@ -41,8 +41,8 @@ public class baruIndustriFragment extends Fragment {
         return rootView;
     }
 
-    public static sudahFragment newInstance(int text, String title){
-        sudahFragment f = new sudahFragment();
+    public static baruIndustriFragment newInstance(int text, String title){
+        baruIndustriFragment f = new baruIndustriFragment();
         Bundle b = new Bundle();
         b.putString("Sudah",title);
 

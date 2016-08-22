@@ -20,7 +20,7 @@ public class ViewIndustriAdapter extends FragmentStatePagerAdapter{
             case 1:
                 return baruIndustriFragment.newInstance(1, "Belum");
             default:
-                return semuaFragment.newInstance(0,"Sudah");
+                return sudahIndustriFragment.newInstance(0,"Sudah");
         }
     }
 

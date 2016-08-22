@@ -109,6 +109,7 @@
                             android:id="@+id/detailSiswa2"
                             android:background="@color/colorPrimary"
                             android:textColor="#fff"
+                            style="@style/MyButton"
                             android:text="Detail" />
 
                     </LinearLayout>

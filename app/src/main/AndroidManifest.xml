@@ -48,7 +48,7 @@
         <activity
             android:name=".step_1_siswa_daftar"
             android:label="Daftar Siswa"
-            android:parentActivityName=".register2" />
+            android:parentActivityName=".register1" />
         <activity
             android:name=".step_2_siswa"
             android:label="Daftar Siswa"
@@ -58,6 +58,7 @@
             android:label="Daftar Siswa"
             android:parentActivityName=".step_2_siswa" />
         <activity android:name=".DetailSiswaOlehIndustri" />
+        <activity android:name=".detail_industri"/>
         <activity android:name=".Notifikasi_Industri" />
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri"></activity>
