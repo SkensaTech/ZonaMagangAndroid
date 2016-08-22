@@ -65,7 +65,7 @@
                     android:layout_below="@+id/telpIndustri"
                     android:layout_toRightOf="@+id/gambarSiswa"
                     android:id="@+id/emailIndustri"
-                    android:text="hello@simple.co.id"
+                    android:text="herlambang.aditya456@gmail.com"
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
