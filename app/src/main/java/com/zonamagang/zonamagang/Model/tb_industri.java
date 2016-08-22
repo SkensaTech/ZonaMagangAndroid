@@ -14,7 +14,7 @@ public class tb_industri
   private String provinsi;
   private java.util.Date updated;
   private String ownerId;
-  private Integer is_verified;
+    private Integer is_verified;
   private Integer id_user;
   private String nama;
   private java.util.Date created;
