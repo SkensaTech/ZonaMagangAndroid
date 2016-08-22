@@ -26,6 +26,7 @@ public class tb_industri
   private String jobdesc;
   private String profil;
   private String logo;
+  private String email;
   public String getObjectId()
   {
     return objectId;
@@ -33,6 +34,14 @@ public class tb_industri
 
   public String getLogo() {
     return logo;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public Integer getKuota()
