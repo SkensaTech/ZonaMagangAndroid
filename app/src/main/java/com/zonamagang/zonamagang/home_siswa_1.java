@@ -44,7 +44,7 @@ public class home_siswa_1 extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ViewPageAdapter adapter;
+    private ViewIndustriAdapter adapter;
     private Drawer result = null;
     String email, foto, nama;
     @Override
@@ -65,7 +65,7 @@ public class home_siswa_1 extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        adapter = new ViewPageAdapter(getSupportFragmentManager());
+        adapter = new ViewIndustriAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);

@@ -216,6 +216,7 @@ public class step_2_industri extends AppCompatActivity {
         saveIndustri.setKualifikasi(kualifikasi);
         saveIndustri.setKuota(kuota);
         saveIndustri.setJobdesc(jobdesc);
+        saveIndustri.setEmail(email);
         Backendless.Files.Android.upload( bMap_image,
                 Bitmap.CompressFormat.PNG,
                 100,
