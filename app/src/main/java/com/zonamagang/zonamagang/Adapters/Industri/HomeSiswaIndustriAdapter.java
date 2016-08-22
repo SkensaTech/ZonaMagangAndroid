@@ -55,7 +55,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
         emailIndustri.setText(industriNow.getEmail());
 
         TextView kuotaIndustri = (TextView) listItemView.findViewById(R.id.kuotaIndustri);
-        kuotaIndustri.setText("Kuota siswa magang : "+industriNow.getKuota()+" orang");
+        kuotaIndustri.setText("Kuota : "+industriNow.getKuota()+" orang");
 
         ImageView logo = (ImageView) listItemView.findViewById(R.id.gambarSiswa);
         String logoUrl = industriNow.getLogo();
