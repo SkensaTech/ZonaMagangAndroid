@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -13,12 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class step_2_siswa extends AppCompatActivity {
-
+    //Deklarasi
+    String nisn,nama,alamat,jk,ttl,tl,tgl;
+    int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_siswa);
-
+        nisn = getIntent().getStringExtra("nisn");
+        nama = getIntent().getStringExtra("nama");
+        alamat = getIntent().getStringExtra("alamat");
+        jk = getIntent().getStringExtra("jk");
+        tl = getIntent().getStringExtra("tl");
+        tgl = getIntent().getStringExtra("tgllahir");
+        ttl = tl+","+tgl;
         //coding untuk toolbar
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -45,6 +54,18 @@ public class step_2_siswa extends AppCompatActivity {
         provinsis.add("Kalimantan");
         ArrayAdapter<String> provinsi_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, provinsis);
         provinsi.setAdapter(provinsi_adapter);
+        provinsi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Spinner provspin = (Spinner) findViewById(R.id.spinnerProvinsi);
+                pos = provspin.getSelectedItemPosition();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     //kota
         Spinner kota = (Spinner) findViewById(R.id.spinnerKota);
