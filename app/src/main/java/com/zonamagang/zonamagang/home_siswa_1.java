@@ -136,11 +136,11 @@ public class home_siswa_1 extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (position == 1){
+                        if (drawerItem.getIdentifier() == 1){
                             Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
                             startActivity(intent);
                         }
-                        else if(position == 6){
+                        else if(drawerItem.getIdentifier() == 6){
                             setContentView(R.layout.loading_screen);
                             Backendless.UserService.logout(new AsyncCallback<Void>()
                             {
