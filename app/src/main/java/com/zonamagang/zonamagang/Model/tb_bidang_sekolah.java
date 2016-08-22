@@ -15,7 +15,7 @@ public class tb_bidang_sekolah
   private Integer id_bidang;
   private Integer id_sekolah;
   private java.util.Date created;
-  private Integer id_bidang_sekolah;
+  public Integer id_bidang_sekolah;
   public java.util.Date getUpdated()
   {
     return updated;

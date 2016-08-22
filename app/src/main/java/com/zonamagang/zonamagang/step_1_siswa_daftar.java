@@ -17,7 +17,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
     //deklarasi
     Button y;
     int array_bulan;
-    String sbulan,stahun,stanggal,stgllahir;
+    String sbulan,stahun,stanggal,stgllahir,pass,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,8 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        email = getIntent().getStringExtra("email");
+        pass = getIntent().getStringExtra("pass");
 
         //coding untuk spinner
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
@@ -131,6 +132,8 @@ public class step_1_siswa_daftar extends AppCompatActivity {
                     next.putExtra("alamat",alamat.getText());
                     next.putExtra("tl",tl.getText());
                     next.putExtra("tgllahir",stgllahir);
+                    next.putExtra("email",email);
+                    next.putExtra("pass",pass);
                     startActivity(next);
                 }
             }

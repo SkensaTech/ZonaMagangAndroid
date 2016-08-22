@@ -77,6 +77,10 @@ public class tb_sekolah
     this.id_sekolah = id_sekolah;
   }
 
+  public tb_sekolah(int id_sekolah, String nama){
+    this.id_sekolah = id_sekolah;
+    this.nama = nama;
+  }
                                                     
   public tb_sekolah save()
   {
