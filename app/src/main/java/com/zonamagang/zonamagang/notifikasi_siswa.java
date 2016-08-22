@@ -112,12 +112,12 @@ public class notifikasi_siswa extends AppCompatActivity {
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 2){
-                            Intent itent = new Intent(notifikasi_siswa.this,Notifikasi_Industri.class);
+                            Intent itent = new Intent(notifikasi_siswa.this,notifikasi_siswa.class);
                             startActivity(itent);
                             finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
-                            Intent intent = new Intent(notifikasi_siswa.this,AkunIndustri.class);
+                            Intent intent = new Intent(notifikasi_siswa.this,akun_user.class);
                             startActivity(intent);
                             finish();
                         }
