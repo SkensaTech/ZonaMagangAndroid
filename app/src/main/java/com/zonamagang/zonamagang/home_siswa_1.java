@@ -17,7 +17,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -35,10 +39,15 @@ public class home_siswa_1 extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
     private Drawer result = null;
+    String email, foto, nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
+
+        email = getIntent().getStringExtra("email");
+        nama = getIntent().getStringExtra("nama");
+        foto = getIntent().getStringExtra("foto");
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -63,15 +72,18 @@ public class home_siswa_1 extends AppCompatActivity {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Cari Industri");
         SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withName("Beranda");
         SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withName("Notifikasi");
-        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
         SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withName("Tentang Kami");
+        SecondaryDrawerItem item5 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(5).withName("Profil Saya");
         SecondaryDrawerItem item6 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(6).withName("Keluar");
 
         AccountHeader headerprofil = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bg)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Wahyu Baskara").withEmail("wahyubaskara@outlook.com").withIcon(getResources().getDrawable(R.drawable.asu))
+                        new ProfileDrawerItem()
+                                .withName(nama)
+                                .withEmail(email)
+                                .withIcon(foto)
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -104,26 +116,27 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (position == 1){
-                            Intent intent = new Intent(home_siswa_1.this,cari_industri.class);
+                            Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
                             startActivity(intent);
                         }
-                        else if (drawerItem.getIdentifier() == 2){
-                            Intent itent = new Intent(home_siswa_1.this,home_siswa_1.class);
-                            startActivity(itent);
-                        }
-                        else if (drawerItem.getIdentifier() == 3){
-                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
-                            startActivity(itent);
-                        }
-                        else if (drawerItem.getIdentifier() == 4){
-                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
-                            startActivity(itent);
-                        }
-                        else if (drawerItem.getIdentifier() == 5){
-                            Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
-                            startActivity(itent);
-                        }
+                        else if(position == 6){
+                            setContentView(R.layout.loading_screen);
+                            Backendless.UserService.logout(new AsyncCallback<Void>()
+                            {
+                                public void handleResponse( Void response )
+                                {
+                                    // user has been logged out..
+                                    Intent MainActivityIntent = new Intent(home_siswa_1.this,MainActivity.class);
+                                    startActivity(MainActivityIntent);
+                                }
 
+                                public void handleFault( BackendlessFault fault )
+                                {
+                                    // something went wrong and logout failed, to get the error code call fault.getCode()
+                                    Toast.makeText(home_siswa_1.this,"Logout failed",Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
 
                         return false;
                     }

@@ -18,7 +18,7 @@ public class tb_siswa
   private String objectId;
   private Integer id_sekolah;
   private String nama;
-  private java.util.Date tgl_lahir;
+  private String tgl_lahir;
   private String ownerId;
   private String alamat;
   private Integer id_siswa;
@@ -98,12 +98,12 @@ public class tb_siswa
     this.nama = nama;
   }
 
-  public java.util.Date getTgl_lahir()
+  public String getTgl_lahir()
   {
     return tgl_lahir;
   }
 
-  public void setTgl_lahir( java.util.Date tgl_lahir )
+  public void setTgl_lahir( String tgl_lahir )
   {
     this.tgl_lahir = tgl_lahir;
   }

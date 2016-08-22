@@ -69,7 +69,7 @@
         android:textColor="#fefefe"
         android:textSize="18sp"
         style="@style/Widget.AppCompat.Button.Borderless"
-        />
+        android:onClick="doLogin" />
 
         <!--divider-->
         <View
