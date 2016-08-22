@@ -64,6 +64,7 @@
         <activity android:name=".AkunIndustri"></activity>
         <activity android:name=".step_1_industri"></activity>
         <activity android:name=".step_2_industri"></activity>
+        <activity android:name=".UpdateAkun"></activity>
     </application>
 
 </manifest>

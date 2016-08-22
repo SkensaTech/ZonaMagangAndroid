@@ -50,8 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void doLogin(View view) {
         setContentView(R.layout.loading_screen);
+
         email = mLoginEmail.getText().toString();
+        if (email == null){
+            Toast.makeText(this,"Isikan email anda",Toast.LENGTH_SHORT).show();
+        }
         String pass = mLoginPass.getText().toString();
+        if (pass == null){
+            Toast.makeText(this,"Isikan password anda",Toast.LENGTH_SHORT).show();
+        }
+
         Backendless.UserService.login(email, pass, new AsyncCallback<BackendlessUser>() {
             public void handleResponse(BackendlessUser user) {
                 // user has been logged in
