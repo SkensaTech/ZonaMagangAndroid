@@ -22,10 +22,6 @@ public class register1 extends AppCompatActivity {
         siswa = (Button) findViewById(R.id.siswa);
         industri = (Button) findViewById(R.id.industri);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         siswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
@@ -54,19 +50,6 @@ public class register1 extends AppCompatActivity {
 
             }
         });
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                Intent intent = new Intent(register1.this,MainActivity.class);
-                startActivity(intent);
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void onBackPressed(){

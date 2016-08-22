@@ -8,10 +8,6 @@
     android:orientation="vertical"
     tools:context="com.zonamagang.zonamagang.register1">
 
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,8 +24,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginBottom="64dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginBottom="88dp"
+                android:layout_marginTop="80dp"
                 android:src="@drawable/logo" />
 
             <TextView
@@ -38,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="Daftar sebagai :"
+                android:text="Daftar sebagai"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fefefe"
@@ -59,8 +55,7 @@
                 android:padding="15dp"
                 android:text="SISWA"
                 android:textColor="#fefefe"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/industri"
@@ -75,8 +70,7 @@
                 android:padding="15dp"
                 android:text="INDUSTRI"
                 android:textColor="#fefefe"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <!--divider-->
             <View
