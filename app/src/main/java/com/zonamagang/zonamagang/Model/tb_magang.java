@@ -9,24 +9,23 @@ import com.backendless.persistence.BackendlessDataQuery;
 
 public class tb_magang
 {
-  private String kode;
   private String objectId;
   private java.util.Date updated;
   private Integer id_siswa;
-  private java.util.Date akhir_magang;
-  private java.util.Date awal_magang;
+  private String akhir_magang;
+  private String awal_magang;
   private java.util.Date created;
-  private String id_magang;
+  private int id_magang;
   private Integer id_industri;
   private String ownerId;
-  public String getKode()
-  {
-    return kode;
+  private int status_diterima;
+
+  public int getStatus_diterima() {
+    return status_diterima;
   }
 
-  public void setKode( String kode )
-  {
-    this.kode = kode;
+  public void setStatus_diterima(int status_diterima) {
+    this.status_diterima = status_diterima;
   }
 
   public String getObjectId()
@@ -49,22 +48,22 @@ public class tb_magang
     this.id_siswa = id_siswa;
   }
 
-  public java.util.Date getAkhir_magang()
+  public String getAkhir_magang()
   {
     return akhir_magang;
   }
 
-  public void setAkhir_magang( java.util.Date akhir_magang )
+  public void setAkhir_magang( String akhir_magang )
   {
     this.akhir_magang = akhir_magang;
   }
 
-  public java.util.Date getAwal_magang()
+  public String getAwal_magang()
   {
     return awal_magang;
   }
 
-  public void setAwal_magang( java.util.Date awal_magang )
+  public void setAwal_magang( String awal_magang )
   {
     this.awal_magang = awal_magang;
   }
@@ -74,12 +73,12 @@ public class tb_magang
     return created;
   }
 
-  public String getId_magang()
+  public int getId_magang()
   {
     return id_magang;
   }
 
-  public void setId_magang( String id_magang )
+  public void setId_magang( int id_magang )
   {
     this.id_magang = id_magang;
   }

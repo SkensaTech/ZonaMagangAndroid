@@ -49,6 +49,7 @@ public class home_siswa_1 extends AppCompatActivity {
     String email, foto, nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
 
