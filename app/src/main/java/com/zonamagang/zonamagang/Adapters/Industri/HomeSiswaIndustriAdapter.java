@@ -249,7 +249,6 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
     public void saveTbMagang(){
         // last contact instance has been found
         //INSERT TO TBMAGANG
-        Toast.makeText(getContext(),"Start saveTbMagang",Toast.LENGTH_SHORT).show();
         tb_magang tbmagang = new tb_magang();
         tbmagang.setStatus_diterima(1);
         tbmagang.setId_industri(id_industri_now);
