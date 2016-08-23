@@ -15,12 +15,10 @@ public class DetailSiswa extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Backendless.initApp("F937B588-2B7D-C2BC-FF4C-A5FF37CC1400","80EB04E2-04AD-5BEF-FF0E-0D1728162B00","v1");
         setContentView(R.layout.activity_detail_siswa);
-        Backendless.initApp(Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
 
         nama = getIntent().getStringExtra("nama");
-        sekolah = getIntent().getStringExtra("");
-        email = getIntent().getStringExtra("");
         alamat = getIntent().getStringExtra("alamat");
 
         TextView alamatSiswa = (TextView)findViewById(R.id.alamatSiswa);
