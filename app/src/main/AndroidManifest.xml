@@ -57,6 +57,11 @@
             android:name=".step_3_siswa"
             android:label="Daftar Siswa"
             android:parentActivityName=".step_2_siswa" />
+        <activity
+            android:name=".search_filter"
+            android:label="Cari Industri"
+            android:parentActivityName=".home_siswa_1" />
+
         <activity android:name=".DetailSiswaOlehIndustri" />
         <activity android:name=".detail_industri" />
         <activity android:name=".Notifikasi_Industri" />
