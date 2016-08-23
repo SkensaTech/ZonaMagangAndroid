@@ -67,40 +67,44 @@ public class baruIndustriFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
+            try {
+                String whereClause = "id_user = " + id_user_now;
+                BackendlessDataQuery dataQuery = new BackendlessDataQuery();
+                dataQuery.setWhereClause(whereClause);
+                BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of(tb_siswa.class).find(dataQuery);
+                List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
+                id_siswa = firstPageSiswa.get(0).getId_siswa();
 
-            String whereClause = "id_user = "+id_user_now;
-            BackendlessDataQuery dataQuery = new BackendlessDataQuery();
-            dataQuery.setWhereClause( whereClause );
-            BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of( tb_siswa.class ).find( dataQuery );
-            List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
-            id_siswa = firstPageSiswa.get(0).getId_siswa();
+                BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find();
+                List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
+                for (int i = 0; i < firstPageIndustri.size(); i++) {
+                    int id_industri = firstPageIndustri.get(i).getId_industri();
+                    String nama = firstPageIndustri.get(i).getNama();
+                    String alamat = firstPageIndustri.get(i).getAlamat();
+                    String no_telp = firstPageIndustri.get(i).getNo_telp();
+                    String email = firstPageIndustri.get(i).getEmail();
+                    int kuota = firstPageIndustri.get(i).getKuota();
+                    String logo = firstPageIndustri.get(i).getLogo();
 
-            BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of( tb_industri.class ).find();
-            List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
-            for(int i = 0;i<firstPageIndustri.size();i++){
-                int id_industri = firstPageIndustri.get(i).getId_industri();
-                String nama = firstPageIndustri.get(i).getNama();
-                String alamat = firstPageIndustri.get(i).getAlamat();
-                String no_telp = firstPageIndustri.get(i).getNo_telp();
-                String email = firstPageIndustri.get(i).getEmail();
-                int kuota = firstPageIndustri.get(i).getKuota();
-                String logo = firstPageIndustri.get(i).getLogo();
+                    String whereClauseTbMagang = "id_siswa = " + id_siswa + " AND id_industri = " + id_industri;
+                    BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
+                    dataQueryTbMagang.setWhereClause(whereClauseTbMagang);
+                    try {
+                        BackendlessCollection<tb_magang> tbMagangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQueryTbMagang);
+                        List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
+                        if(firstPageTbMagang.size() < 1){
+                            baruIndustriFragment.this.listIndustri.add(
+                                    new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo)
+                            );
+                        }
 
-                String whereClauseTbMagang = "id_siswa = "+id_siswa+" AND id_industri = "+id_industri;
-                BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
-                dataQueryTbMagang.setWhereClause( whereClauseTbMagang );
-                try{
-                    BackendlessCollection<tb_magang> tbMagangInfo = Backendless.Persistence.of( tb_magang.class ).find( dataQueryTbMagang );
-                    List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
-                    if(firstPageTbMagang.get(0).getStatus_diterima() == 0){
-                        baruIndustriFragment.this.listIndustri.add(
-                                new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota,logo)
-                        );
+                    } catch (BackendlessException be) {
+
                     }
 
-                }catch(BackendlessException be){
-
                 }
+            }
+            catch(Exception exception){
 
             }
 
