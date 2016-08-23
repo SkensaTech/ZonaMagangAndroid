@@ -27,30 +27,30 @@
                 android:padding="40dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    xml:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profilePict"
-                    android:layout_height="100dp"
                     android:layout_width="100dp"
-                    android:src="@drawable/asu"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/asu"
+                    xml:app="http://schemas.android.com/apk/res-auto" />
 
                 <EditText
+                    android:id="@+id/namaSiswa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="8dp"
                     android:text="nama_user"
                     android:textColor="@color/textColor"
-                    android:id="@+id/namaSiswa"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/sekolahSiswa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:id="@+id/sekolahSiswa"
                     android:text="sekolah_user"
                     android:textColor="@color/textColor" />
 
@@ -77,17 +77,17 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="Bidang"
-                        android:textStyle="bold"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/jurusanSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="12dp"
                         android:layout_marginTop="32dp"
-                        android:textSize="16sp"
-                        android:id="@+id/jurusanSiswa"
-                        android:text="bidang_user"/>
+                        android:padding="12dp"
+                        android:text="bidang_user"
+                        android:textSize="16sp" />
 
 
                 </android.support.v7.widget.CardView>
@@ -105,19 +105,64 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="12dp"
-                        android:text="Email"
-                        android:textStyle="bold"
-                        android:textSize="18sp" />
+                        android:text="NISN"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/nisnSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="12dp"
                         android:layout_marginTop="32dp"
-                        android:textSize="16sp"
-                        android:id="@+id/emailSiswa"
-                        android:text="email_user"/>
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:text="nisn"
+                        android:textSize="16sp" />
 
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_view3"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    card_view:cardCornerRadius="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/jeniskelamin"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="0dp"
+                            android:padding="12dp"
+                            android:text="Jenis Kelamin"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/jeniskelamin"
+                            android:layout_marginLeft="8dp"
+                            android:text="Laki - Laki" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/radioButton"
+                            android:layout_marginLeft="8dp"
+                            android:text="Perempuan" />
+
+                    </RelativeLayout>
 
                 </android.support.v7.widget.CardView>
 
@@ -135,17 +180,17 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="Alamat"
-                        android:textStyle="bold"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/alamatSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="12dp"
                         android:layout_marginTop="32dp"
-                        android:textSize="16sp"
-                        android:id="@+id/alamatSiswa"
-                        android:text="alamat_user"/>
+                        android:padding="12dp"
+                        android:text="alamat_user"
+                        android:textSize="16sp" />
 
                 </android.support.v7.widget.CardView>
 
@@ -163,17 +208,18 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="No Telpon"
-                        android:textStyle="bold"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/noTelpSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="12dp"
                         android:layout_marginTop="32dp"
-                        android:textSize="16sp"
-                        android:id="@+id/noTelpSiswa"
-                        android:text="noTelp_user"/>
+                        android:inputType="number"
+                        android:padding="12dp"
+                        android:text="noTelp_user"
+                        android:textSize="16sp" />
 
                 </android.support.v7.widget.CardView>
 
@@ -191,17 +237,35 @@
                         android:layout_height="match_parent"
                         android:padding="12dp"
                         android:text="Tempat Tanggal Lahir"
-                        android:textStyle="bold"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                    <EditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="12dp"
-                        android:layout_marginTop="32dp"
-                        android:textSize="16sp"
-                        android:id="@+id/ttlSiswa"
-                        android:text="ttl_user"/>
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/tempat_lahir"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="32dp"
+                            android:layout_weight="2"
+                            android:padding="12dp"
+                            android:text="ttl_user"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/tanggal_lahir"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="32dp"
+                            android:layout_weight="1"
+                            android:padding="12dp"
+                            android:text="ttl_user"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
