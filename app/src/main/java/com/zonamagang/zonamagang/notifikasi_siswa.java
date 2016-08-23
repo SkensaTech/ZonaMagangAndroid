@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.BackendlessDataQuery;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -25,13 +27,20 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import com.zonamagang.zonamagang.Model.tb_notif;
 import com.zonamagang.zonamagang.Model.tb_industri;
 
+import java.util.Iterator;
+
+/*
+* Created by SkensaTech on 23/8/16
+* */
 public class notifikasi_siswa extends AppCompatActivity {
 
     private Drawer result = null;
 
-    String nama, no_telp, alamat, email, logo;
+    String nama, email, foto;
+    String nama_industri, logo_industri, isi_notif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +48,9 @@ public class notifikasi_siswa extends AppCompatActivity {
         Backendless.initApp(this,Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
         setContentView(R.layout.activity_notifikasi_siswa);
 
-        nama = getIntent().getStringExtra("nama");
-        no_telp = getIntent().getStringExtra("no_telp");
-        alamat = getIntent().getStringExtra("alamat");
         email = getIntent().getStringExtra("email");
-        logo = getIntent().getStringExtra("logo");
+        nama = getIntent().getStringExtra("nama");
+        foto = getIntent().getStringExtra("foto");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,19 +62,40 @@ public class notifikasi_siswa extends AppCompatActivity {
         final PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Tentang Kami");
         final PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("Keluar");
 
-        Backendless.Persistence.of(tb_industri.class).findFirst(new AsyncCallback<tb_industri>() {
+        Backendless.Persistence.of(tb_notif.class).find(new AsyncCallback<BackendlessCollection<tb_notif>>() {
             @Override
-            public void handleResponse(tb_industri response) {
-                nama = response.getNama();
-                no_telp = response.getNo_telp();
-                alamat = response.getAlamat();
-                email = response.getEmail();
-                logo = response.getLogo();
+            public void handleResponse(BackendlessCollection<tb_notif> response) {
+                Iterator<tb_notif> iterator = response.getCurrentPage().iterator();
+
+                while (iterator.hasNext()) {
+                    tb_notif responses = iterator.next();
+                    isi_notif = responses.getIsi_notif();
+                    // Cari industri berdasarkan id industri dan id siswa di tabel notif
+                    String whereClause = "id_industri = "+responses.getId_pengirim()+" AND id_siswa = "+responses.getId_penerima();
+                    BackendlessDataQuery query = new BackendlessDataQuery(whereClause);
+                    Backendless.Persistence.of(tb_industri.class).find(query, new AsyncCallback<BackendlessCollection<tb_industri>>() {
+                        @Override
+                        public void handleResponse(BackendlessCollection<tb_industri> response) {
+                            if (response.getData().size() == 1) {
+                                tb_industri responses = response.getData().get(0);
+                                nama_industri = responses.getNama();
+                                logo_industri = responses.getLogo();
+                            } else {
+                                System.out.println("Response salah broo");
+                            }
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
+                }
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-                Toast.makeText(notifikasi_siswa.this,"Findfirst industri gagal, "+fault.getMessage(),Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -78,7 +106,7 @@ public class notifikasi_siswa extends AppCompatActivity {
                         new ProfileDrawerItem()
                                 .withName(nama)
                                 .withEmail(email)
-                                .withIcon(logo)
+                                .withIcon(foto)
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -114,7 +142,7 @@ public class notifikasi_siswa extends AppCompatActivity {
                         else if (drawerItem.getIdentifier() == 2){
                             Intent itent = new Intent(notifikasi_siswa.this,notifikasi_siswa.class);
                             startActivity(itent);
-                            finish();
+//                            finish();
                         }
                         else if (drawerItem.getIdentifier() == 3){
                             Intent intent = new Intent(notifikasi_siswa.this,akun_user.class);
