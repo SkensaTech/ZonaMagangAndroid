@@ -26,9 +26,9 @@ import com.zonamagang.zonamagang.Model.tb_siswa;
 public class step_3_siswa extends AppCompatActivity {
 
     ImageView mLogo;
-    String nisn,nama,alamat,ttl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass;
+    String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass;
     Bitmap mapfoto;
-    int id_user,id_siswa;
+    int id_user,id_siswa,id_bidang,id_sekolah;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,8 @@ public class step_3_siswa extends AppCompatActivity {
         nisn = getIntent().getStringExtra("nisn");
         nama = getIntent().getStringExtra("nama");
         alamat = getIntent().getStringExtra("alamat");
-        ttl = getIntent().getStringExtra("ttl");
+        tempat = getIntent().getStringExtra("tempat");
+        tgl =  getIntent().getStringExtra("tanggal");
         jeniskelamin = getIntent().getStringExtra("jeniskelamin");
         provinsi = getIntent().getStringExtra("provinsi");
         kota = getIntent().getStringExtra("kota");
@@ -47,6 +48,7 @@ public class step_3_siswa extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
         //coding untuk toolbar
+        String All = nisn+" "+nama+" "+alamat+" "+tempat+" "+tgl+" "+jeniskelamin+" "+provinsi+" "+kota+" "+sekolah+" "+bidang+" "+email+" "+pass;
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ZonaMagang</string>
+    <string name="app_name">Zona Magang</string>
     <string name="r_password">R-Password</string>
     <string-array name="navigation_drawer_items_array">
         <item>Create</item>
