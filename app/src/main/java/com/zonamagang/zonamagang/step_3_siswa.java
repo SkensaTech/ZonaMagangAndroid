@@ -48,7 +48,7 @@ public class step_3_siswa extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
         //coding untuk toolbar
-        String All = nisn+" "+nama+" "+alamat+" "+tempat+" "+tgl+" "+jeniskelamin+" "+nama+" "+nama+" "+nama+" "+nama+" "+nama+" "+nama;
+        String All = nisn+" "+nama+" "+alamat+" "+tempat+" "+tgl+" "+jeniskelamin+" "+provinsi+" "+kota+" "+sekolah+" "+bidang+" "+email+" "+pass;
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

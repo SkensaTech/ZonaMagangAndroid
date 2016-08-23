@@ -102,7 +102,6 @@ public class step_2_siswa extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (id_bidang == 0){
 
                 Intent nextpage = new Intent(getApplicationContext(),step_3_siswa.class);
                 nextpage.putExtra("nisn",nisn);
@@ -118,9 +117,7 @@ public class step_2_siswa extends AppCompatActivity {
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
                 startActivity(nextpage);
-                } else {
-                    Toast.makeText(getApplicationContext(),"Isi data dengan Benar",Toast.LENGTH_SHORT).show();
-                }
+
 
             }
         });

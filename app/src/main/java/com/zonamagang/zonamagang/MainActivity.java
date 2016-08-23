@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent register = new Intent(getApplicationContext(), register1.class);
                 startActivity(register);
             }
-        });
+        }  );
     }
 
     public void doLogin(View view) {
