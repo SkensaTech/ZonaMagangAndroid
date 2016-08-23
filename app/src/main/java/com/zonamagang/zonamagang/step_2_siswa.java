@@ -49,20 +49,12 @@ public class step_2_siswa extends AppCompatActivity {
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         email = getIntent().getStringExtra("email");
+        sekolah = (Spinner) findViewById(R.id.spinnerSekolah);
+        bidang = (Spinner) findViewById(R.id.spinnerBidang);
         pass = getIntent().getStringExtra("pass");
         //coding untuk jika button click
-        Button y;
-        y =(Button) findViewById(R.id.BtnSiswa_step_2_submit);
-        y.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent z = new Intent(getApplicationContext(),step_3_siswa.class);
-                startActivity(z);
-            }
-        });
         this.isiSpinnerParent();
         this.eventListeners();
-
         this.setSpinnerBidangListener();
     Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         List<String> provinsis = new ArrayList<>();
@@ -105,25 +97,31 @@ public class step_2_siswa extends AppCompatActivity {
 
             }
         });
-        sekolah = (Spinner) findViewById(R.id.spinnerSekolah);
-        bidang = (Spinner) findViewById(R.id.spinnerBidang);
+
         Button next = (Button) findViewById(R.id.BtnSiswa_step_2_submit);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (id_bidang == 0){
+
                 Intent nextpage = new Intent(getApplicationContext(),step_3_siswa.class);
                 nextpage.putExtra("nisn",nisn);
                 nextpage.putExtra("nama",nama);
                 nextpage.putExtra("jeniskelamin",jk);
                 nextpage.putExtra("alamat",alamat);
-                nextpage.putExtra("ttl",ttl);
+                nextpage.putExtra("tempat",tl);
+                nextpage.putExtra("tanggal",tgl);
                 nextpage.putExtra("provinsi",sprovinsi);
                 nextpage.putExtra("kota",skota);
-                nextpage.putExtra("sekolah",sskolah);
-                nextpage.putExtra("bidang",sbidang);
+                nextpage.putExtra("sekolah",id_sekolah);
+                nextpage.putExtra("bidang",id_bidang);
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
                 startActivity(nextpage);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Isi data dengan Benar",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -136,13 +134,15 @@ public class step_2_siswa extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 tb_sekolah sekolahSelector = (tb_sekolah) parent.getSelectedItem();
-                id_sekolah = sekolahSelector.getId_sekolah();
-                if(id_sekolah == 0){
-                    bidang.setSelection(0);
-                    bidang.setEnabled(false);
-                }
+             id_sekolah = sekolahSelector.getId_sekolah();
+            if(id_sekolah == 0) {
+                bidang.setSelection(0);
+
+                bidang.setEnabled(false);
+            }
                 else{
-                    step_2_siswa.this.loopingBidangSekolah();
+                 step_2_siswa.this.loopingBidangSekolah();
+                    bidang.setEnabled(true);
                 }
                 bidang.setSelection(0);
             }
@@ -178,12 +178,14 @@ public class step_2_siswa extends AppCompatActivity {
                 Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
             }
         });
-        ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listsekolah);
-        sekolah.setAdapter(sekolah_adapter);
+      ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
+      sekolah.setAdapter(sekolah_adapter);
     }
-    public void loopingBidangSekolah() {
+  public void loopingBidangSekolah() {
         BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause("id_sekolah = " + id_sekolah);
+         bidangss = new ArrayList<>();
+        bidangss.add(new tb_bidang(0,0,"Pilih Bidang Sekolah."));
         Backendless.Data.mapTableToClass("tb_bidang_sekolah", tb_bidang_sekolah.class);
         Backendless.Persistence.of(tb_bidang_sekolah.class).find(query, new AsyncCallback<BackendlessCollection<tb_bidang_sekolah>>() {
             @Override
@@ -192,31 +194,37 @@ public class step_2_siswa extends AppCompatActivity {
                 Iterator<tb_bidang_sekolah> iterator = firstPage.iterator();
 
                 while (iterator.hasNext()) {
-                    tb_bidang_sekolah bidangid = iterator.next();
+                 tb_bidang_sekolah bidangid = iterator.next();
                     id_bidang = bidangid.getId_bidang();
-                    bidangss = new ArrayList<>();
-                    bidangss.add(new tb_bidang(0,0,"Pilih Bidang Sekolah."));
+                  //  Toast.makeText(getApplicationContext(),"test"+id_bidang,Toast.LENGTH_SHORT).show();
+
                     BackendlessDataQuery dataQuery = new BackendlessDataQuery();
                     dataQuery.setWhereClause("id_bidang = "+id_bidang);
                     Backendless.Data.mapTableToClass( "tb_bidang", tb_bidang.class );
-                    Backendless.Persistence.of(tb_bidang.class).find(dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>() {
+                    Backendless.Persistence.of(tb_bidang.class).find( dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>(){
                         @Override
-                        public void handleResponse(BackendlessCollection<tb_bidang> hasil) {
-                            List<tb_bidang> scndPage = hasil.getCurrentPage();
-                            Iterator<tb_bidang> iterator = scndPage.iterator();
+                        public void handleResponse( BackendlessCollection<tb_bidang> hasil )
+                        {
+                            List<tb_bidang> firstPage = hasil.getCurrentPage();
+                            Iterator<tb_bidang> iterator = firstPage.iterator();
+
                             while( iterator.hasNext() )
                             {
                                 tb_bidang bidangList = iterator.next();
                                 step_2_siswa.this.bidangss.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
+
                             }
                             bidang.setEnabled(true);
                         }
-
                         @Override
-                        public void handleFault(BackendlessFault fault) {
-
+                        public void handleFault( BackendlessFault fault )
+                        {
+                            Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
                         }
                     });
+
+
+
                 }
             }
 
@@ -225,39 +233,10 @@ public class step_2_siswa extends AppCompatActivity {
 
             }
         });
+      ArrayAdapter<tb_bidang> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bidangss);
+      bidang.setAdapter(sekolah_adapter);
     }
 
- /*  public void isiSpinnerSub(){
-        bidang.setEnabled(false);
-        List<tb_bidang> bidangss = new ArrayList<>();
-        bidangss.add(new tb_bidang(0,0,"Pilih Bidang Sekolah."));
-        BackendlessDataQuery dataQuery = new BackendlessDataQuery();
-        dataQuery.setWhereClause("id_ = "+id_parent_bidang);
-        Backendless.Data.mapTableToClass( "tb_bidang", tb_bidang.class );
-        Backendless.Persistence.of(tb_bidang.class).find( dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>(){
-            @Override
-            public void handleResponse( BackendlessCollection<tb_bidang> hasil )
-            {
-                List<tb_bidang> firstPage = hasil.getCurrentPage();
-                Iterator<tb_bidang> iterator = firstPage.iterator();
-
-                while( iterator.hasNext() )
-                {
-                    tb_bidang bidangList = iterator.next();
-                    step_2_industri.this.bidang.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
-                }
-                mBidang.setEnabled(true);
-            }
-            @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        ArrayAdapter<tb_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bidang);
-        mBidang.setAdapter(parent_bidang_adapter);
-    }
-    */
     private void setSpinnerBidangListener(){
         bidang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -265,6 +244,11 @@ public class step_2_siswa extends AppCompatActivity {
 
                 tb_bidang parentBidangSelector = (tb_bidang) parent.getSelectedItem();
                 id_bidang = parentBidangSelector.getId_bidang();
+                if (id_bidang==0) {
+                    Toast.makeText(getApplicationContext(),"Pilih Bidang Keahlilan",Toast.LENGTH_SHORT).show();
+
+                }
+
             }
 
             @Override
