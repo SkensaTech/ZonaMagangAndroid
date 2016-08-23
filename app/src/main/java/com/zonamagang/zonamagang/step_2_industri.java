@@ -146,6 +146,7 @@ public class step_2_industri extends AppCompatActivity {
 
                 step_2_industri.this.getLastTbBidangIndustri();
 
+
             }
             @Override
             public void handleFault( BackendlessFault fault )

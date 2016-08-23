@@ -7,7 +7,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -18,9 +21,24 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import org.w3c.dom.Text;
+
 public class AkunIndustri extends AppCompatActivity {
 
     private Drawer result = null;
+    private TextView nama_industri;
+    private TextView jalan_industri;
+    private TextView email_industri;
+    private TextView noTelp_industri;
+    private TextView profil_industri;
+    private TextView deskripsi_industri;
+    private TextView kemampuan_industri;
+
+    String namaIndustri,jalanIndustri,emailIndustri,
+            noTelpIndustri,profilIndustri,
+            deskripsiIndustri,kemampuanIndustri;
+
+    BackendlessUser userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

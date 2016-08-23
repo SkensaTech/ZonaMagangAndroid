@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -38,6 +39,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
+
 import com.squareup.picasso.Picasso;
 
 public class home_siswa_1 extends AppCompatActivity {
@@ -138,12 +140,22 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem.getIdentifier() == 1){
-                            Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
+                            Intent intent = new Intent(home_siswa_1.this, search_filter.class);
                             startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 2){
+                            Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
+                            startActivity(itent);
+//                            finish();
                         }
                         else if(drawerItem.getIdentifier() == 4){
                             Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
                             startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 5){
+                            finish();
+                            Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
+                            startActivity(intent);
                         }
                         else if(drawerItem.getIdentifier() == 6){
                             setContentView(R.layout.loading_screen);

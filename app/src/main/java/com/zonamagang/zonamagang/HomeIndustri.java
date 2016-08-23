@@ -50,13 +50,18 @@ public class HomeIndustri extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
-
     private Drawer result = null;
+
     BackendlessUser userInfo;
+
     String nama,email,logo;
+
     int id_user;
+
     public static final String TAG = "Home";
+
     Toolbar myToolbar;
+
     View homeIndustri;
 
     @Override

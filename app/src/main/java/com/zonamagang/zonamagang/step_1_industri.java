@@ -45,6 +45,8 @@ public class step_1_industri extends AppCompatActivity {
         kotas.add("Karangasem");
         ArrayAdapter<String> kota_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, kotas);
         kota.setAdapter(kota_adapter);
+
+
     }
 
     public void nextStep(View view){

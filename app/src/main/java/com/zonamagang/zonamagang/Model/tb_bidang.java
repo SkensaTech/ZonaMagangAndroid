@@ -18,6 +18,10 @@ public class tb_bidang {
         this.nama = nama;
     }
 
+    public tb_bidang(int id_bidang,String nama) {
+        this.id_bidang = id_bidang;
+        this.nama = nama;
+    }
     public int getId_bidang() {
         return id_bidang;
     }

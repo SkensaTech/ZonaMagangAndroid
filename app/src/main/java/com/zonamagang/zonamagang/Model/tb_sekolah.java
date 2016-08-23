@@ -9,7 +9,39 @@ import com.backendless.persistence.BackendlessDataQuery;
 
 public class tb_sekolah
 {
-  private String nama;
+  public int id_sekolah;
+  public String nama;
+
+  public tb_sekolah(){
+
+  }
+
+  public tb_sekolah(int id_sekolah, String nama){
+    this.id_sekolah = id_sekolah;
+    this.nama = nama;
+  }
+
+  public int getId_sekolah() {
+    return id_sekolah;
+  }
+
+  public String getNama() {
+    return nama;
+  }
+
+  public void setId_sekolah(int id_sekolah) {
+    this.id_sekolah = id_sekolah;
+  }
+
+  public void setNama(String nama) {
+    this.nama = nama;
+  }
+
+  @Override
+  public String toString(){
+    return nama;
+  }
+  /*private String nama;
   private String objectId;
   private String alamat;
   private java.util.Date updated;
@@ -77,6 +109,10 @@ public class tb_sekolah
     this.id_sekolah = id_sekolah;
   }
 
+  public tb_sekolah(int id_sekolah, String nama){
+    this.id_sekolah = id_sekolah;
+    this.nama = nama;
+  }
                                                     
   public tb_sekolah save()
   {
@@ -226,5 +262,5 @@ public class tb_sekolah
   public static void findAsync( BackendlessDataQuery query, AsyncCallback<BackendlessCollection<tb_sekolah>> callback )
   {
     Backendless.Data.of( tb_sekolah.class ).find( query, callback );
-  }
+  }*/
 }
