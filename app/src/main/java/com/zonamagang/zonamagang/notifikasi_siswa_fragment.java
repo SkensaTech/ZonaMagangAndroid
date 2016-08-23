@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
@@ -60,13 +61,14 @@ public class notifikasi_siswa_fragment extends Fragment {
                             }
 
                             ListView listView = (ListView) rootView.findViewById(R.id.notifikasi_siswa_layout_listView);
-                            notifikasi_siswa_adapter adapter = new notifikasi_siswa_adapter(getActivity(), listView);
+                            notifikasi_siswa_adapter adapter = new notifikasi_siswa_adapter(getActivity(), listNotif);
+                            listView.setAdapter(adapter);
 
                         }
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
-
+                            Toast.makeText(getActivity(),"Notif Siswa Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

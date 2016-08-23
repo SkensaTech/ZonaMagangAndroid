@@ -21,4 +21,12 @@ public class notifikasi_siswa_costum {
         this.kuota = kuota;
         this.logo = logo;
     }
+
+    public int getId_industri() {return id_industri;}
+    public String getNama() {return nama;}
+    public String getAlamat() {return alamat;}
+    public String getNo_telp() {return no_telp;}
+    public String getEmail() {return email;}
+    public int getKuota() {return kuota;}
+    public String getLogo() {return logo;}
 }
