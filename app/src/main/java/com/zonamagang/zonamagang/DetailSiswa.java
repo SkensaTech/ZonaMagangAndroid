@@ -19,6 +19,7 @@ import com.backendless.UserService;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
+import com.backendless.property.UserProperty;
 import com.squareup.picasso.Picasso;
 import com.zonamagang.zonamagang.Model.tb_bidang;
 import com.zonamagang.zonamagang.Model.tb_sekolah;
@@ -35,7 +36,7 @@ public class DetailSiswa extends AppCompatActivity {
     String email2;
     TextView alamat2;
     String bidang2;
-    TextView ttl2;
+    TextView ttl2, tanggal_lahir2, tempat_lahir2;
     TextView notelp2;
     Context context = this;
 
@@ -45,7 +46,10 @@ public class DetailSiswa extends AppCompatActivity {
         Backendless.initApp(this, Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
         setContentView(R.layout.activity_detail_siswa);
 
-        String whereClause = "id_user = 3";
+        BackendlessUser userNow = Backendless.UserService.CurrentUser();
+        String id_user_now = userNow.getProperty("id_user").toString();
+
+        String whereClause = "id_user = " + id_user_now;
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();
         dataQuery.setWhereClause(whereClause);
 
@@ -130,10 +134,12 @@ public class DetailSiswa extends AppCompatActivity {
                     alamat2.setText(alamat);
 
                     String tglLahir = responses.getTgl_lahir();
-                    String tempatLahir = responses.getTempat_lahir();
-                    ttl2 = (TextView)findViewById(R.id.ttlSiswa);
-                    ttl2.setText(tempatLahir +", "+ tglLahir);
+                    tanggal_lahir2 = (TextView)findViewById(R.id.tanggal_lahir);
+                    tanggal_lahir2.setText(tglLahir);
 
+                    String tempatLahir = responses.getTempat_lahir();
+                    tempat_lahir2 = (TextView)findViewById(R.id.tempat_lahir);
+                    tempat_lahir2.setText(tempatLahir);
 
                 }
             }

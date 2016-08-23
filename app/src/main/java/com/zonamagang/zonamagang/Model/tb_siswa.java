@@ -8,22 +8,22 @@ import com.backendless.geo.GeoPoint;
 import com.backendless.persistence.BackendlessDataQuery;
 
 public class tb_siswa {
-    private String objectId;
-    private java.util.Date updated;
-    private String ownerId;
-    private java.util.Date created;
-    private String foto;
-    private String tempat_lahir;
-    private Integer id_bidang;
-    private String nisn;
-    private Integer id_sekolah;
-    private String nama;
-    private String tgl_lahir;
-    private String alamat;
-    private Integer id_siswa;
-    private Integer id_user;
-    private String no_telp;
-    private String jenis_kelamin;
+    public String objectId;
+    public java.util.Date updated;
+    public String ownerId;
+    public java.util.Date created;
+    public String foto;
+    public String tempat_lahir;
+    public Integer id_bidang;
+    public String nisn;
+    public Integer id_sekolah;
+    public String nama;
+    public String tgl_lahir;
+    public String alamat;
+    public Integer id_siswa;
+    public Integer id_user;
+    public String no_telp;
+    public String jenis_kelamin;
 
     public String getObjectId()
     {
