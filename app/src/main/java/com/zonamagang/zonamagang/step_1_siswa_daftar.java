@@ -18,7 +18,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
     //deklarasi
     Button y;
     int array_bulan;
-    String sbulan,stahun,stanggal,stgllahir;
+    String sbulan,stahun,stanggal,stgllahir,pass,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,14 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        email = getIntent().getStringExtra("email");
+        pass = getIntent().getStringExtra("pass");
 
         //coding untuk spinner
         Spinner tahun = (Spinner) findViewById(R.id.tahun);
         List<String> tahuns = new ArrayList<>();
         tahuns.add("Tahun");
-        for (int i = 1999; i <= 2016; i++)
+        for (int i = 1990; i <= 2016; i++)
             tahuns.add(""+i);
         ArrayAdapter<String> tahun_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tahuns);
         tahun.setAdapter(tahun_adapter);
@@ -126,12 +127,14 @@ public class step_1_siswa_daftar extends AppCompatActivity {
                     EditText nisn = (EditText) findViewById(R.id.nisn);
                     EditText alamat = (EditText) findViewById(R.id.alamat);
                     EditText tl = (EditText) findViewById(R.id.tempat_lahir);
-                    next.putExtra("nisn",nisn.getText());
-                    next.putExtra("nama",nama.getText());
-                    next.putExtra("jk",kelamin.getText());
-                    next.putExtra("alamat",alamat.getText());
-                    next.putExtra("tl",tl.getText());
+                    next.putExtra("nisn",nisn.getText().toString());
+                    next.putExtra("nama",nama.getText().toString());
+                    next.putExtra("jk",kelamin.getText().toString());
+                    next.putExtra("alamat",alamat.getText().toString());
+                    next.putExtra("tl",tl.getText().toString());
                     next.putExtra("tgllahir",stgllahir);
+                    next.putExtra("email",email);
+                    next.putExtra("pass",pass);
                     startActivity(next);
                 }
             }

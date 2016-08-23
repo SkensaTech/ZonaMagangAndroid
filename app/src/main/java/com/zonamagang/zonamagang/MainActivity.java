@@ -1,6 +1,9 @@
 package com.zonamagang.zonamagang;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     EditText mLoginPass;
     String nama, logo, email, id_user_string;
     String foto;
+    int id_siswa;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent register = new Intent(getApplicationContext(), register1.class);
                 startActivity(register);
             }
-        });
+        }  );
     }
 
     public void doLogin(View view) {
@@ -88,7 +93,23 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void handleFault(BackendlessFault fault) {
                                     // an error has occurred, the error code can be retrieved with fault.getCode()
-                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                                    new AlertDialog.Builder(context)
+                                            .setTitle("Alert")
+                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            })
+                                            .setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            })
+                                            .show();
                                 }
                             });
 
@@ -109,11 +130,14 @@ public class MainActivity extends AppCompatActivity {
                                         tb_siswa siswaInfo = iterator.next();
                                         nama = siswaInfo.getNama();
                                         foto = siswaInfo.getFoto();
+                                        id_siswa = siswaInfo.getId_siswa();
+                                        String id_siswa_string = Integer.toString(id_siswa);
 
                                         Intent homeSiswa = new Intent(MainActivity.this, home_siswa_1.class);
                                         homeSiswa.putExtra("email", email);
                                         homeSiswa.putExtra("nama", nama);
                                         homeSiswa.putExtra("foto", foto);
+                                        homeSiswa.putExtra("id_siswa",id_siswa_string);
                                         startActivity(homeSiswa);
                                     }
                                 }
@@ -121,7 +145,23 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void handleFault(BackendlessFault fault) {
                                     // an error has occurred, the error code can be retrieved with fault.getCode()
-                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                                    new AlertDialog.Builder(context)
+                                            .setTitle("Alert")
+                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    finish();
+                                                }
+                                            })
+                                            .setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            })
+                                            .show();
                                 }
                             });
                 }
@@ -129,7 +169,19 @@ public class MainActivity extends AppCompatActivity {
 
             public void handleFault(BackendlessFault fault) {
                 // login failed, to get the error code call fault.getCode()
-                Toast.makeText(MainActivity.this, "Login Failed. " + fault.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, "Login Failed. " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                new AlertDialog.Builder(context)
+                        .setTitle("Alert")
+                        .setMessage("Failed to get industri info, "+fault.getMessage())
+                        .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
             }
         });
     }

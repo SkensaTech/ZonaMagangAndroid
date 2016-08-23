@@ -167,6 +167,7 @@ public class step_2_industri extends AppCompatActivity {
 
                 step_2_industri.this.getLastTbBidangIndustri();
 
+
             }
 
             @Override
@@ -330,7 +331,7 @@ public class step_2_industri extends AppCompatActivity {
                 Toast.makeText(step_2_industri.this, "Error ! " + fault.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
-        ArrayAdapter<tb_parent_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, parent_bidang);
+        ArrayAdapter<tb_parent_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, parent_bidang);
         mParentBidang.setAdapter(parent_bidang_adapter);
     }
 
@@ -360,7 +361,7 @@ public class step_2_industri extends AppCompatActivity {
                 Toast.makeText(step_2_industri.this, "Error ! " + fault.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
-        ArrayAdapter<tb_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bidang);
+        ArrayAdapter<tb_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bidang);
         mBidang.setAdapter(parent_bidang_adapter);
     }
 

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -38,6 +39,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
+
 import com.squareup.picasso.Picasso;
 
 public class home_siswa_1 extends AppCompatActivity {
@@ -49,6 +51,7 @@ public class home_siswa_1 extends AppCompatActivity {
     String email, foto, nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
 
@@ -86,8 +89,6 @@ public class home_siswa_1 extends AppCompatActivity {
             public void cancel(ImageView imageView) {
                 Picasso.with(imageView.getContext()).cancelRequest(imageView);
             }
-
-
         });
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
@@ -137,12 +138,21 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem.getIdentifier() == 1){
-                            Intent intent = new Intent(home_siswa_1.this, DetailSiswaOlehIndustri.class);
+                            Intent intent = new Intent(home_siswa_1.this, search_filter.class);
                             startActivity(intent);
+                        }
+                        else if (drawerItem.getIdentifier() == 3){
+                            Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
+                            startActivity(itent);
+//                            finish();
                         }
                         else if(drawerItem.getIdentifier() == 4){
                             Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
                             startActivity(itent);
+                        }
+                        else if (drawerItem.getIdentifier() == 5){
+                            Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
+                            startActivity(intent);
                         }
                         else if(drawerItem.getIdentifier() == 6){
                             setContentView(R.layout.loading_screen);
@@ -172,6 +182,7 @@ public class home_siswa_1 extends AppCompatActivity {
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuin = getMenuInflater();
