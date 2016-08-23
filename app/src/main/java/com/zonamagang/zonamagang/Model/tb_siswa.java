@@ -8,24 +8,19 @@ import com.backendless.geo.GeoPoint;
 import com.backendless.persistence.BackendlessDataQuery;
 
 public class tb_siswa {
-    private java.util.Date updated;
     private String foto;
-    private java.util.Date created;
     private String tempat_lahir;
     private Integer id_bidang;
     private String nisn;
-    private String objectId;
     private Integer id_sekolah;
     private String nama;
     private String tgl_lahir;
-    private String ownerId;
     private String alamat;
     private Integer id_siswa;
     private Integer id_user;
+    private String no_telp;
+    private String jenis_kelamin;
 
-    public java.util.Date getUpdated() {
-        return updated;
-    }
 
     public String getFoto() {
         return foto;
@@ -33,10 +28,6 @@ public class tb_siswa {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public java.util.Date getCreated() {
-        return created;
     }
 
     public String getTempat_lahir() {
@@ -63,10 +54,12 @@ public class tb_siswa {
         this.nisn = nisn;
     }
 
-    public String getObjectId() {
-        return objectId;
+    public String get_no_telp(){
+        return  no_telp;
     }
-
+    public void setNo_telp(String no_telp) {
+        this.no_telp = no_telp;
+    }
     public Integer getId_sekolah() {
         return id_sekolah;
     }
@@ -89,10 +82,6 @@ public class tb_siswa {
 
     public void setTgl_lahir(String tgl_lahir) {
         this.tgl_lahir = tgl_lahir;
-    }
-
-    public String getOwnerId() {
-        return ownerId;
     }
 
     public String getAlamat() {
@@ -119,7 +108,13 @@ public class tb_siswa {
         this.id_user = id_user;
     }
 
+    public String getJenis_kelamin(){
+        return jenis_kelamin;
+    }
 
+    public void setJenis_kelamin(String jenis_kelamin){
+        this.jenis_kelamin = jenis_kelamin;
+    }
     public tb_siswa save() {
         return Backendless.Data.of(tb_siswa.class).save(this);
     }

@@ -153,7 +153,7 @@ public class step_2_siswa extends AppCompatActivity {
 
     public void isiSpinnerParent(){
         listsekolah = new ArrayList<>();
-        listsekolah.add(new tb_sekolah(0,"Pilih bidang industri anda."));
+        listsekolah.add(new tb_sekolah(0,"Pilih Sekolah Anda"));
         Backendless.Data.mapTableToClass( "tb_sekolah", tb_sekolah.class );
         Backendless.Persistence.of(tb_sekolah.class).find( new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
             @Override
