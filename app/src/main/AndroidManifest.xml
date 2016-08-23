@@ -42,7 +42,7 @@
             android:label="Daftar" />
         <activity
             android:name=".register2"
-            android:label="Daftar"
+            android:label="Daftar Industri"
             android:parentActivityName=".register1" />
         //activity step siswa daftar
         <activity
@@ -61,13 +61,19 @@
             android:name=".search_filter"
             android:label="Cari Industri"
             android:parentActivityName=".home_siswa_1" />
+        <activity
+            android:name=".step_1_industri"
+            android:label="Daftar Industri"
+            android:parentActivityName=".register2"/>
+        <activity
+            android:name=".step_2_industri"
+            android:label="Daftar Industri"
+            android:parentActivityName=".step_1_industri"/>
         <activity android:name=".DetailSiswaOlehIndustri" />
         <activity android:name=".detail_industri" />
         <activity android:name=".Notifikasi_Industri" />
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri" />
-        <activity android:name=".step_1_industri" />
-        <activity android:name=".step_2_industri" />
         <activity android:name=".UpdateAkun" android:label="Akun Saya"/>
         <activity android:name=".DetailSiswa" />
         <activity android:name=".notifikasi_siswa" />

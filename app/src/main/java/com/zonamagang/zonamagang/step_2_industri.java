@@ -68,6 +68,12 @@ public class step_2_industri extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_industri);
+        //untuk toolbar
+        Toolbar x = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(x);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.layoutItems();
+
         Backendless.initApp( this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION );
         this.layoutItems();
 
@@ -101,8 +107,8 @@ public class step_2_industri extends AppCompatActivity {
         //step2
         id_industri = 0;
 
-        Toolbar x = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(x);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
@@ -112,8 +118,7 @@ public class step_2_industri extends AppCompatActivity {
 
         String kosong = null;
         if (mKuota.getText().toString().equals("") || mProfil.getText().toString().equals("") || mJobdesc.getText().toString().equals("")
-                || mKualifikasi.getText().toString().equals("") || mParentBidang.getSelectedItem().toString().equals("Pilih bidang industri anda")
-                || mBidang.getSelectedItem().toString().equals("Pilih sub bidang industri anda.")|| logo.equals("kosong")) {
+                || mKualifikasi.getText().toString().equals("")|| id_parent_bidang == 0 || id_bidang == 0 || logo.equals("kosong")) {
             Toast.makeText(this, "Ada data yang kosong !", Toast.LENGTH_SHORT).show();
         } else {
 

@@ -1,8 +1,10 @@
 package com.zonamagang.zonamagang;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +32,13 @@ public class step_1_industri extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_1_industri);
         this.layoutItems();
+
+
+        //coding toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         input = (EditText) findViewById(R.id.industri_step_1_nama);
         check = (Button) findViewById(R.id.industri_step_1_submit);
