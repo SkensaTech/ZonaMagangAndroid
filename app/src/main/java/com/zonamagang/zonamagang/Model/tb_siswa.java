@@ -7,7 +7,8 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.geo.GeoPoint;
 import com.backendless.persistence.BackendlessDataQuery;
 
-public class tb_siswa {
+public class
+tb_siswa {
     private String objectId;
     private java.util.Date updated;
     private String ownerId;

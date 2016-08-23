@@ -11,8 +11,9 @@ public class notifikasi_siswa_costum {
     private String email;
     private int kuota;
     private String logo;
+    private String notif;
 
-    public notifikasi_siswa_costum(int id_industri, String nama, String alamat, String no_telp, String email, int kuota, String logo) {
+    public notifikasi_siswa_costum(int id_industri, String nama, String alamat, String no_telp, String email, int kuota, String logo, String notif) {
         this.id_industri = id_industri;
         this.nama = nama;
         this.alamat = alamat;
@@ -20,6 +21,7 @@ public class notifikasi_siswa_costum {
         this.email = email;
         this.kuota = kuota;
         this.logo = logo;
+        this.notif = notif;
     }
 
     public int getId_industri() {return id_industri;}
@@ -29,4 +31,5 @@ public class notifikasi_siswa_costum {
     public String getEmail() {return email;}
     public int getKuota() {return kuota;}
     public String getLogo() {return logo;}
+    public String getNotif() {return notif;}
 }
