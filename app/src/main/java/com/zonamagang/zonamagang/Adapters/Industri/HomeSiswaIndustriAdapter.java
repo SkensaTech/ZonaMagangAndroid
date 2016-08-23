@@ -30,6 +30,7 @@ import com.backendless.UserService;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
+import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.squareup.picasso.Picasso;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_magang;
@@ -37,6 +38,7 @@ import com.zonamagang.zonamagang.Model.tb_siswa;
 import com.zonamagang.zonamagang.R;
 import com.zonamagang.zonamagang.detail_industri;
 import com.zonamagang.zonamagang.dialogInterviewFragment;
+import com.zonamagang.zonamagang.home_siswa_1;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -65,7 +67,6 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View listItemView = convertView;
         if(listItemView == null){
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.siswa_industri_belum_item,parent,false);
@@ -249,7 +250,6 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
     public void saveTbMagang(){
         // last contact instance has been found
         //INSERT TO TBMAGANG
-        Toast.makeText(getContext(),"Start saveTbMagang",Toast.LENGTH_SHORT).show();
         tb_magang tbmagang = new tb_magang();
         tbmagang.setStatus_diterima(1);
         tbmagang.setId_industri(id_industri_now);
@@ -270,10 +270,14 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
                         .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Intent detailIndustriIntent = new Intent(getContext(), home_siswa_1.class);
+                                getContext().startActivity(detailIndustriIntent);
                                 dialog.dismiss();
                             }
                         })
                         .show();
+                Intent detailIndustriIntent = new Intent(getContext(), home_siswa_1.class);
+                getContext().startActivity(detailIndustriIntent);
             }
 
             public void handleFault( BackendlessFault fault )
