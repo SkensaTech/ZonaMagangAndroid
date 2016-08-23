@@ -31,9 +31,10 @@ public class step_3_siswa extends AppCompatActivity {
     ImageView mLogo;
     String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass,foto;
     String telp;
-    Bitmap mapfoto;
+    Bitmap bMap_image;
+
     EditText notelp;
-    tb_siswa simpansiswa;
+    tb_siswa saveSiswa;
     int id_user,id_siswa,id_bidang,id_sekolah;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +52,14 @@ public class step_3_siswa extends AppCompatActivity {
         jeniskelamin = getIntent().getStringExtra("jeniskelamin");
         provinsi = getIntent().getStringExtra("provinsi");
         kota = getIntent().getStringExtra("kota");
-        sekolah = getIntent().getStringExtra("sekolah");
-        bidang = getIntent().getStringExtra("bidang");
+        sekolah = getIntent().getStringExtra("id_sekolah");
+        bidang = getIntent().getStringExtra("id_bidang");
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
         telp = notelp.getText().toString();
         //coding untuk toolbar
-        String All = nisn+" "+nama+" "+alamat+" "+tempat+" "+tgl+" "+jeniskelamin+" "+provinsi+" "+kota+" "+sekolah+" "+bidang+" "+email+" "+pass;
+        id_sekolah = Integer.parseInt(sekolah);
+        id_bidang = Integer.parseInt(bidang);
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,23 +78,24 @@ public class step_3_siswa extends AppCompatActivity {
         switch (requestCode) {
             case 1:
             {
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK)
+                {
                     Uri photoUri = data.getData();
-                    if (photoUri != null) {
+                    if (photoUri != null)
+                    {
                         try {
-                            String[] filePathColumn = {
-                                    MediaStore.Images.Media.DATA
-                            };
+                            String[] filePathColumn = {MediaStore.Images.Media.DATA};
                             Cursor cursor = getContentResolver().query(photoUri, filePathColumn, null, null, null);
                             cursor.moveToFirst();
                             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                             String filePath = cursor.getString(columnIndex);
                             cursor.close();
-                            Bitmap bMap_image = BitmapFactory.decodeFile(filePath);
+                            bMap_image = BitmapFactory.decodeFile(filePath);
                             mLogo.setImageBitmap(bMap_image);
 
 
-                        } catch (Exception e) {}
+                        }catch(Exception e)
+                        {}
                     }
                 }
             }
@@ -134,7 +137,7 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleResponse( tb_siswa siswaInfo )
             {
                 id_siswa = siswaInfo.getId_siswa() + 1;
-
+                step_3_siswa.this.saveSiswaInfo();
             }
             @Override
             public void handleFault( BackendlessFault fault )
@@ -147,7 +150,7 @@ public class step_3_siswa extends AppCompatActivity {
 
     public void saveSiswaInfo(){
 
-        tb_siswa saveSiswa = new tb_siswa();
+        saveSiswa = new tb_siswa();
         saveSiswa.setId_siswa(id_siswa);
         saveSiswa.setId_user(id_user);
         saveSiswa.setId_bidang(id_bidang);
@@ -160,10 +163,10 @@ public class step_3_siswa extends AppCompatActivity {
         saveSiswa.setTempat_lahir(tempat);
         saveSiswa.setTgl_lahir(tgl);
 
-        Backendless.Files.Android.upload( mapfoto,
+        Backendless.Files.Android.upload( bMap_image,
                 Bitmap.CompressFormat.PNG,
                 100,
-                id_user+"_industri_logo.png",
+                id_user+"_siswa_logo.png",
                 "mypics",
                 new AsyncCallback<BackendlessFile>()
                 {
@@ -171,9 +174,10 @@ public class step_3_siswa extends AppCompatActivity {
                     public void handleResponse( final BackendlessFile backendlessFile )
                     {
                         foto = backendlessFile.getFileURL();
-                        step_3_siswa.this.simpansiswa.setFoto(foto);
+                        step_3_siswa.this.saveSiswa.setFoto(foto);
+
                         // save object asynchronously
-                        Backendless.Persistence.save( simpansiswa, new AsyncCallback<tb_siswa>() {
+                      Backendless.Persistence.save( saveSiswa, new AsyncCallback<tb_siswa>() {
                             public void handleResponse( tb_siswa response )
                             {
                                 step_3_siswa.this.registerSuccess();
@@ -195,14 +199,12 @@ public class step_3_siswa extends AppCompatActivity {
     }
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
-        //check last user
         Backendless.Persistence.of( last_id.class).findLast(new AsyncCallback<last_id>(){
             @Override
-            public void handleResponse( last_id industriInfo )
+            public void handleResponse( last_id siswaInfo )
             {
-                id_user = industriInfo.getId_user() + 1;
+                id_user = siswaInfo.getId_user() + 1;
                 step_3_siswa.this.addUserInfo();
-
             }
             @Override
             public void handleFault( BackendlessFault fault )
@@ -229,6 +231,7 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleFault( BackendlessFault fault )
             {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
+                Toast.makeText(getApplicationContext(),"tes",Toast.LENGTH_SHORT).show();
             }
         });
 

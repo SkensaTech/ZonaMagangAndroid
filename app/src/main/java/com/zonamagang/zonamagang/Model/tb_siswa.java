@@ -8,6 +8,10 @@ import com.backendless.geo.GeoPoint;
 import com.backendless.persistence.BackendlessDataQuery;
 
 public class tb_siswa {
+    private String objectId;
+    private java.util.Date updated;
+    private String ownerId;
+    private java.util.Date created;
     private String foto;
     private String tempat_lahir;
     private Integer id_bidang;
@@ -21,7 +25,18 @@ public class tb_siswa {
     private String no_telp;
     private String jenis_kelamin;
 
-
+    public String getObjectId()
+    {
+        return objectId;
+    }
+    public java.util.Date getUpdated()
+    {
+        return updated;
+    }
+    public String getOwnerId()
+    {
+        return ownerId;
+    }
     public String getFoto() {
         return foto;
     }
@@ -67,7 +82,9 @@ public class tb_siswa {
     public void setId_sekolah(Integer id_sekolah) {
         this.id_sekolah = id_sekolah;
     }
-
+    public void setObjectId( String objectId ) {
+        this.objectId = objectId;
+    }
     public String getNama() {
         return nama;
     }

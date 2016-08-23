@@ -81,6 +81,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="50dp"
                 android:background="@color/colorAccent"
+                android:onClick="onSubmit"
                 android:textColor="#fefefe"/>
 
         </LinearLayout>
