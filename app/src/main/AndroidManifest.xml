@@ -61,7 +61,6 @@
             android:name=".search_filter"
             android:label="Cari Industri"
             android:parentActivityName=".home_siswa_1" />
-
         <activity android:name=".DetailSiswaOlehIndustri" />
         <activity android:name=".detail_industri" />
         <activity android:name=".Notifikasi_Industri" />
@@ -69,8 +68,10 @@
         <activity android:name=".AkunIndustri" />
         <activity android:name=".step_1_industri" />
         <activity android:name=".step_2_industri" />
-        <activity android:name=".UpdateAkun" />
-        <activity android:name=".DetailSiswa"></activity>
+        <activity android:name=".UpdateAkun" android:label="Akun Saya"/>
+        <activity android:name=".DetailSiswa" />
+        <activity android:name=".notifikasi_siswa" />
+        <activity android:name=".UpdateAkunSiswa"></activity>
     </application>
 
 </manifest>

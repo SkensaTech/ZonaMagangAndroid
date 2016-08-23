@@ -37,21 +37,26 @@ public class step_2_siswa extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_siswa);
+
         nisn = getIntent().getStringExtra("nisn");
         nama = getIntent().getStringExtra("nama");
         alamat = getIntent().getStringExtra("alamat");
         jk = getIntent().getStringExtra("jk");
         tl = getIntent().getStringExtra("tl");
         tgl = getIntent().getStringExtra("tgllahir");
+        pass = getIntent().getStringExtra("pass");
+
+        email = getIntent().getStringExtra("email");
         ttl = tl+","+tgl;
+       // String All = nisn+" "+nama+" "+alamat+" "+tl+" "+tgl+" "+jk+" "+email+" "+pass;
+       // Toast.makeText(getApplicationContext(),All,Toast.LENGTH_SHORT).show();
         //coding untuk toolbar
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        email = getIntent().getStringExtra("email");
         sekolah = (Spinner) findViewById(R.id.spinnerSekolah);
         bidang = (Spinner) findViewById(R.id.spinnerBidang);
-        pass = getIntent().getStringExtra("pass");
+
         //coding untuk jika button click
         this.isiSpinnerParent();
         this.eventListeners();
@@ -104,6 +109,9 @@ public class step_2_siswa extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent nextpage = new Intent(getApplicationContext(),step_3_siswa.class);
+              String scl,bdg;
+                scl = Integer.toString(id_sekolah);
+                bdg = Integer.toString(id_bidang);
                 nextpage.putExtra("nisn",nisn);
                 nextpage.putExtra("nama",nama);
                 nextpage.putExtra("jeniskelamin",jk);
@@ -112,12 +120,12 @@ public class step_2_siswa extends AppCompatActivity {
                 nextpage.putExtra("tanggal",tgl);
                 nextpage.putExtra("provinsi",sprovinsi);
                 nextpage.putExtra("kota",skota);
-                nextpage.putExtra("sekolah",id_sekolah);
-                nextpage.putExtra("bidang",id_bidang);
+                nextpage.putExtra("id_sekolah",scl);
+                nextpage.putExtra("id_bidang",bdg);
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
-                startActivity(nextpage);
-
+               // Toast.makeText(getApplicationContext(),scl+" "+bdg,Toast.LENGTH_SHORT).show();
+              startActivity(nextpage);
 
             }
         });
@@ -153,7 +161,7 @@ public class step_2_siswa extends AppCompatActivity {
 
     public void isiSpinnerParent(){
         listsekolah = new ArrayList<>();
-        listsekolah.add(new tb_sekolah(0,"Pilih bidang industri anda."));
+        listsekolah.add(new tb_sekolah(0,"Pilih Sekolah Anda"));
         Backendless.Data.mapTableToClass( "tb_sekolah", tb_sekolah.class );
         Backendless.Persistence.of(tb_sekolah.class).find( new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
             @Override

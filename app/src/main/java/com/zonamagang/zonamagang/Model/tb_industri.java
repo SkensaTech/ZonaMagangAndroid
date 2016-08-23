@@ -182,7 +182,9 @@ public class tb_industri
   {
     this.profil = profil;
   }
-
+  public void setObjectId( String objectId ) {
+    this.objectId = objectId;
+  }
                                                     
   public tb_industri save()
   {
