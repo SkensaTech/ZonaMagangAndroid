@@ -71,6 +71,7 @@
         <activity android:name=".step_2_industri" />
         <activity android:name=".UpdateAkun" />
         <activity android:name=".DetailSiswa"></activity>
+        <activity android:name=".notifikasi_siswa"></activity>
     </application>
 
 </manifest>

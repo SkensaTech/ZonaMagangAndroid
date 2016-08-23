@@ -141,7 +141,7 @@ public class home_siswa_1 extends AppCompatActivity {
                             Intent intent = new Intent(home_siswa_1.this, search_filter.class);
                             startActivity(intent);
                         }
-                        else if (drawerItem.getIdentifier() == 2){
+                        else if (drawerItem.getIdentifier() == 3){
                             Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
                             startActivity(itent);
 //                            finish();
