@@ -162,7 +162,7 @@ public class step_3_siswa extends AppCompatActivity {
         saveSiswa.setNisn(nisn);
         saveSiswa.setTempat_lahir(tempat);
         saveSiswa.setTgl_lahir(tgl);
-
+        try {
         Backendless.Files.Android.upload( bMap_image,
                 Bitmap.CompressFormat.PNG,
                 100,
@@ -193,9 +193,11 @@ public class step_3_siswa extends AppCompatActivity {
                     @Override
                     public void handleFault( BackendlessFault backendlessFault )
                     {
-                        Toast.makeText( step_3_siswa.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
+                        Toast.makeText( step_3_siswa.this, "NGENTOOOOT"+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
                     }
                 });
+        }catch(Exception e)
+        {}
     }
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
