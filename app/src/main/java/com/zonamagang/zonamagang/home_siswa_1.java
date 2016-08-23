@@ -51,6 +51,7 @@ public class home_siswa_1 extends AppCompatActivity {
     String email, foto, nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
 
@@ -88,8 +89,6 @@ public class home_siswa_1 extends AppCompatActivity {
             public void cancel(ImageView imageView) {
                 Picasso.with(imageView.getContext()).cancelRequest(imageView);
             }
-
-
         });
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
@@ -143,16 +142,15 @@ public class home_siswa_1 extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else if (drawerItem.getIdentifier() == 2){
-                            Intent itent = new Intent(home_siswa_1.this,notifikasi_siswa.class);
+                            Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
                             startActivity(itent);
-                            finish();
+//                            finish();
                         }
                         else if(drawerItem.getIdentifier() == 4){
                             Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
                             startActivity(itent);
                         }
                         else if (drawerItem.getIdentifier() == 5){
-                            finish();
                             Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
                             startActivity(intent);
                         }
@@ -184,6 +182,7 @@ public class home_siswa_1 extends AppCompatActivity {
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuin = getMenuInflater();

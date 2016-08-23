@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mLoginPass;
     String nama, logo, email, id_user_string;
     String foto;
+    int id_siswa;
     Context context = this;
 
     @Override
@@ -129,11 +130,14 @@ public class MainActivity extends AppCompatActivity {
                                         tb_siswa siswaInfo = iterator.next();
                                         nama = siswaInfo.getNama();
                                         foto = siswaInfo.getFoto();
+                                        id_siswa = siswaInfo.getId_siswa();
+                                        String id_siswa_string = Integer.toString(id_siswa);
 
                                         Intent homeSiswa = new Intent(MainActivity.this, home_siswa_1.class);
                                         homeSiswa.putExtra("email", email);
                                         homeSiswa.putExtra("nama", nama);
                                         homeSiswa.putExtra("foto", foto);
+                                        homeSiswa.putExtra("id_siswa",id_siswa_string);
                                         startActivity(homeSiswa);
                                     }
                                 }

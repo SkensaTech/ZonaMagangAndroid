@@ -58,6 +58,7 @@ public class detail_industri extends AppCompatActivity {
                     kualifikasi = industriInfo.getKualifikasi();
                     kuota = industriInfo.getKuota();
                     logo = industriInfo.getLogo();
+                    profil = industriInfo.getProfil();
                     detail_industri.this.isiLayoutItem();
                 }
             }
@@ -80,6 +81,7 @@ public class detail_industri extends AppCompatActivity {
         TextView layoutJobdesc = (TextView)findViewById(R.id.detail_industri_jobdesc);
         TextView layoutKualifikasi = (TextView)findViewById(R.id.detail_industri_kualifikasi);
         ImageView layoutLogo = (ImageView)findViewById(R.id.gambarSiswa2);
+        TextView layoutKuota = (TextView)findViewById(R.id.detail_industri_kuota);
 
         layoutNama.setText(nama);
         layoutAlamat.setText(alamat);
@@ -88,6 +90,8 @@ public class detail_industri extends AppCompatActivity {
         layoutProfil.setText(profil);
         layoutJobdesc.setText(jobdesc);
         layoutKualifikasi.setText(kualifikasi);
+        layoutKuota.setText("Maksimal "+kuota+" siswa.");
+
         Picasso.with(getApplicationContext()).load(logo).into(layoutLogo);
     }
 
