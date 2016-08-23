@@ -17,6 +17,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
 import com.squareup.picasso.Picasso;
+import com.zonamagang.zonamagang.Model.tb_bidang;
 import com.zonamagang.zonamagang.Model.tb_sekolah;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 
@@ -49,11 +50,12 @@ public class DetailSiswa extends AppCompatActivity {
             @Override
             public void handleResponse(BackendlessCollection<tb_siswa> response) {
 
-                ProgressDialog dialog = new ProgressDialog(DetailSiswa.this);
-                dialog.setMessage("Your message..");
-                dialog.show();
-
                 if (response.getData().size() == 1){
+
+                    ProgressDialog dialog = new ProgressDialog(DetailSiswa.this);
+                    dialog.setMessage("Your message..");
+                    dialog.show();
+
                     tb_siswa responses = response.getData().get(0);
 
                     String imageUri = responses.getFoto();
@@ -86,6 +88,33 @@ public class DetailSiswa extends AppCompatActivity {
 
                         }
                     });
+
+                    String IdBidang = responses.getId_bidang().toString();
+                    String where2 = "id_bidang = "+IdBidang;
+                    BackendlessDataQuery dataQuery2 = new BackendlessDataQuery();
+                    dataQuery2.setWhereClause(where2);
+
+                    Backendless.Persistence.of(tb_bidang.class).find(dataQuery2, new AsyncCallback<BackendlessCollection<tb_bidang>>() {
+                        @Override
+                        public void handleResponse(BackendlessCollection<tb_bidang> response) {
+                            List<tb_bidang>firstPage =response.getCurrentPage();
+                            Iterator<tb_bidang> iterator = firstPage.iterator();
+
+                            while (iterator.hasNext()){
+                                tb_bidang dataBidang = iterator.next();
+                                String namaBidang = dataBidang.getNama();
+                                TextView nmBidang = (TextView)findViewById(R.id.bidangSiswa);
+                                nmBidang.setText(namaBidang);
+                            }
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
+
+//                    String IdTelpon = responses.getId
 
                     String nama = responses.getNama();
                     nama2 = (TextView)findViewById(R.id.namaSiswa);
