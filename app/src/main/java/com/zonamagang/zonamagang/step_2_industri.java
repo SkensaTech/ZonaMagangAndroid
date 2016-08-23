@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,17 +40,20 @@ import java.util.List;
 public class step_2_industri extends AppCompatActivity {
 
     ImageView mLogo;
-    TextView mKuota;
-    TextView mProfil;
-    TextView mJobdesc;
-    TextView mKualifikasi;
+    EditText mKuota;
+    EditText mProfil;
+    EditText mJobdesc;
+    EditText mKualifikasi;
     Button mSubmit;
     Spinner mBidang;
     Spinner mParentBidang;
+    private EditText input;
+    private Button check;
+
     //Sebelumnya :
     String email,pass,nama,alamat,telp,kota;
     //step2:
-    String profil,jobdesc,kualifikasi,provinsi="Bali",logo;
+    String profil,jobdesc,kualifikasi,provinsi="Bali",logo="kosong";
     int id_industri,id_bidang,id_user,kuota,id_bidang_industri;
     Bitmap bMap_image;
     tb_industri saveIndustri;
@@ -74,6 +78,18 @@ public class step_2_industri extends AppCompatActivity {
         this.eventListeners();
         this.setSpinnerBidangListener();
 
+        input = (EditText) findViewById(R.id.industri_step_2_kuota);
+        check = (Button) findViewById(R.id.industri_step_2_submit);
+
+
+//        check.setOnClickListener(new View.OnClickListener() {
+//                                     @Override
+//                                     public void onClick(View arg0) {
+//
+//
+//                                     }
+//                                 });
+
         //All Info Industri
         //Sebelumnya:
         email = getIntent().getStringExtra("email");
@@ -92,113 +108,115 @@ public class step_2_industri extends AppCompatActivity {
 
     }
 
-    public void onSubmit(View view){
-        setContentView(R.layout.loading_screen);
-        //check last user
-        Backendless.Persistence.of( last_id.class).findLast(new AsyncCallback<last_id>(){
-            @Override
-            public void handleResponse( last_id industriInfo )
-            {
-                id_user = industriInfo.getId_user() + 1;
-                step_2_industri.this.addUserInfo();
+    public void onSubmit(View view) {
 
-            }
-            @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"findLast user failed, "+fault.getMessage(),Toast.LENGTH_LONG).show();
-                id_user = 1;
-                step_2_industri.this.addUserInfo();
-            }
-        });
+        String kosong = null;
+        if (mKuota.getText().toString().equals("") || mProfil.getText().toString().equals("") || mJobdesc.getText().toString().equals("")
+                || mKualifikasi.getText().toString().equals("") || mParentBidang.getSelectedItem().toString().equals("Pilih bidang industri anda")
+                || mBidang.getSelectedItem().toString().equals("Pilih sub bidang industri anda.")|| logo.equals("kosong")) {
+            Toast.makeText(this, "Ada data yang kosong !", Toast.LENGTH_SHORT).show();
+        } else {
+
+
+            setContentView(R.layout.loading_screen);
+            //check last user
+            Backendless.Persistence.of(last_id.class).findLast(new AsyncCallback<last_id>() {
+                @Override
+                public void handleResponse(last_id industriInfo) {
+                    id_user = industriInfo.getId_user() + 1;
+                    step_2_industri.this.addUserInfo();
+
+                }
+
+                @Override
+                public void handleFault(BackendlessFault fault) {
+                    Toast.makeText(step_2_industri.this, "findLast user failed, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                    id_user = 1;
+                    step_2_industri.this.addUserInfo();
+                }
+            });
+        }
     }
 
-    public void addUserInfo(){
+    public void addUserInfo() {
         BackendlessUser user = new BackendlessUser();
-        user.setProperty( "email", email);
-        user.setProperty("status_aktif",1);
-        user.setProperty("user_level",2);
-        user.setProperty("id_user",id_user);
-        user.setPassword( pass );
+        user.setProperty("email", email);
+        user.setProperty("status_aktif", 1);
+        user.setProperty("user_level", 2);
+        user.setProperty("id_user", id_user);
+        user.setPassword(pass);
 
-        Backendless.UserService.register( user, new AsyncCallback<BackendlessUser>()
-        {
-            public void handleResponse( BackendlessUser registeredUser )
-            {
+        Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
+            public void handleResponse(BackendlessUser registeredUser) {
                 //registered tapi belum login
                 step_2_industri.this.addIndustriInfo();
             }
 
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(step_2_industri.this, "There's an Error ! Code = " + fault.getCode(), Toast.LENGTH_SHORT).show();
                 // ada error. bisa di retrieved with fault.getCode()
             }
-        } );
+        });
     }
 
-    public void addIndustriInfo(){
-        Backendless.Persistence.of( tb_industri.class).findLast( new AsyncCallback<tb_industri>(){
+    public void addIndustriInfo() {
+        Backendless.Persistence.of(tb_industri.class).findLast(new AsyncCallback<tb_industri>() {
             @Override
-            public void handleResponse( tb_industri industriInfo )
-            {
+            public void handleResponse(tb_industri industriInfo) {
                 id_industri = industriInfo.getId_industri() + 1;
 
                 step_2_industri.this.getLastTbBidangIndustri();
 
             }
+
             @Override
-            public void handleFault( BackendlessFault fault )
-            {
+            public void handleFault(BackendlessFault fault) {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
-                Toast.makeText(step_2_industri.this,"findLast industri error, "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(step_2_industri.this, "findLast industri error, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                 id_industri = 1;
                 step_2_industri.this.getLastTbBidangIndustri();
             }
         });
     }
 
-    public void getLastTbBidangIndustri(){
-        Backendless.Persistence.of( tb_bidang_industri.class).findLast( new AsyncCallback<tb_bidang_industri>(){
+    public void getLastTbBidangIndustri() {
+        Backendless.Persistence.of(tb_bidang_industri.class).findLast(new AsyncCallback<tb_bidang_industri>() {
             @Override
-            public void handleResponse( tb_bidang_industri item )
-            {
+            public void handleResponse(tb_bidang_industri item) {
                 id_bidang_industri = item.getId_bidang_industri() + 1;
                 step_2_industri.this.addTbBidangIndustriInfo();
             }
+
             @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"findLast industri failed, "+fault.getMessage(),Toast.LENGTH_LONG).show();
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(step_2_industri.this, "findLast industri failed, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                 id_bidang_industri = 1;
                 step_2_industri.this.addTbBidangIndustriInfo();
             }
         });
     }
 
-    public void addTbBidangIndustriInfo(){
+    public void addTbBidangIndustriInfo() {
         tb_bidang_industri bidangIndustriInfo = new tb_bidang_industri();
         bidangIndustriInfo.setId_bidang(id_bidang);
         bidangIndustriInfo.setId_bidang_industri(id_bidang_industri);
         bidangIndustriInfo.setId_industri(id_industri);
 
         // save object asynchronously
-        Backendless.Persistence.save( bidangIndustriInfo, new AsyncCallback<tb_bidang_industri>() {
-            public void handleResponse( tb_bidang_industri response )
-            {
+        Backendless.Persistence.save(bidangIndustriInfo, new AsyncCallback<tb_bidang_industri>() {
+            public void handleResponse(tb_bidang_industri response) {
                 // new Contact instance has been saved
                 step_2_industri.this.saveIndustriInfo();
             }
 
-            public void handleFault( BackendlessFault fault )
-            {
+            public void handleFault(BackendlessFault fault) {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
-                Toast.makeText(step_2_industri.this,"Error bidang Industri save= "+fault.getMessage()+", id_bidang_industri = "+id_bidang_industri,Toast.LENGTH_LONG).show();
+                Toast.makeText(step_2_industri.this, "Error bidang Industri save= " + fault.getMessage() + ", id_bidang_industri = " + id_bidang_industri, Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    public void saveIndustriInfo(){
+    public void saveIndustriInfo() {
 
 
         saveIndustri = new tb_industri();
@@ -218,62 +236,55 @@ public class step_2_industri extends AppCompatActivity {
         saveIndustri.setKuota(kuota);
         saveIndustri.setJobdesc(jobdesc);
         saveIndustri.setEmail(email);
-        Backendless.Files.Android.upload( bMap_image,
+        Backendless.Files.Android.upload(bMap_image,
                 Bitmap.CompressFormat.PNG,
                 100,
-                id_user+"_industri_logo.png",
+                id_user + "_industri_logo.png",
                 "mypics",
-                new AsyncCallback<BackendlessFile>()
-                {
+                new AsyncCallback<BackendlessFile>() {
                     @Override
-                    public void handleResponse( final BackendlessFile backendlessFile )
-                    {
+                    public void handleResponse(final BackendlessFile backendlessFile) {
                         logo = backendlessFile.getFileURL();
                         step_2_industri.this.saveIndustri.setLogo(logo);
                         // save object asynchronously
-                        Backendless.Persistence.save( saveIndustri, new AsyncCallback<tb_industri>() {
-                            public void handleResponse( tb_industri response )
-                            {
+                        Backendless.Persistence.save(saveIndustri, new AsyncCallback<tb_industri>() {
+                            public void handleResponse(tb_industri response) {
                                 step_2_industri.this.registerSuccess();
                             }
 
-                            public void handleFault( BackendlessFault fault )
-                            {
-                                Toast.makeText(step_2_industri.this,"KUOTA = "+kuota+"Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                            public void handleFault(BackendlessFault fault) {
+                                Toast.makeText(step_2_industri.this, "KUOTA = " + kuota + "Error saveIndustriInfo = " + fault.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
                     }
 
                     @Override
-                    public void handleFault( BackendlessFault backendlessFault )
-                    {
-                        Toast.makeText( step_2_industri.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
+                    public void handleFault(BackendlessFault backendlessFault) {
+                        Toast.makeText(step_2_industri.this, backendlessFault.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    public void registerSuccess(){
+    public void registerSuccess() {
 
         last_id last_id_user = new last_id();
         last_id_user.setId_user(id_user);
         // save object asynchronously
-        Backendless.Persistence.save( last_id_user, new AsyncCallback<last_id>() {
-            public void handleResponse( last_id response )
-            {
+        Backendless.Persistence.save(last_id_user, new AsyncCallback<last_id>() {
+            public void handleResponse(last_id response) {
                 // new Contact instance has been saved
-                Intent loginIntent = new Intent(step_2_industri.this,MainActivity.class);
+                Intent loginIntent = new Intent(step_2_industri.this, MainActivity.class);
                 startActivity(loginIntent);
             }
 
-            public void handleFault( BackendlessFault fault )
-            {
+            public void handleFault(BackendlessFault fault) {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
             }
         });
 
     }
 
-    public void eventListeners(){
+    public void eventListeners() {
         //ParentBidang ItemSelected
         mParentBidang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -281,11 +292,10 @@ public class step_2_industri extends AppCompatActivity {
 
                 tb_parent_bidang parentBidangSelector = (tb_parent_bidang) parent.getSelectedItem();
                 id_parent_bidang = parentBidangSelector.getId_parent_bidang();
-                if(id_parent_bidang == 0){
+                if (id_parent_bidang == 0) {
                     mBidang.setSelection(0);
                     mBidang.setEnabled(false);
-                }
-                else{
+                } else {
                     step_2_industri.this.isiSpinnerSub();
                 }
                 mBidang.setSelection(0);
@@ -298,67 +308,63 @@ public class step_2_industri extends AppCompatActivity {
         });
     }
 
-    public void isiSpinnerParent(){
+    public void isiSpinnerParent() {
         parent_bidang = new ArrayList<>();
-        parent_bidang.add(new tb_parent_bidang(0,"Pilih bidang industri anda."));
-        Backendless.Data.mapTableToClass( "tb_parent_bidang", tb_parent_bidang.class );
-        Backendless.Persistence.of(tb_parent_bidang.class).find( new AsyncCallback<BackendlessCollection<tb_parent_bidang>>(){
+        parent_bidang.add(new tb_parent_bidang(0, "Pilih bidang industri anda."));
+        Backendless.Data.mapTableToClass("tb_parent_bidang", tb_parent_bidang.class);
+        Backendless.Persistence.of(tb_parent_bidang.class).find(new AsyncCallback<BackendlessCollection<tb_parent_bidang>>() {
             @Override
-            public void handleResponse( BackendlessCollection<tb_parent_bidang> hasil )
-            {
+            public void handleResponse(BackendlessCollection<tb_parent_bidang> hasil) {
                 List<tb_parent_bidang> firstPage = hasil.getCurrentPage();
 
                 Iterator<tb_parent_bidang> iterator = firstPage.iterator();
 
-                while( iterator.hasNext() )
-                {
+                while (iterator.hasNext()) {
                     tb_parent_bidang bidangList = iterator.next();
-                    step_2_industri.this.parent_bidang.add(new tb_parent_bidang(bidangList.getId_parent_bidang(),bidangList.getNama()));
+                    step_2_industri.this.parent_bidang.add(new tb_parent_bidang(bidangList.getId_parent_bidang(), bidangList.getNama()));
                 }
             }
+
             @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(step_2_industri.this, "Error ! " + fault.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
         ArrayAdapter<tb_parent_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, parent_bidang);
         mParentBidang.setAdapter(parent_bidang_adapter);
     }
 
-    public void isiSpinnerSub(){
+    public void isiSpinnerSub() {
         mBidang.setEnabled(false);
         bidang = new ArrayList<>();
-        bidang.add(new tb_bidang(0,0,"Pilih sub bidang industri anda."));
+        bidang.add(new tb_bidang(0, 0, "Pilih sub bidang industri anda."));
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();
-        dataQuery.setWhereClause("id_parent_bidang = "+id_parent_bidang);
-        Backendless.Data.mapTableToClass( "tb_bidang", tb_bidang.class );
-        Backendless.Persistence.of(tb_bidang.class).find( dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>(){
+        dataQuery.setWhereClause("id_parent_bidang = " + id_parent_bidang);
+        Backendless.Data.mapTableToClass("tb_bidang", tb_bidang.class);
+        Backendless.Persistence.of(tb_bidang.class).find(dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>() {
             @Override
-            public void handleResponse( BackendlessCollection<tb_bidang> hasil )
-            {
+            public void handleResponse(BackendlessCollection<tb_bidang> hasil) {
                 List<tb_bidang> firstPage = hasil.getCurrentPage();
 
                 Iterator<tb_bidang> iterator = firstPage.iterator();
 
-                while( iterator.hasNext() )
-                {
+                while (iterator.hasNext()) {
                     tb_bidang bidangList = iterator.next();
-                    step_2_industri.this.bidang.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
+                    step_2_industri.this.bidang.add(new tb_bidang(bidangList.getId_bidang(), bidangList.getId_parent_bidang(), bidangList.getNama()));
                 }
                 mBidang.setEnabled(true);
             }
+
             @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_industri.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
+            public void handleFault(BackendlessFault fault) {
+                Toast.makeText(step_2_industri.this, "Error ! " + fault.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
         ArrayAdapter<tb_bidang> parent_bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bidang);
         mBidang.setAdapter(parent_bidang_adapter);
     }
 
-    private void setSpinnerBidangListener(){
+    private void setSpinnerBidangListener() {
         mBidang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -383,13 +389,10 @@ public class step_2_industri extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1:
-            {
-                if (resultCode == RESULT_OK)
-                {
+            case 1: {
+                if (resultCode == RESULT_OK) {
                     Uri photoUri = data.getData();
-                    if (photoUri != null)
-                    {
+                    if (photoUri != null) {
                         try {
                             String[] filePathColumn = {MediaStore.Images.Media.DATA};
                             Cursor cursor = getContentResolver().query(photoUri, filePathColumn, null, null, null);
@@ -401,19 +404,20 @@ public class step_2_industri extends AppCompatActivity {
                             mLogo.setImageBitmap(bMap_image);
 
 
-                        }catch(Exception e)
-                        {}
+                        } catch (Exception e) {
+                        }
                     }
                 }
             }
         }
     }
 
+
     private void layoutItems(){
-        mKuota = (TextView)findViewById(R.id.industri_step_2_kuota);
-        mProfil = (TextView)findViewById(R.id.industri_step_2_profil);
-        mJobdesc = (TextView)findViewById(R.id.industri_step_2_jobdesc);
-        mKualifikasi = (TextView)findViewById(R.id.industri_step_2_kualifikasi);
+        mKuota = (EditText) findViewById(R.id.industri_step_2_kuota);
+        mProfil = (EditText) findViewById(R.id.industri_step_2_profil);
+        mJobdesc = (EditText) findViewById(R.id.industri_step_2_jobdesc);
+        mKualifikasi = (EditText) findViewById(R.id.industri_step_2_kualifikasi);
         mLogo = (ImageView) findViewById(R.id.step_2_industri_logo);
         mSubmit = (Button)findViewById(R.id.industri_step_2_submit);
         mParentBidang = (Spinner)findViewById(R.id.industri_step_2_parent_bidang);

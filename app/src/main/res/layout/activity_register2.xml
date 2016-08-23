@@ -104,7 +104,8 @@
                 android:text="DAFTAR"
                 android:textColor="#fefefe"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="nextStep"/>
 
         </LinearLayout>
 
