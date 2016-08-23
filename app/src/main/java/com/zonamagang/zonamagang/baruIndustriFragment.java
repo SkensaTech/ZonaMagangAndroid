@@ -40,10 +40,14 @@ public class baruIndustriFragment extends Fragment {
 
     /** Fixed **/
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.siswa_layout_belum,container,false);
+
+        getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.VISIBLE);
 
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
         String id_user_now = userNow.getProperty("id_user").toString();
@@ -64,8 +68,6 @@ public class baruIndustriFragment extends Fragment {
                     id_siswa = siswaInfo.getId_siswa();
 
                     //START
-
-                    Toast.makeText(getContext(),"id_siswa = "+id_siswa,Toast.LENGTH_SHORT).show();
                     listIndustri = new ArrayList<CustomIndustri>();
 
                     Backendless.Persistence.of(tb_industri.class).find(new AsyncCallback<BackendlessCollection<tb_industri>>(){
@@ -98,6 +100,7 @@ public class baruIndustriFragment extends Fragment {
                             HomeSiswaIndustriAdapter adapter = new HomeSiswaIndustriAdapter(getActivity(), listIndustri);
 
                             listView.setAdapter(adapter);
+                            getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.GONE);
 
                         }
                         @Override

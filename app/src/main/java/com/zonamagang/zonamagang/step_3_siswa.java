@@ -9,8 +9,10 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.files.BackendlessFile;
 import com.zonamagang.zonamagang.Model.last_id;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_siswa;
@@ -26,13 +29,18 @@ import com.zonamagang.zonamagang.Model.tb_siswa;
 public class step_3_siswa extends AppCompatActivity {
 
     ImageView mLogo;
-    String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass;
+    String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass,foto;
+    String telp;
     Bitmap mapfoto;
+    EditText notelp;
+    tb_siswa simpansiswa;
     int id_user,id_siswa,id_bidang,id_sekolah;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_3_siswa);
+        Backendless.initApp( this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION );
+
         this.layoutItems();
         //passing from layout step 2
         nisn = getIntent().getStringExtra("nisn");
@@ -47,11 +55,13 @@ public class step_3_siswa extends AppCompatActivity {
         bidang = getIntent().getStringExtra("bidang");
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
+        telp = notelp.getText().toString();
         //coding untuk toolbar
         String All = nisn+" "+nama+" "+alamat+" "+tempat+" "+tgl+" "+jeniskelamin+" "+provinsi+" "+kota+" "+sekolah+" "+bidang+" "+email+" "+pass;
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     //coding upload foto
@@ -92,13 +102,14 @@ public class step_3_siswa extends AppCompatActivity {
 
     private void layoutItems() {
         mLogo = (ImageView) findViewById(R.id.step_3_siswa_logo);
+        notelp = (EditText) findViewById(R.id.notelp);
 
     }
     public void addUserInfo(){
         BackendlessUser user = new BackendlessUser();
         user.setProperty( "email", email);
         user.setProperty("status_aktif",1);
-        user.setProperty("user_level",2);
+        user.setProperty("user_level",3);
         user.setProperty("id_user",id_user);
         user.setPassword( pass );
 
@@ -137,9 +148,52 @@ public class step_3_siswa extends AppCompatActivity {
     public void saveSiswaInfo(){
 
         tb_siswa saveSiswa = new tb_siswa();
+        saveSiswa.setId_siswa(id_siswa);
+        saveSiswa.setId_user(id_user);
+        saveSiswa.setId_bidang(id_bidang);
+        saveSiswa.setId_sekolah(id_sekolah);
+        saveSiswa.setNama(nama);
+        saveSiswa.setAlamat(alamat);
+        saveSiswa.setJenis_kelamin(jeniskelamin);
+        saveSiswa.setNo_telp(telp);
+        saveSiswa.setNisn(nisn);
+        saveSiswa.setTempat_lahir(tempat);
+        saveSiswa.setTgl_lahir(tgl);
 
+        Backendless.Files.Android.upload( mapfoto,
+                Bitmap.CompressFormat.PNG,
+                100,
+                id_user+"_industri_logo.png",
+                "mypics",
+                new AsyncCallback<BackendlessFile>()
+                {
+                    @Override
+                    public void handleResponse( final BackendlessFile backendlessFile )
+                    {
+                        foto = backendlessFile.getFileURL();
+                        step_3_siswa.this.simpansiswa.setFoto(foto);
+                        // save object asynchronously
+                        Backendless.Persistence.save( simpansiswa, new AsyncCallback<tb_siswa>() {
+                            public void handleResponse( tb_siswa response )
+                            {
+                                step_3_siswa.this.registerSuccess();
+                            }
+
+                            public void handleFault( BackendlessFault fault )
+                            {
+                                Toast.makeText(step_3_siswa.this,"KUOTA = Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void handleFault( BackendlessFault backendlessFault )
+                    {
+                        Toast.makeText( step_3_siswa.this, backendlessFault.toString(), Toast.LENGTH_SHORT ).show();
+                    }
+                });
     }
-  /*  public void onSubmit(View view){
+    public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
         //check last user
         Backendless.Persistence.of( last_id.class).findLast(new AsyncCallback<last_id>(){
@@ -158,5 +212,25 @@ public class step_3_siswa extends AppCompatActivity {
                 step_3_siswa.this.addUserInfo();
             }
         });
-    }*/
+    }
+    public void registerSuccess(){
+
+        last_id last_id_user = new last_id();
+        last_id_user.setId_user(id_user);
+        // save object asynchronously
+        Backendless.Persistence.save( last_id_user, new AsyncCallback<last_id>() {
+            public void handleResponse( last_id response )
+            {
+                // new Contact instance has been saved
+                Intent loginIntent = new Intent(step_3_siswa.this,MainActivity.class);
+                startActivity(loginIntent);
+            }
+
+            public void handleFault( BackendlessFault fault )
+            {
+                // an error has occurred, the error code can be retrieved with fault.getCode()
+            }
+        });
+
+    }
 }
