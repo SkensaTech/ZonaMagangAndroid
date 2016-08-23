@@ -89,8 +89,6 @@ public class home_siswa_1 extends AppCompatActivity {
             public void cancel(ImageView imageView) {
                 Picasso.with(imageView.getContext()).cancelRequest(imageView);
             }
-
-
         });
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
@@ -153,7 +151,6 @@ public class home_siswa_1 extends AppCompatActivity {
                             startActivity(itent);
                         }
                         else if (drawerItem.getIdentifier() == 5){
-                            finish();
                             Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
                             startActivity(intent);
                         }
@@ -185,6 +182,7 @@ public class home_siswa_1 extends AppCompatActivity {
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuin = getMenuInflater();

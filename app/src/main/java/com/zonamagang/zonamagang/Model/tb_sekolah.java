@@ -49,6 +49,9 @@ public class tb_sekolah
   private String ownerId;
   private String no_telp;
   private Integer id_sekolah;
+
+  public tb_sekolah(){}
+
   public String getNama()
   {
     return nama;
