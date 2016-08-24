@@ -1,7 +1,9 @@
 package com.zonamagang.zonamagang;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,6 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.BackendlessDataQuery;
+import com.zonamagang.zonamagang.Adapters.Industri.CustomIndustri;
+import com.zonamagang.zonamagang.Model.Users;
+import com.zonamagang.zonamagang.Model.tb_magang;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,6 +43,8 @@ public class register2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
+        Backendless.initApp( this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION );
+
         //coding toolbar
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -51,7 +64,9 @@ public class register2 extends AppCompatActivity {
                 final String email = emailEditText.getText().toString();
                 if (!isValidEmail(email)) {
                     emailEditText.setError("Invalid Email Format");
-
+                    tmp1 = "0";
+                } else {
+                    tmp1 = "1";
                 }
 
                 passw = passEditText.getText().toString();
@@ -82,7 +97,7 @@ public class register2 extends AppCompatActivity {
 
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
-        tmp1 = "1";
+
         return matcher.matches();
     }
 
@@ -125,21 +140,51 @@ public class register2 extends AppCompatActivity {
     }
 
    public void sendNext() {
-        Intent step1;
-       if (xx.equals("siswa")){
-           step1= new Intent(this, step_1_siswa_daftar.class);
-       } else {
-           step1= new Intent(this, step_1_industri.class);
+       final ProgressDialog dialog = ProgressDialog.show(register2.this, "",
+               "Mohon tunggu sebentar", true);
+       dialog.show();
+       new Handler().postDelayed(new Runnable(){
+           @Override
+           public void run() {
+                String where = "email = '"+mEmail.getText().toString()+"'";
+               BackendlessDataQuery dataQueryEmail = new BackendlessDataQuery();
+               dataQueryEmail.setWhereClause(where);
+               Backendless.Persistence.of(Users.class).find(dataQueryEmail, new AsyncCallback<BackendlessCollection<Users>>() {
+                   @Override
+                   public void handleResponse(BackendlessCollection<Users> response) {
+                       List<Users> firstPageTbMagang = response.getCurrentPage();
+                       if(firstPageTbMagang.size() >= 1){
+                           dialog.hide();
+                           Toast.makeText(getApplicationContext(),"Maaf, Email Sudah Terdaftar",Toast.LENGTH_SHORT).show();
+                       } else {
+                           dialog.hide();
+                           Intent step1;
+                           if (xx.equals("siswa")){
+                               step1= new Intent(register2.this, step_1_siswa_daftar.class);
+                           } else {
+                               step1= new Intent(register2.this, step_1_industri.class);
 
-       }
-        step1.putExtra("email", mEmail.getText().toString());
-        step1.putExtra("Pass", mPass.getText().toString());
-        step1.putExtra("repass", mRePass.getText().toString());
+                           }
+                           step1.putExtra("email", mEmail.getText().toString());
+                           step1.putExtra("Pass", mPass.getText().toString());
+                           step1.putExtra("repass", mRePass.getText().toString());
 
-        //before
-        step1.putExtra("email", mEmail.getText().toString());
-        step1.putExtra("pass", mPass.getText().toString());
-        startActivity(step1);
+                           //before
+                           step1.putExtra("email", mEmail.getText().toString());
+                           step1.putExtra("pass", mPass.getText().toString());
+                           startActivity(step1);
+                       }
+                   }
+
+                   @Override
+                   public void handleFault(BackendlessFault fault) {
+
+                   }
+               });
+
+           }
+       }, 3000);
+
     }
 
     private void layoutItems (){
@@ -148,5 +193,19 @@ public class register2 extends AppCompatActivity {
         mRePass = (TextView)findViewById(R.id.daftarrepwd);
 
         mSubmit = (Button)findViewById(R.id.tomboldaftar);
+    }
+    public boolean loading() {
+        final ProgressDialog dialog = ProgressDialog.show(register2.this, "",
+                "Mohon tunggu sebentar", true);
+        dialog.show();
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity.. */
+
+                dialog.hide();
+            }
+        }, 3000);
+        return true;
     }
 }

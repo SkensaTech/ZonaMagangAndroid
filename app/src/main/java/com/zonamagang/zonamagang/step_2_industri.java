@@ -27,6 +27,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.files.BackendlessFile;
 import com.backendless.persistence.BackendlessDataQuery;
+import com.backendless.persistence.QueryOptions;
 import com.zonamagang.zonamagang.Model.last_id;
 import com.zonamagang.zonamagang.Model.tb_bidang;
 import com.zonamagang.zonamagang.Model.tb_bidang_industri;
@@ -344,7 +345,10 @@ public class step_2_industri extends AppCompatActivity {
         bidang = new ArrayList<>();
         bidang.add(new tb_bidang(0, 0, "Pilih sub bidang industri anda."));
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();
+        QueryOptions limit = new QueryOptions();
+        limit.setPageSize(50);
         dataQuery.setWhereClause("id_parent_bidang = " + id_parent_bidang);
+        dataQuery.setQueryOptions(limit);
         Backendless.Data.mapTableToClass("tb_bidang", tb_bidang.class);
         Backendless.Persistence.of(tb_bidang.class).find(dataQuery, new AsyncCallback<BackendlessCollection<tb_bidang>>() {
             @Override

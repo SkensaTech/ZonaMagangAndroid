@@ -1,7 +1,9 @@
 package com.zonamagang.zonamagang;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.os.Bundle;
@@ -9,6 +11,14 @@ import android.support.v7.widget.*;
 import android.view.View;
 import android.widget.*;
 import android.widget.Toolbar;
+
+import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.BackendlessDataQuery;
+import com.zonamagang.zonamagang.Model.Users;
+import com.zonamagang.zonamagang.Model.tb_siswa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +29,10 @@ public class step_1_siswa_daftar extends AppCompatActivity {
     Button y;
     int array_bulan;
     String sbulan,stahun,stanggal,stgllahir,pass,email;
-
+    EditText nama ;
+    EditText nisn ;
+    EditText alamat;
+    EditText tl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +42,10 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         android.support.v7.widget.Toolbar x = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        nama = (EditText) findViewById(R.id.nama);
+        nisn = (EditText) findViewById(R.id.nisn);
+        alamat = (EditText) findViewById(R.id.alamat);
+        tl = (EditText) findViewById(R.id.tempat_lahir);
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
 
@@ -112,31 +128,60 @@ public class step_1_siswa_daftar extends AppCompatActivity {
         y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stgllahir = stanggal+"/"+sbulan+"/"+stahun;
-                RadioGroup grupjeniskelamin = (RadioGroup) findViewById(R.id.jeniskelamin);
-                int jk = grupjeniskelamin.getCheckedRadioButtonId();
-                RadioButton kelamin = (RadioButton) findViewById(jk);
+                final ProgressDialog dialog = ProgressDialog.show(step_1_siswa_daftar.this, "",
+                        "Mohon tunggu sebentar", true);
+                dialog.show();
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+                        String thenisn = nisn.getText().toString();
+                        String where = "nisn = '"+thenisn+"'";
+                        BackendlessDataQuery dataQueryEmail = new BackendlessDataQuery();
+                        dataQueryEmail.setWhereClause(where);
+                        Backendless.Persistence.of(tb_siswa.class).find(dataQueryEmail, new AsyncCallback<BackendlessCollection<tb_siswa>>() {
+                            @Override
+                            public void handleResponse(BackendlessCollection<tb_siswa> response) {
+                                List<tb_siswa> firstPageTbMagang = response.getCurrentPage();
+                                if(firstPageTbMagang.size() >= 1){
+                                    dialog.hide();
+                                    Toast.makeText(getApplicationContext(),"Maaf, NISN Sudah Terdaftar",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    dialog.hide();
 
-                if (stanggal.equals("Tanggal") || sbulan.equals("Bulan") || stahun.equals("stahun")) {
-                    Toast pesan = Toast.makeText(getApplicationContext(),"Lengkapi Data Dengan Benar",Toast.LENGTH_SHORT);
-                    pesan.show();
-                }
-                else {
-                   Intent next = new Intent(getApplicationContext(),step_2_siswa.class);
-                    EditText nama = (EditText) findViewById(R.id.nama);
-                    EditText nisn = (EditText) findViewById(R.id.nisn);
-                    EditText alamat = (EditText) findViewById(R.id.alamat);
-                    EditText tl = (EditText) findViewById(R.id.tempat_lahir);
-                    next.putExtra("nisn",nisn.getText().toString());
-                    next.putExtra("nama",nama.getText().toString());
-                    next.putExtra("jk",kelamin.getText().toString());
-                    next.putExtra("alamat",alamat.getText().toString());
-                    next.putExtra("tl",tl.getText().toString());
-                    next.putExtra("tgllahir",stgllahir);
-                    next.putExtra("email",email);
-                    next.putExtra("pass",pass);
-                    startActivity(next);
-                }
+                                    stgllahir = stanggal+"/"+sbulan+"/"+stahun;
+                                    RadioGroup grupjeniskelamin = (RadioGroup) findViewById(R.id.jeniskelamin);
+                                    int jk = grupjeniskelamin.getCheckedRadioButtonId();
+                                    RadioButton kelamin = (RadioButton) findViewById(jk);
+
+                                    if (stanggal.equals("Tanggal") || sbulan.equals("Bulan") || stahun.equals("stahun")) {
+                                        Toast pesan = Toast.makeText(getApplicationContext(),"Lengkapi Data Dengan Benar",Toast.LENGTH_SHORT);
+                                        pesan.show();
+                                    }
+                                    else {
+                                        Intent next = new Intent(getApplicationContext(),step_2_siswa.class);
+
+                                        next.putExtra("nisn",nisn.getText().toString());
+                                        next.putExtra("nama",nama.getText().toString());
+                                        next.putExtra("jk",kelamin.getText().toString());
+                                        next.putExtra("alamat",alamat.getText().toString());
+                                        next.putExtra("tl",tl.getText().toString());
+                                        next.putExtra("tgllahir",stgllahir);
+                                        next.putExtra("email",email);
+                                        next.putExtra("pass",pass);
+                                        startActivity(next);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void handleFault(BackendlessFault fault) {
+                                Toast.makeText(getApplicationContext(),"error di nisn : "+fault.getCode(),Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    }
+                }, 3000);
+
             }
         });
 

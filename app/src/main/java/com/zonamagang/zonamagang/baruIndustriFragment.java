@@ -47,7 +47,10 @@ public class baruIndustriFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.siswa_layout_belum,container,false);
+        home_siswa_1 activity = (home_siswa_1) getActivity();
+        String searchvalue = activity.getQuery();
 
+        Toast.makeText(getActivity(),searchvalue,Toast.LENGTH_LONG).show();
         new goAsyncTask().execute();
 
         return rootView;

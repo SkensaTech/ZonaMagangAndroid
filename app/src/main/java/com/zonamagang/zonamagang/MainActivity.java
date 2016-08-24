@@ -187,7 +187,24 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
             }
-        });
+        },true);
+        AsyncCallback<Boolean> isValidLoginCallback = new AsyncCallback<Boolean>()
+        {
+            @Override
+            public void handleResponse( Boolean response )
+            {
+                //Valid Respon
+            }
+
+            @Override
+            public void handleFault( BackendlessFault fault )
+            {
+                System.err.println( "Error - " + fault );
+            }
+
+        };
+
+        Backendless.UserService.isValidLogin( isValidLoginCallback );
     }
 
     private void layoutItems() {

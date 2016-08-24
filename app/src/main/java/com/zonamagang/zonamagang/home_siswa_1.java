@@ -49,7 +49,7 @@ public class home_siswa_1 extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewIndustriAdapter adapter;
     private Drawer result = null;
-    String email, foto, nama;
+    String email, foto, nama, searchquery="";
     boolean doubleBackToExit = false;
 
     @Override
@@ -192,7 +192,19 @@ public class home_siswa_1 extends AppCompatActivity {
         menuin.inflate(R.menu.menu_search, menu);
         MenuItem cari = menu.findItem(R.id.searchbox);
         final SearchView pencarian = (SearchView) MenuItemCompat.getActionView(cari);
+        pencarian.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                    searchquery = query;
+                home_siswa_1.this.getQuery();
+                return true;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -214,5 +226,8 @@ public class home_siswa_1 extends AppCompatActivity {
         }, 3000);
     }
 
+    public String getQuery() {
+        return searchquery;
+    }
 
 }

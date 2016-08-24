@@ -18,6 +18,7 @@ import com.backendless.BackendlessCollection;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
+import com.backendless.persistence.QueryOptions;
 import com.zonamagang.zonamagang.Model.tb_bidang;
 import com.zonamagang.zonamagang.Model.tb_bidang_sekolah;
 import com.zonamagang.zonamagang.Model.tb_parent_bidang;
@@ -163,18 +164,22 @@ public class step_2_siswa extends AppCompatActivity {
     public void isiSpinnerParent(){
         listsekolah = new ArrayList<>();
         listsekolah.add(new tb_sekolah(0,"Pilih Sekolah Anda"));
+        BackendlessDataQuery query = new BackendlessDataQuery();
+        QueryOptions test = new QueryOptions();
+        test.setPageSize(100);
+        query.setQueryOptions(test);
         Backendless.Data.mapTableToClass( "tb_sekolah", tb_sekolah.class );
-        Backendless.Persistence.of(tb_sekolah.class).find( new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
+        Backendless.Persistence.of(tb_sekolah.class).find(query, new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
             @Override
             public void handleResponse( BackendlessCollection<tb_sekolah> hasil )
             {
+
                 List<tb_sekolah> firstPage = hasil.getCurrentPage();
-
                 Iterator<tb_sekolah> iterator = firstPage.iterator();
-
                 while( iterator.hasNext() )
                 {
                     tb_sekolah sekolahList = iterator.next();
+
                     step_2_siswa.this.listsekolah.add(new tb_sekolah(sekolahList.getId_sekolah(),sekolahList.getNama()));
                 }
             }
@@ -268,9 +273,9 @@ public class step_2_siswa extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        finish();
         Intent intent = new Intent(step_2_siswa.this,register1.class);
         startActivity(intent);
+        this.finish();
     }
 
     public boolean loading() {

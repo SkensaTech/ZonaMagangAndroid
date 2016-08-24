@@ -127,11 +127,13 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleFault( BackendlessFault fault )
             {
                 Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
-
-//                        if(fault.getCode().equals("3033")){
-//                            Intent back = new Intent(getApplicationContext(),register1.class);
-//                            Toast.makeText(getApplicationContext(),"Email Sudah Terdaftar!",Toast.LENGTH_SHORT).show();
-//                        }
+                String error = fault.getCode();
+                if (error.equals("error")){
+                    Intent intent = new Intent(getApplicationContext(),register1.class);
+                    startActivity(intent);
+                    step_3_siswa.this.finish();
+                    Toast.makeText(step_3_siswa.this,"Maaf, Email yang anda gunakan telah terdaftar",Toast.LENGTH_SHORT).show();
+                }
                 // ada error. bisa di retrieved with fault.getCode()
 
             }
@@ -152,7 +154,6 @@ public class step_3_siswa extends AppCompatActivity {
                 Toast a =Toast.makeText(getApplicationContext(),"Belum ada id siswa",Toast.LENGTH_LONG);
                 a.show();
                 id_siswa = 1;
-                step_3_siswa.this.saveSiswaInfo();
             }
         });
     }
@@ -194,7 +195,7 @@ public class step_3_siswa extends AppCompatActivity {
 
                             public void handleFault( BackendlessFault fault )
                             {
-                                Toast.makeText(step_3_siswa.this,"Error SaveSiswa = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                                Toast.makeText(step_3_siswa.this,"Data Siswa Info = "+fault.getMessage(),Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -202,12 +203,11 @@ public class step_3_siswa extends AppCompatActivity {
                     @Override
                     public void handleFault( BackendlessFault backendlessFault )
                     {
-                        Toast.makeText( step_3_siswa.this, "Fail Save Image : "+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
+                        Toast.makeText( step_3_siswa.this, "Get Error Code : "+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
                     }
                 });
         }catch(Exception e)
         {}
-
     }
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
@@ -252,8 +252,8 @@ public class step_3_siswa extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        finish();
         Intent intent = new Intent(step_3_siswa.this,register1.class);
         startActivity(intent);
+        this.finish();
     }
 }
