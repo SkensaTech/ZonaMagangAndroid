@@ -17,6 +17,7 @@ public class tb_notif
   private Integer id_notif;
   private Integer id_pengirim;
   private String isi_notif;
+
   public String getOwnerId()
   {
     return ownerId;
