@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -49,6 +50,8 @@ public class home_siswa_1 extends AppCompatActivity {
     private ViewIndustriAdapter adapter;
     private Drawer result = null;
     String email, foto, nama;
+    boolean doubleBackToExit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
@@ -194,8 +197,21 @@ public class home_siswa_1 extends AppCompatActivity {
 
     }
 
+    @Override
     public void onBackPressed(){
-        finish();
+        if (doubleBackToExit){
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExit = false;
+            }
+        }, 3000);
     }
 
 
