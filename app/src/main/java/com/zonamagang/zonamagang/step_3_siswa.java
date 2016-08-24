@@ -240,4 +240,10 @@ public class step_3_siswa extends AppCompatActivity {
         });
 
     }
+
+    public void onBackPressed(){
+        finish();
+        Intent intent = new Intent(step_3_siswa.this,register1.class);
+        startActivity(intent);
+    }
 }
