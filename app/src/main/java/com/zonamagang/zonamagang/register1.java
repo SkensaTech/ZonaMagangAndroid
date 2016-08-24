@@ -34,11 +34,11 @@ public class register1 extends AppCompatActivity {
         industri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
-                Intent daftarindustri = new Intent(getApplicationContext(), register2.class);
-                jenis_daftar = "industri";
-                daftarindustri.putExtra("jenis_daftar", jenis_daftar);
-                startActivity(daftarindustri);
-//                Toast.makeText(getApplicationContext(),"Hanya Industri yang Terverifikasi Boleh Akses",Toast.LENGTH_SHORT).show();
+//                Intent daftarindustri = new Intent(getApplicationContext(), register2.class);
+//                jenis_daftar = "industri";
+//                daftarindustri.putExtra("jenis_daftar", jenis_daftar);
+//                startActivity(daftarindustri);
+                Toast.makeText(getApplicationContext(),"Hanya Industri yang Terverifikasi Boleh Akses",Toast.LENGTH_SHORT).show();
             }
         });
         TextView masuk = (TextView) findViewById(R.id.signin);

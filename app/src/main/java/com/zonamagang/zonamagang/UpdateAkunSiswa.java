@@ -9,8 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +35,18 @@ import java.util.Map;
 public class UpdateAkunSiswa extends AppCompatActivity {
 
     Context context = this;
+    ProgressDialog dialog;
+    ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_akun_siswa);
         Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
+
+        loading = (ProgressBar) findViewById(R.id.update_akun_siswa_progress_bar);
+
+        loading.setVisibility(View.VISIBLE);
 
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
         String id_user_now = userNow.getProperty("id_user").toString();
@@ -139,6 +147,7 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                     String imageUri = responses.getFoto();
                     ImageView imagePP = (ImageView)findViewById(R.id.profilePict);
                     Picasso.with(context).load(imageUri).into(imagePP);
+                    UpdateAkunSiswa.this.loading_complete();
                 }
             }
 
@@ -167,8 +176,6 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                 break;
             case R.id.save_icon:
                 this.editdata();
-                finish();
-                startActivity(getIntent());
                 break;
         }
 
@@ -176,11 +183,8 @@ public class UpdateAkunSiswa extends AppCompatActivity {
     }
 
     public void editdata(){
-
-        ProgressDialog dialog = new ProgressDialog(UpdateAkunSiswa.this,R.style.MyTheme);
-        dialog.setCancelable(false);
-        dialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-        dialog.show();
+        dialog = ProgressDialog.show(UpdateAkunSiswa.this, "",
+                "Mohon tunggu sebentar...", true);
 
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
         String id_user_now = userNow.getProperty("id_user").toString();
@@ -188,46 +192,53 @@ public class UpdateAkunSiswa extends AppCompatActivity {
         String whereClause = "id_user = " + id_user_now;
         final BackendlessDataQuery dataQuery = new BackendlessDataQuery();
         dataQuery.setWhereClause(whereClause);
-        final AsyncCallback<tb_siswa> updateResponder = new AsyncCallback<tb_siswa>() {
+        Backendless.Data.of(tb_siswa.class).find(dataQuery, new AsyncCallback<BackendlessCollection<tb_siswa>>() {
             @Override
-            public void handleResponse(tb_siswa updatedtb_siswa) {
-                System.out.println("tb_siswa's nama after update " + updatedtb_siswa.nama);
+            public void handleResponse(BackendlessCollection<tb_siswa> response) {
+
+                if (response.getData().size() == 1) {
+                    tb_siswa siswa = response.getData().get(0);
+
+                    EditText nama = (EditText) findViewById(R.id.namaSiswa);
+                    siswa.setNama(nama.getText().toString());
+
+                    EditText alamat = (EditText) findViewById(R.id.alamatSiswa);
+                    siswa.setAlamat(alamat.getText().toString());
+
+                    EditText no_telp = (EditText) findViewById(R.id.noTelpSiswa);
+                    siswa.setNo_telp(no_telp.getText().toString());
+
+                    EditText tanggal_lahir = (EditText) findViewById(R.id.tanggal_lahir);
+                    siswa.setTgl_lahir(tanggal_lahir.getText().toString());
+
+                    EditText tempat_lahir = (EditText) findViewById(R.id.tempat_lahir);
+                    siswa.setTempat_lahir(tempat_lahir.getText().toString());
+
+                    Backendless.Data.save(siswa, new AsyncCallback<tb_siswa>() {
+                        @Override
+                        public void handleResponse(tb_siswa response) {
+                            Toast.makeText(UpdateAkunSiswa.this,"Data anda berhasil diupdate",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            UpdateAkunSiswa.this.tamat();
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            Toast.makeText(UpdateAkunSiswa.this,"Kok ndak ke save ya?"+fault.toString(),Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
 
             @Override
-            public void handleFault(BackendlessFault backendlessFault) {
-                System.out.println("Server reported an error - " + backendlessFault.getMessage());
-            }
-        };
-        Backendless.Data.of(tb_siswa.class).findLast(new AsyncCallback<tb_siswa>() {
-            @Override
-            public void handleResponse(tb_siswa tb_siswa) {
-                System.out.println("Loaded object. nama - " + tb_siswa.nama);
-                EditText nama = (EditText) findViewById(R.id.namaSiswa);
-                tb_siswa.nama = nama.getText().toString();
+            public void handleFault(BackendlessFault fault) {
 
-                EditText alamat = (EditText) findViewById(R.id.alamatSiswa);
-                tb_siswa.alamat = alamat.getText().toString();
-
-                EditText no_telp = (EditText) findViewById(R.id.noTelpSiswa);
-                tb_siswa._no_telp = no_telp.getText().toString();
-
-                EditText tanggal_lahir = (EditText) findViewById(R.id.tanggal_lahir);
-                tb_siswa.tgl_lahir = tanggal_lahir.getText().toString();
-
-                EditText tempat_lahir = (EditText) findViewById(R.id.tempat_lahir);
-                tb_siswa.tempat_lahir = tempat_lahir.getText().toString();
-
-                Backendless.Data.of(tb_siswa.class).save(tb_siswa, updateResponder);
-                Toast.makeText(UpdateAkunSiswa.this,"Data anda berhasil diupdate ",Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void handleFault(BackendlessFault backendlessFault) {
-                System.out.println("Server reported an error - " + backendlessFault.getMessage());
             }
         });
-
-        dialog.dismiss();
     }
+    protected void tamat() {
+        finish();
+        startActivity(getIntent());
+    }
+    protected void loading_complete() {loading.setVisibility(View.GONE);}
 }
