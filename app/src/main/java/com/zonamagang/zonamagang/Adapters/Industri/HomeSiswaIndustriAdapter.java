@@ -32,6 +32,7 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.squareup.picasso.Picasso;
+import com.zonamagang.zonamagang.LoadingActivity;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_magang;
 import com.zonamagang.zonamagang.Model.tb_siswa;
@@ -270,8 +271,10 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
                         .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent detailIndustriIntent = new Intent(getContext(), home_siswa_1.class);
-                                getContext().startActivity(detailIndustriIntent);
+                                Intent loadingIntent = new Intent(getContext(), LoadingActivity.class);
+                                String gotoWhere = "home_siswa_!";
+                                loadingIntent.putExtra("tujuan",gotoWhere);
+                                getContext().startActivity(loadingIntent);
                                 dialog.dismiss();
                             }
                         })
