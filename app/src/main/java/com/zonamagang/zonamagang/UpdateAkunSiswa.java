@@ -210,7 +210,7 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                 tb_siswa.alamat = alamat.getText().toString();
 
                 EditText no_telp = (EditText) findViewById(R.id.noTelpSiswa);
-                tb_siswa.no_telp = no_telp.getText().toString();
+                tb_siswa._no_telp = no_telp.getText().toString();
 
                 EditText tanggal_lahir = (EditText) findViewById(R.id.tanggal_lahir);
                 tb_siswa.tgl_lahir = tanggal_lahir.getText().toString();

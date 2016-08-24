@@ -10,8 +10,6 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,11 +33,12 @@
                     android:layout_marginTop="40dp"
                     android:ems="10"
                     android:hint="No Telp"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textColorHint="@color/colorSecondaryText" />
 
             </android.support.design.widget.TextInputLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -51,6 +50,7 @@
                 android:textColor="@color/colorPrimaryText"/>
 
             <ImageView
+                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"

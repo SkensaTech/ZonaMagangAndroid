@@ -162,29 +162,32 @@ public class step_2_siswa extends AppCompatActivity {
     public void isiSpinnerParent(){
         listsekolah = new ArrayList<>();
         listsekolah.add(new tb_sekolah(0,"Pilih Sekolah Anda"));
-        Backendless.Data.mapTableToClass( "tb_sekolah", tb_sekolah.class );
-        Backendless.Persistence.of(tb_sekolah.class).find( new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
-            @Override
-            public void handleResponse( BackendlessCollection<tb_sekolah> hasil )
-            {
-                List<tb_sekolah> firstPage = hasil.getCurrentPage();
 
-                Iterator<tb_sekolah> iterator = firstPage.iterator();
-
-                while( iterator.hasNext() )
+            Backendless.Data.mapTableToClass( "tb_sekolah", tb_sekolah.class );
+            Backendless.Persistence.of(tb_sekolah.class).find( new AsyncCallback<BackendlessCollection<tb_sekolah>>(){
+                @Override
+                public void handleResponse( BackendlessCollection<tb_sekolah> hasil )
                 {
-                    tb_sekolah sekolahList = iterator.next();
-                    step_2_siswa.this.listsekolah.add(new tb_sekolah(sekolahList.getId_sekolah(),sekolahList.getNama()));
+                    List<tb_sekolah> firstPage = hasil.getCurrentPage();
+
+                    Iterator<tb_sekolah> iterator = firstPage.iterator();
+
+                    while( iterator.hasNext() )
+                    {
+                        tb_sekolah sekolahList = iterator.next();
+                        step_2_siswa.this.listsekolah.add(new tb_sekolah(sekolahList.getId_sekolah(),sekolahList.getNama()));
+                    }
                 }
-            }
-            @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
-            }
-        });
-      ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
-      sekolah.setAdapter(sekolah_adapter);
+                @Override
+                public void handleFault( BackendlessFault fault )
+                {
+                    Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
+                }
+            });
+            ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
+            sekolah.setAdapter(sekolah_adapter);
+
+
     }
   public void loopingBidangSekolah() {
         BackendlessDataQuery query = new BackendlessDataQuery();

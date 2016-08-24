@@ -22,7 +22,7 @@ public class tb_siswa {
     public String alamat;
     public Integer id_siswa;
     public Integer id_user;
-    public String no_telp;
+    public String _no_telp;
     public String jenis_kelamin;
 
     public String getObjectId()
@@ -70,10 +70,11 @@ public class tb_siswa {
     }
 
     public String get_no_telp(){
-        return  no_telp;
+        return  _no_telp;
     }
+
     public void setNo_telp(String no_telp) {
-        this.no_telp = no_telp;
+        this._no_telp = no_telp;
     }
     public Integer getId_sekolah() {
         return id_sekolah;
