@@ -127,7 +127,13 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleFault( BackendlessFault fault )
             {
                 Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
+
+//                        if(fault.getCode().equals("3033")){
+//                            Intent back = new Intent(getApplicationContext(),register1.class);
+//                            Toast.makeText(getApplicationContext(),"Email Sudah Terdaftar!",Toast.LENGTH_SHORT).show();
+//                        }
                 // ada error. bisa di retrieved with fault.getCode()
+
             }
         } );
     }
@@ -199,7 +205,9 @@ public class step_3_siswa extends AppCompatActivity {
                     }
                 });
         }catch(Exception e)
-        {}
+        {
+            e.toString();
+        }
     }
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);

@@ -1,6 +1,8 @@
 package com.zonamagang.zonamagang;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -32,12 +34,13 @@ public class step_2_siswa extends AppCompatActivity {
     Spinner sekolah,bidang;
     List<tb_sekolah> listsekolah;
     List<tb_bidang_sekolah> listbidang;
+    ProgressDialog progressDialog;
     List<tb_bidang> bidangss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_siswa);
-
+        this.loading();
         nisn = getIntent().getStringExtra("nisn");
         nama = getIntent().getStringExtra("nama");
         alamat = getIntent().getStringExtra("alamat");
@@ -74,7 +77,11 @@ public class step_2_siswa extends AppCompatActivity {
                 Spinner provspin = (Spinner) findViewById(R.id.spinnerProvinsi);
                 pos = provspin.getSelectedItemPosition();
                 sprovinsi = parent.getItemAtPosition(pos).toString();
-
+                if(sprovinsi.equals("Bali")){
+                    Toast.makeText(getApplicationContext(),"Maaf, Lokasi Belum Tersedia",Toast.LENGTH_SHORT).show();
+                    pos = 0;
+                    sprovinsi = parent.getItemAtPosition(pos).toString();
+                }
             }
 
             @Override
@@ -147,7 +154,6 @@ public class step_2_siswa extends AppCompatActivity {
             }
                 else{
                  step_2_siswa.this.loopingBidangSekolah();
-                    bidang.setEnabled(true);
                 }
                 bidang.setSelection(0);
             }
@@ -180,7 +186,10 @@ public class step_2_siswa extends AppCompatActivity {
             @Override
             public void handleFault( BackendlessFault fault )
             {
-                Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
+                Intent reload = new Intent(getApplicationContext(),step_2_siswa.class);
+                startActivity(reload);
+                step_2_siswa.this.finish();
+//              Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode(),Toast.LENGTH_SHORT).show();
             }
         });
       ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
@@ -250,8 +259,8 @@ public class step_2_siswa extends AppCompatActivity {
                 tb_bidang parentBidangSelector = (tb_bidang) parent.getSelectedItem();
                 id_bidang = parentBidangSelector.getId_bidang();
                 if (id_bidang==0) {
-                    Toast.makeText(getApplicationContext(),"Pilih Bidang Keahlilan",Toast.LENGTH_SHORT).show();
-
+//                    Toast.makeText(getApplicationContext(),"Pilih Bidang Keahlilan",Toast.LENGTH_SHORT).show();
+                    step_2_siswa.this.loading();
                 }
 
             }
@@ -267,6 +276,20 @@ public class step_2_siswa extends AppCompatActivity {
         finish();
         Intent intent = new Intent(step_2_siswa.this,register1.class);
         startActivity(intent);
+    }
+
+    public boolean loading() {
+        final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
+                "Mohon tunggu sebentar", true);
+        dialog.show();
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity.. */
+                dialog.hide();
+            }
+        }, 3000);
+        return true;
     }
 
 }
