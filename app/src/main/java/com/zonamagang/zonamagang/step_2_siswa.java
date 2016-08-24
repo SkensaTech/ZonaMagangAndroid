@@ -263,6 +263,10 @@ public class step_2_siswa extends AppCompatActivity {
         });
     }
 
-
+    public void onBackPressed(){
+        finish();
+        Intent intent = new Intent(step_2_siswa.this,register1.class);
+        startActivity(intent);
+    }
 
 }

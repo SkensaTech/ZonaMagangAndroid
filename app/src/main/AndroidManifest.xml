@@ -75,7 +75,8 @@
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri" />
         <activity android:name=".UpdateAkun" android:label="Akun Saya"/>
-        <activity android:name=".DetailSiswa" />
+        <activity android:name=".DetailSiswa"
+            android:label="Detail Akun"/>
         <activity android:name=".notifikasi_siswa" />
         <activity android:name=".UpdateAkunSiswa"></activity>
         <activity android:name=".LoadingActivity"/>
