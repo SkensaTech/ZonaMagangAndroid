@@ -46,16 +46,16 @@ public class DetailSiswa extends AppCompatActivity {
         Backendless.initApp(this, Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
         setContentView(R.layout.activity_detail_siswa);
 
+        ProgressDialog dialog = new ProgressDialog(DetailSiswa.this);
+        dialog.setMessage("Tunggu Sebentar..");
+        dialog.show();
+
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
         String id_user_now = userNow.getProperty("id_user").toString();
 
         String whereClause = "id_user = " + id_user_now;
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();
         dataQuery.setWhereClause(whereClause);
-
-        ProgressDialog dialog = new ProgressDialog(DetailSiswa.this);
-        dialog.setMessage("Tunggu Sebentar..");
-        dialog.show();
 
         Backendless.Persistence.of(tb_siswa.class).find(dataQuery, new AsyncCallback<BackendlessCollection<tb_siswa>>() {
             @Override
