@@ -31,15 +31,17 @@ public class notifikasi_siswa_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.notifikasi_siswa_layout, container, false);
         listNotif = new ArrayList<>();
+
         final String whereClause = "id_penerima = "+Backendless.UserService.CurrentUser().getUserId();
-        BackendlessDataQuery query = new BackendlessDataQuery(whereClause);
+        BackendlessDataQuery query = new BackendlessDataQuery();
+        query.setWhereClause(whereClause);
         Backendless.Persistence.of(tb_notif.class).find(query, new AsyncCallback<BackendlessCollection<tb_notif>>() {
             @Override
             public void handleResponse(BackendlessCollection<tb_notif> response) {
                 Iterator<tb_notif> iterator = response.getCurrentPage().iterator();
                 while (iterator.hasNext()) {
                     tb_notif list_notif = iterator.next();
-                    String isi_notif = list_notif.getIsi_notif();
+                    final String isi_notif = list_notif.getIsi_notif();
                     String whereClause = "id_industri = "+list_notif.getId_pengirim();
                     BackendlessDataQuery query = new BackendlessDataQuery(whereClause);
                     Backendless.Persistence.of(tb_industri.class).find(query, new AsyncCallback<BackendlessCollection<tb_industri>>() {
@@ -56,14 +58,14 @@ public class notifikasi_siswa_fragment extends Fragment {
                                 String logo = notif.getLogo();
 
                                 notifikasi_siswa_fragment.this.listNotif.add(
-                                        new notifikasi_siswa_costum(id_industri, nama, alamat, no_telp, email, kuota,logo)
+                                        new notifikasi_siswa_costum(id_industri, nama, alamat, no_telp, email, kuota, logo, isi_notif)
                                 );
                             }
 
                             ListView listView = (ListView) rootView.findViewById(R.id.notifikasi_siswa_layout_listView);
                             notifikasi_siswa_adapter adapter = new notifikasi_siswa_adapter(getActivity(), listNotif);
                             listView.setAdapter(adapter);
-
+                            System.out.print("Bangsat");
                         }
 
                         @Override
