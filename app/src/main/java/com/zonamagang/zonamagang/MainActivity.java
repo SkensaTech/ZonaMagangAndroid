@@ -3,6 +3,7 @@ package com.zonamagang.zonamagang;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+
     TextView x;
     EditText mLoginEmail;
     EditText mLoginPass;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     String foto;
     int id_siswa;
     Context context = this;
+    boolean doubleBackToExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                         homeSiswa.putExtra("foto", foto);
                                         homeSiswa.putExtra("id_siswa",id_siswa_string);
                                         startActivity(homeSiswa);
+                                        finish();
                                     }
                                 }
 
@@ -191,7 +195,20 @@ public class MainActivity extends AppCompatActivity {
         mLoginPass = (EditText) findViewById(R.id.login_password);
     }
 
+    @Override
     public void onBackPressed(){
-        finish();
+        if (doubleBackToExit){
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExit = false;
+            }
+        }, 3000);
     }
 }

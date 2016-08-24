@@ -125,6 +125,10 @@ public class DetailSiswa extends AppCompatActivity {
                     notelp2 = (TextView)findViewById(R.id.noTelpSiswa);
                     notelp2.setText(IdTelpon);
 
+                    String nisn = responses.getNisn();
+                    TextView nisnS = (TextView)findViewById(R.id.nisnSiswa);
+                    nisnS.setText(nisn);
+
                     String nama = responses.getNama();
                     nama2 = (TextView)findViewById(R.id.namaSiswa);
                     nama2.setText(nama);

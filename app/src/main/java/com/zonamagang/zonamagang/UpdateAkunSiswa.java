@@ -1,5 +1,6 @@
 package com.zonamagang.zonamagang;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -77,7 +78,7 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                             while (iterator.hasNext()) {
                                 tb_sekolah dataSekolah = iterator.next();
                                 String namaSekolah = dataSekolah.getNama();
-                                EditText nmSekolah = (EditText) findViewById(R.id.sekolahSiswa);
+                                TextView nmSekolah = (TextView) findViewById(R.id.sekolahSiswa);
                                 nmSekolah.setText(namaSekolah);
                             }
                         }
@@ -104,7 +105,7 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                                 tb_bidang dataJurusan = iterator2.next();
 
                                 String jurusanSiswa = dataJurusan.getNama();
-                                EditText jrsSiswa = (EditText) findViewById(R.id.jurusanSiswa);
+                                TextView jrsSiswa = (TextView) findViewById(R.id.jurusanSiswa);
                                 jrsSiswa.setText(jurusanSiswa);
                             }
                         }
@@ -114,6 +115,10 @@ public class UpdateAkunSiswa extends AppCompatActivity {
 
                         }
                     });
+
+                    String nisnSiswa = responses.getNisn();
+                    EditText nisnS = (EditText)findViewById(R.id.nisnSiswa);
+                    nisnS.setText(nisnSiswa);
 
                     String alamatSiswa = responses.getAlamat();
                     EditText amtSiswa = (EditText) findViewById(R.id.alamatSiswa);
@@ -162,6 +167,8 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                 break;
             case R.id.save_icon:
                 this.editdata();
+                finish();
+                startActivity(getIntent());
                 break;
         }
 
@@ -169,6 +176,11 @@ public class UpdateAkunSiswa extends AppCompatActivity {
     }
 
     public void editdata(){
+
+        ProgressDialog dialog = new ProgressDialog(UpdateAkunSiswa.this);
+        dialog.setMessage("Tunggu Sebentar..");
+        dialog.show();
+
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
         String id_user_now = userNow.getProperty("id_user").toString();
 
@@ -217,5 +229,7 @@ public class UpdateAkunSiswa extends AppCompatActivity {
                 System.out.println("Server reported an error - " + backendlessFault.getMessage());
             }
         });
+
+        dialog.dismiss();
     }
 }
