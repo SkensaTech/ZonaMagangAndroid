@@ -78,6 +78,7 @@
         <activity android:name=".DetailSiswa" />
         <activity android:name=".notifikasi_siswa" />
         <activity android:name=".UpdateAkunSiswa"></activity>
+        <activity android:name=".LoadingActivity"/>
     </application>
 
 </manifest>
