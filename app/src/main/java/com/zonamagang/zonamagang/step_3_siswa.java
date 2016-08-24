@@ -227,7 +227,9 @@ public class step_3_siswa extends AppCompatActivity {
             {
                 // new Contact instance has been saved
                 Intent loginIntent = new Intent(step_3_siswa.this,MainActivity.class);
+                Toast.makeText(getApplicationContext(),"Silahkan Cek Email Untuk Verifikasi",Toast.LENGTH_LONG).show();
                 startActivity(loginIntent);
+
             }
 
             public void handleFault( BackendlessFault fault )

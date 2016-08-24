@@ -42,7 +42,7 @@
             android:label="Daftar" />
         <activity
             android:name=".register2"
-            android:label="Daftar Industri"
+            android:label="Daftar"
             android:parentActivityName=".register1" />
         //activity step siswa daftar
         <activity

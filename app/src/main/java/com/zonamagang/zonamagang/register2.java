@@ -24,6 +24,8 @@ public class register2 extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passEditText;
     private EditText repassEditText;
+    String xx,y;
+
     String passw;
     public String tmp1="",tmp2="",tmp3="";
     @Override
@@ -36,6 +38,7 @@ public class register2 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.layoutItems();
 
+        xx = getIntent().getStringExtra("jenis_daftar");
         emailEditText = (EditText) findViewById(R.id.daftaremail);
         passEditText = (EditText) findViewById(R.id.daftarpwd);
         repassEditText = (EditText) findViewById(R.id.daftarrepwd);
@@ -63,6 +66,7 @@ public class register2 extends AppCompatActivity {
                 }
                 String xxx = tmp1+tmp2+tmp3;
                 if (xxx.equals("123")){
+
                     register2.this.sendNext();
                 }
                 //register2.this.sendNext();
@@ -121,8 +125,14 @@ public class register2 extends AppCompatActivity {
     }
 
    public void sendNext() {
-        Intent step1= new Intent(this, step_1_industri.class);
-       step1.putExtra("email", mEmail.getText().toString());
+        Intent step1;
+       if (xx.equals("siswa")){
+           step1= new Intent(this, step_1_siswa_daftar.class);
+       } else {
+           step1= new Intent(this, step_1_industri.class);
+
+       }
+        step1.putExtra("email", mEmail.getText().toString());
         step1.putExtra("Pass", mPass.getText().toString());
         step1.putExtra("repass", mRePass.getText().toString());
 

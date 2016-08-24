@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 public class register1 extends AppCompatActivity {
 
@@ -21,7 +22,6 @@ public class register1 extends AppCompatActivity {
 
         siswa = (Button) findViewById(R.id.siswa);
         industri = (Button) findViewById(R.id.industri);
-
         siswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
@@ -34,10 +34,11 @@ public class register1 extends AppCompatActivity {
         industri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
-                Intent daftarindustri = new Intent(getApplicationContext(), register2.class);
+               // Intent daftarindustri = new Intent(getApplicationContext(), register2.class);
                 jenis_daftar = "industri";
-                daftarindustri.putExtra("jenis_daftar", jenis_daftar);
-                startActivity(daftarindustri);
+                //daftarindustri.putExtra("jenis_daftar", jenis_daftar);
+                //startActivity(daftarindustri);
+                Toast.makeText(getApplicationContext(),"Hanya Industri yang Terverifikasi Boleh Akses",Toast.LENGTH_SHORT).show();
             }
         });
         TextView masuk = (TextView) findViewById(R.id.signin);
