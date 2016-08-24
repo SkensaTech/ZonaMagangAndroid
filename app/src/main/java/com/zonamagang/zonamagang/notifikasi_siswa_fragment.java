@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
+import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
@@ -32,7 +33,10 @@ public class notifikasi_siswa_fragment extends Fragment {
         rootView = inflater.inflate(R.layout.notifikasi_siswa_layout, container, false);
         listNotif = new ArrayList<>();
 
-        final String whereClause = "id_penerima = "+Backendless.UserService.CurrentUser().getUserId();
+        BackendlessUser userNow = Backendless.UserService.CurrentUser();
+        String id_user_now = userNow.getProperty("id_user").toString();
+        final String whereClause = "id_penerima = "+id_user_now;
+
         BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause(whereClause);
         Backendless.Persistence.of(tb_notif.class).find(query, new AsyncCallback<BackendlessCollection<tb_notif>>() {
@@ -65,7 +69,6 @@ public class notifikasi_siswa_fragment extends Fragment {
                             ListView listView = (ListView) rootView.findViewById(R.id.notifikasi_siswa_layout_listView);
                             notifikasi_siswa_adapter adapter = new notifikasi_siswa_adapter(getActivity(), listNotif);
                             listView.setAdapter(adapter);
-                            System.out.print("Bangsat");
                         }
 
                         @Override
@@ -78,7 +81,7 @@ public class notifikasi_siswa_fragment extends Fragment {
 
             @Override
             public void handleFault(BackendlessFault fault) {
-
+                Toast.makeText(getActivity(), "Anda belum memiliki satu notifikasi pun", Toast.LENGTH_LONG).show();
             }
         });
         return rootView;

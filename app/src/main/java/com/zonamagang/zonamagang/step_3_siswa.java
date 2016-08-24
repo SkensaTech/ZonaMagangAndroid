@@ -152,6 +152,7 @@ public class step_3_siswa extends AppCompatActivity {
                 Toast a =Toast.makeText(getApplicationContext(),"Belum ada id siswa",Toast.LENGTH_LONG);
                 a.show();
                 id_siswa = 1;
+                step_3_siswa.this.saveSiswaInfo();
             }
         });
     }
