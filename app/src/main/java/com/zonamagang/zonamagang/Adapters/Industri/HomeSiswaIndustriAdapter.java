@@ -272,7 +272,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent loadingIntent = new Intent(getContext(), LoadingActivity.class);
-                                String gotoWhere = "home_siswa_!";
+                                String gotoWhere = "home_siswa_1";
                                 loadingIntent.putExtra("tujuan",gotoWhere);
                                 getContext().startActivity(loadingIntent);
                                 dialog.dismiss();

@@ -118,7 +118,7 @@ public class step_2_industri extends AppCompatActivity {
 
         String kosong = null;
         if (mKuota.getText().toString().equals("") || mProfil.getText().toString().equals("") || mJobdesc.getText().toString().equals("")
-                || mKualifikasi.getText().toString().equals("")|| id_parent_bidang == 0 || id_bidang == 0 || logo.equals("kosong")) {
+                || mKualifikasi.getText().toString().equals("")) {
             Toast.makeText(this, "Ada data yang kosong !", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -135,7 +135,6 @@ public class step_2_industri extends AppCompatActivity {
 
                 @Override
                 public void handleFault(BackendlessFault fault) {
-                    Toast.makeText(step_2_industri.this, "findLast user failed, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                     id_user = 1;
                     step_2_industri.this.addUserInfo();
                 }
