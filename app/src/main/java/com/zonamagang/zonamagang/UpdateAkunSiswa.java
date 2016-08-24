@@ -177,8 +177,9 @@ public class UpdateAkunSiswa extends AppCompatActivity {
 
     public void editdata(){
 
-        ProgressDialog dialog = new ProgressDialog(UpdateAkunSiswa.this);
-        dialog.setMessage("Tunggu Sebentar..");
+        ProgressDialog dialog = new ProgressDialog(UpdateAkunSiswa.this,R.style.MyTheme);
+        dialog.setCancelable(false);
+        dialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
         dialog.show();
 
         BackendlessUser userNow = Backendless.UserService.CurrentUser();
@@ -219,9 +220,6 @@ public class UpdateAkunSiswa extends AppCompatActivity {
 
                 Backendless.Data.of(tb_siswa.class).save(tb_siswa, updateResponder);
                 Toast.makeText(UpdateAkunSiswa.this,"Data anda berhasil diupdate ",Toast.LENGTH_SHORT).show();
-                finish();
-                Intent intent = new Intent(UpdateAkunSiswa.this,UpdateAkunSiswa.class);
-                startActivity(intent);
             }
 
             @Override
