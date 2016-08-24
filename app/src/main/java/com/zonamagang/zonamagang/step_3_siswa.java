@@ -143,6 +143,8 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleFault( BackendlessFault fault )
             {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
+                Toast a =Toast.makeText(getApplicationContext(),"Belum ada id siswa",Toast.LENGTH_LONG);
+                a.show();
                 id_siswa = 1;
             }
         });
@@ -185,7 +187,7 @@ public class step_3_siswa extends AppCompatActivity {
 
                             public void handleFault( BackendlessFault fault )
                             {
-                                Toast.makeText(step_3_siswa.this,"KUOTA = Error saveIndustriInfo = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                                Toast.makeText(step_3_siswa.this,"Data Siswa Info = "+fault.getMessage(),Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -193,7 +195,7 @@ public class step_3_siswa extends AppCompatActivity {
                     @Override
                     public void handleFault( BackendlessFault backendlessFault )
                     {
-                        Toast.makeText( step_3_siswa.this, "NGENTOOOOT"+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
+                        Toast.makeText( step_3_siswa.this, "Get Error Code : "+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
                     }
                 });
         }catch(Exception e)
@@ -211,7 +213,7 @@ public class step_3_siswa extends AppCompatActivity {
             @Override
             public void handleFault( BackendlessFault fault )
             {
-                Toast.makeText(step_3_siswa.this,"findLast user failed, "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(step_3_siswa.this,"USER ID = 1"+fault.getMessage(),Toast.LENGTH_LONG).show();
                 id_user = 1;
                 step_3_siswa.this.addUserInfo();
             }
@@ -235,7 +237,7 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleFault( BackendlessFault fault )
             {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
-                Toast.makeText(getApplicationContext(),"tes",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Gagal, Last Id tidak ada",Toast.LENGTH_SHORT).show();
             }
         });
 
