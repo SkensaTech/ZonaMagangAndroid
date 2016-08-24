@@ -194,7 +194,7 @@ public class step_3_siswa extends AppCompatActivity {
 
                             public void handleFault( BackendlessFault fault )
                             {
-                                Toast.makeText(step_3_siswa.this,"Data Siswa Info = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                                Toast.makeText(step_3_siswa.this,"Error SaveSiswa = "+fault.getMessage(),Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -202,13 +202,12 @@ public class step_3_siswa extends AppCompatActivity {
                     @Override
                     public void handleFault( BackendlessFault backendlessFault )
                     {
-                        Toast.makeText( step_3_siswa.this, "Get Error Code : "+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
+                        Toast.makeText( step_3_siswa.this, "Fail Save Image : "+backendlessFault.toString(), Toast.LENGTH_LONG ).show();
                     }
                 });
         }catch(Exception e)
-        {
-            e.toString();
-        }
+        {}
+
     }
     public void onSubmit(View view){
         setContentView(R.layout.loading_screen);
