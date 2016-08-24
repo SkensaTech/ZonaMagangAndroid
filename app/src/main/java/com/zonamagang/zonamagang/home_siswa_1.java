@@ -194,5 +194,9 @@ public class home_siswa_1 extends AppCompatActivity {
 
     }
 
+    public void onBackPressed(){
+        finish();
+    }
+
 
 }

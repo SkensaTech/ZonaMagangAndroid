@@ -191,4 +191,7 @@ public class MainActivity extends AppCompatActivity {
         mLoginPass = (EditText) findViewById(R.id.login_password);
     }
 
+    public void onBackPressed(){
+        finish();
+    }
 }
