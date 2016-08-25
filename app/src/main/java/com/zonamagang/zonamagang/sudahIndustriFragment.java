@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Denandra on 16/08/2016.
+ * Created by Skensa Tech on 16/08/2016.
  */
 public class sudahIndustriFragment extends Fragment {
     ArrayList<CustomIndustri> listIndustri;
