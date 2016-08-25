@@ -33,10 +33,10 @@ public class step_2_siswa extends AppCompatActivity {
     String nisn,nama,alamat,jk,ttl,tl,tgl,sprovinsi,skota,sbidang,sskolah,email,pass;
     int pos,id_bidang,id_sekolah;
     Spinner sekolah,bidang;
+    ProgressDialog dialog;
     List<tb_sekolah> listsekolah;
     List<tb_bidang_sekolah> listbidang;
     ProgressDialog progressDialog;
-    tb_bidang parentBidangSelector;
     List<tb_bidang> bidangss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +63,12 @@ public class step_2_siswa extends AppCompatActivity {
         bidang = (Spinner) findViewById(R.id.spinnerBidang);
 
         //coding untuk jika button click
-        final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
+        dialog = ProgressDialog.show(step_2_siswa.this, "",
                 "Mohon tunggu sebentar", true);
         dialog.show();
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
                 /* Create an Intent that will start the Menu-Activity.. */
                 step_2_siswa.this.isiSpinnerParent();
-                dialog.hide();
-            }
-        }, 3000);
+
         this.eventListeners();
         this.setSpinnerBidangListener();
     Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
@@ -160,17 +155,10 @@ public class step_2_siswa extends AppCompatActivity {
             }
                 else{
 
-                final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
-                        "Mohon tunggu sebentar", true);
-                dialog.show();
-                new Handler().postDelayed(new Runnable(){
-                    @Override
-                    public void run() {
                 /* Create an Intent that will start the Menu-Activity.. */
                         step_2_siswa.this.loopingBidangSekolah();
-                        dialog.hide();
-                    }
-                }, 3000);
+                        dialog.show();
+
             }
                 bidang.setSelection(0);
 
@@ -202,6 +190,7 @@ public class step_2_siswa extends AppCompatActivity {
                 {
                     tb_sekolah sekolahList = iterator.next();
                     step_2_siswa.this.listsekolah.add(new tb_sekolah(sekolahList.getId_sekolah(),sekolahList.getNama()));
+                    dialog.hide();
                 }
             }
             @Override
@@ -217,8 +206,7 @@ public class step_2_siswa extends AppCompatActivity {
       sekolah.setAdapter(sekolah_adapter);
     }
   public void loopingBidangSekolah() {
-    //
-      //  Toast.makeText(getApplicationContext(),"Id Sekolah = "+id_sekolah,Toast.LENGTH_SHORT).show();
+      Toast.makeText(getApplicationContext(),"Id Sekolah = "+id_sekolah,Toast.LENGTH_SHORT).show();
       BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause("id_sekolah = " + id_sekolah);
          bidangss = new ArrayList<>();
@@ -249,7 +237,7 @@ public class step_2_siswa extends AppCompatActivity {
                             {
                                 tb_bidang bidangList = iterator.next();
                                 step_2_siswa.this.bidangss.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
-
+                                dialog.hide();
                             }
                             bidang.setEnabled(true);
                         }
@@ -278,21 +266,9 @@ public class step_2_siswa extends AppCompatActivity {
         bidang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                parentBidangSelector = (tb_bidang) parent.getSelectedItem();
-
-                final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
-                        "Mohon tunggu sebentar", true);
-                dialog.show();
-                new Handler().postDelayed(new Runnable(){
-                    @Override
-                    public void run() {
-                /* Create an Intent that will start the Menu-Activity.. */
-                        id_bidang = parentBidangSelector.getId_bidang();
-                        dialog.hide();
-                    }
-                }, 3000);
-
-
+                tb_bidang parentBidangSelector = (tb_bidang) parent.getSelectedItem();
+                id_bidang = parentBidangSelector.getId_bidang();
+                Toast.makeText(getApplicationContext(),"Id Bidang = "+id_bidang,Toast.LENGTH_SHORT).show();
 
             }
 
