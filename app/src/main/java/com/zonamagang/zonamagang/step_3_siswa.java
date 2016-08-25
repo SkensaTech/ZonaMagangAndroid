@@ -157,7 +157,9 @@ public class step_3_siswa extends AppCompatActivity {
             }
         });
     }
-
+    public void debug(){
+        Toast.makeText(getApplicationContext(),id_sekolah+"dan"+id_bidang,Toast.LENGTH_LONG).show();
+    }
     public void saveSiswaInfo(){
 
         saveSiswa = new tb_siswa();

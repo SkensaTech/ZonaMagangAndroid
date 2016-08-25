@@ -36,12 +36,13 @@ public class step_2_siswa extends AppCompatActivity {
     List<tb_sekolah> listsekolah;
     List<tb_bidang_sekolah> listbidang;
     ProgressDialog progressDialog;
+    tb_bidang parentBidangSelector;
     List<tb_bidang> bidangss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_2_siswa);
-        this.loading();
+
         nisn = getIntent().getStringExtra("nisn");
         nama = getIntent().getStringExtra("nama");
         alamat = getIntent().getStringExtra("alamat");
@@ -62,7 +63,17 @@ public class step_2_siswa extends AppCompatActivity {
         bidang = (Spinner) findViewById(R.id.spinnerBidang);
 
         //coding untuk jika button click
-        this.isiSpinnerParent();
+        final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
+                "Mohon tunggu sebentar", true);
+        dialog.show();
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity.. */
+                step_2_siswa.this.isiSpinnerParent();
+                dialog.hide();
+            }
+        }, 3000);
         this.eventListeners();
         this.setSpinnerBidangListener();
     Spinner provinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
@@ -113,8 +124,7 @@ public class step_2_siswa extends AppCompatActivity {
 
                 Intent nextpage = new Intent(getApplicationContext(),step_3_siswa.class);
               String scl,bdg;
-                scl = Integer.toString(id_sekolah);
-                bdg = Integer.toString(id_bidang);
+
                 nextpage.putExtra("nisn",nisn);
                 nextpage.putExtra("nama",nama);
                 nextpage.putExtra("jeniskelamin",jk);
@@ -123,8 +133,8 @@ public class step_2_siswa extends AppCompatActivity {
                 nextpage.putExtra("tanggal",tgl);
                 nextpage.putExtra("provinsi",sprovinsi);
                 nextpage.putExtra("kota",skota);
-                nextpage.putExtra("id_sekolah",scl);
-                nextpage.putExtra("id_bidang",bdg);
+                nextpage.putExtra("id_sekolah",id_sekolah);
+                nextpage.putExtra("id_bidang",id_bidang);
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
                // Toast.makeText(getApplicationContext(),scl+" "+bdg,Toast.LENGTH_SHORT).show();
@@ -149,9 +159,21 @@ public class step_2_siswa extends AppCompatActivity {
                 bidang.setEnabled(false);
             }
                 else{
-                 step_2_siswa.this.loopingBidangSekolah();
-                }
+
+                final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
+                        "Mohon tunggu sebentar", true);
+                dialog.show();
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+                /* Create an Intent that will start the Menu-Activity.. */
+                        step_2_siswa.this.loopingBidangSekolah();
+                        dialog.hide();
+                    }
+                }, 3000);
+            }
                 bidang.setSelection(0);
+
             }
 
             @Override
@@ -179,7 +201,6 @@ public class step_2_siswa extends AppCompatActivity {
                 while( iterator.hasNext() )
                 {
                     tb_sekolah sekolahList = iterator.next();
-
                     step_2_siswa.this.listsekolah.add(new tb_sekolah(sekolahList.getId_sekolah(),sekolahList.getNama()));
                 }
             }
@@ -189,14 +210,16 @@ public class step_2_siswa extends AppCompatActivity {
 //                Intent reload = new Intent(getApplicationContext(),step_2_siswa.class);
 //                startActivity(reload);
 //                step_2_siswa.this.finish();
-                    Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode()+"ID Sekolah"+id_sekolah,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode()+" ID Sekolah "+id_sekolah,Toast.LENGTH_SHORT).show();
             }
         });
       ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
       sekolah.setAdapter(sekolah_adapter);
     }
   public void loopingBidangSekolah() {
-        BackendlessDataQuery query = new BackendlessDataQuery();
+    //
+      //  Toast.makeText(getApplicationContext(),"Id Sekolah = "+id_sekolah,Toast.LENGTH_SHORT).show();
+      BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause("id_sekolah = " + id_sekolah);
          bidangss = new ArrayList<>();
         bidangss.add(new tb_bidang(0,0,"Pilih Bidang Sekolah."));
@@ -255,13 +278,21 @@ public class step_2_siswa extends AppCompatActivity {
         bidang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                parentBidangSelector = (tb_bidang) parent.getSelectedItem();
 
-                tb_bidang parentBidangSelector = (tb_bidang) parent.getSelectedItem();
-                id_bidang = parentBidangSelector.getId_bidang();
-                if (id_bidang==0) {
-//                    Toast.makeText(getApplicationContext(),"Pilih Bidang Keahlilan",Toast.LENGTH_SHORT).show();
-                    step_2_siswa.this.loading();
-                }
+                final ProgressDialog dialog = ProgressDialog.show(step_2_siswa.this, "",
+                        "Mohon tunggu sebentar", true);
+                dialog.show();
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+                /* Create an Intent that will start the Menu-Activity.. */
+                        id_bidang = parentBidangSelector.getId_bidang();
+                        dialog.hide();
+                    }
+                }, 3000);
+
+
 
             }
 
