@@ -32,6 +32,7 @@ public class step_2_siswa extends AppCompatActivity {
     //Deklarasi
     String nisn,nama,alamat,jk,ttl,tl,tgl,sprovinsi,skota,sbidang,sskolah,email,pass;
     int pos,id_bidang,id_sekolah;
+    int xy = 0;
     Spinner sekolah,bidang;
     ProgressDialog dialog;
     List<tb_sekolah> listsekolah;
@@ -128,7 +129,7 @@ public class step_2_siswa extends AppCompatActivity {
                 nextpage.putExtra("tanggal",tgl);
                 nextpage.putExtra("provinsi",sprovinsi);
                 nextpage.putExtra("kota",skota);
-                nextpage.putExtra("id_sekolah",id_sekolah);
+                nextpage.putExtra("id_sekolah",xy);
                 nextpage.putExtra("id_bidang",id_bidang);
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
@@ -147,19 +148,19 @@ public class step_2_siswa extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 tb_sekolah sekolahSelector = (tb_sekolah) parent.getSelectedItem();
-             id_sekolah = sekolahSelector.getId_sekolah();
+                id_sekolah = sekolahSelector.getId_sekolah();
+                xy = id_sekolah;
+
             if(id_sekolah == 0) {
                 bidang.setSelection(0);
 
                 bidang.setEnabled(false);
-            }
-                else{
+            }else{
 
                 /* Create an Intent that will start the Menu-Activity.. */
                         step_2_siswa.this.loopingBidangSekolah();
                         dialog.show();
-
-            }
+           }
                 bidang.setSelection(0);
 
             }
@@ -206,7 +207,7 @@ public class step_2_siswa extends AppCompatActivity {
       sekolah.setAdapter(sekolah_adapter);
     }
   public void loopingBidangSekolah() {
-      Toast.makeText(getApplicationContext(),"Id Sekolah = "+id_sekolah,Toast.LENGTH_SHORT).show();
+      Toast.makeText(getApplicationContext(),"Id Sekolah = "+xy,Toast.LENGTH_SHORT).show();
       BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause("id_sekolah = " + id_sekolah);
          bidangss = new ArrayList<>();
