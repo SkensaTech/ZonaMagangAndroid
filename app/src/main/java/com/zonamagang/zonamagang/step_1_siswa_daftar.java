@@ -169,6 +169,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
                                         next.putExtra("email",email);
                                         next.putExtra("pass",pass);
                                         startActivity(next);
+                                        finish();
                                     }
                                 }
                             }
@@ -199,6 +200,7 @@ public class step_1_siswa_daftar extends AppCompatActivity {
                                     next.putExtra("email",email);
                                     next.putExtra("pass",pass);
                                     startActivity(next);
+                                    finish();
                                 }
                             }
                         });

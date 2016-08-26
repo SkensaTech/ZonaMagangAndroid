@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 //                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                                     new AlertDialog.Builder(context)
                                             .setTitle("Alert")
-                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setMessage("Failed to get Siswa info, "+fault.getMessage())
                                             .setPositiveButton("Back", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {

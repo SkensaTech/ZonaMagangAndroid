@@ -166,7 +166,7 @@ public class register2 extends AppCompatActivity {
 
                            }
                            step1.putExtra("email", mEmail.getText().toString());
-                           step1.putExtra("Pass", mPass.getText().toString());
+                           step1.putExtra("pass", mPass.getText().toString());
                            step1.putExtra("repass", mRePass.getText().toString());
 
                            //before

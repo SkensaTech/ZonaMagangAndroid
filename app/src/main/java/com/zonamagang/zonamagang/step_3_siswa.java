@@ -57,7 +57,7 @@ public class step_3_siswa extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
         telp = notelp.getText().toString();
-        Toast.makeText(getApplicationContext(),"Sekolah : "+id_sekolah+"Id Bidang : "+id_bidang,Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),"Sekolah : "+id_sekolah+"Id Bidang : "+id_bidang,Toast.LENGTH_LONG).show();
 
 //        id_sekolah = Integer.parseInt(sekolah);
 //        id_bidang = Integer.parseInt(bidang);
@@ -127,7 +127,7 @@ public class step_3_siswa extends AppCompatActivity {
 
             public void handleFault( BackendlessFault fault )
             {
-                Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
                 String error = fault.getCode();
                 if (error.equals("error")){
                     Intent intent = new Intent(getApplicationContext(),register1.class);
@@ -147,7 +147,7 @@ public class step_3_siswa extends AppCompatActivity {
             {
                 id_siswa = siswaInfo.getId_siswa() + 1;
                 step_3_siswa.this.saveSiswaInfo();
-                Toast.makeText(getApplicationContext(),"Id Siswa",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"Id Siswa",Toast.LENGTH_LONG).show();
 
             }
             @Override
@@ -245,7 +245,7 @@ public class step_3_siswa extends AppCompatActivity {
                 Intent loginIntent = new Intent(step_3_siswa.this,MainActivity.class);
                 Toast.makeText(getApplicationContext(),"Silahkan Cek Email Untuk Verifikasi",Toast.LENGTH_LONG).show();
                 startActivity(loginIntent);
-
+                finish();
             }
 
             public void handleFault( BackendlessFault fault )
