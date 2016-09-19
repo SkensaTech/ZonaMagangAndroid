@@ -24,24 +24,50 @@
             android:orientation="vertical"
             android:paddingTop="@dimen/activity_vertical_margin">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Bidang"
+
+                android:id="@+id/textView2" />
+
             <Spinner
                 android:layout_width="match_parent"
+                android:layout_margin="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerBidang"
+                android:padding="0px"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Provinsi"
+                android:id="@+id/textView3" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_margin="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerProvinsi"
                 android:padding="0px"/>
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinnerKota"
-                android:padding="0px"/>
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Kota"
+
+                android:id="@+id/textView4" />
+
 
             <Spinner
                 android:layout_width="match_parent"
+                android:layout_margin="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinnerBidang"
+                android:id="@+id/spinnerKota"
                 android:padding="0px"/>
             <Button
                 android:layout_width="match_parent"
