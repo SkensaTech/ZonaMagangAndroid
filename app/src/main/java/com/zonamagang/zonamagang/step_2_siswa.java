@@ -239,9 +239,10 @@ public class step_2_siswa extends AppCompatActivity {
                             {
                                 tb_bidang bidangList = iterator.next();
                                 step_2_siswa.this.bidangss.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
-                                dialog.hide();
                             }
                             bidang.setEnabled(true);
+                            dialog.hide();
+
                         }
                         @Override
                         public void handleFault( BackendlessFault fault )
