@@ -15,6 +15,7 @@ import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
+import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 
 import java.util.Iterator;
@@ -67,6 +68,62 @@ public class LoadingActivity extends Activity {
                                         homeSiswa.putExtra("foto", foto);
                                         homeSiswa.putExtra("id_siswa",id_siswa_string);
                                         LoadingActivity.this.startActivity(homeSiswa);
+                                        LoadingActivity.this.finish();
+                                    }
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+                                    // an error has occurred, the error code can be retrieved with fault.getCode()
+//                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                                    new AlertDialog.Builder(getApplicationContext())
+                                            .setTitle("Alert")
+                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    finish();
+                                                }
+                                            })
+                                            .setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            })
+                                            .show();
+                                }
+                            });
+                }
+                else if(tujuan.equals("HomeIndustri")){
+                    BackendlessUser userNow = Backendless.UserService.CurrentUser();
+                    String id_user_string = userNow.getProperty("id_user").toString();
+                    email = userNow.getProperty("email").toString();
+
+                    String whereClause = "id_user = " + id_user_string;
+                    BackendlessDataQuery dataQuery = new BackendlessDataQuery();
+                    dataQuery.setWhereClause(whereClause);
+                    Backendless.Persistence.of(tb_industri.class).find(dataQuery,
+                            new AsyncCallback<BackendlessCollection<tb_industri>>() {
+                                @Override
+                                public void handleResponse(BackendlessCollection<tb_industri> foundContacts) {
+                                    List<tb_industri> firstPage = foundContacts.getCurrentPage();
+
+                                    Iterator<tb_industri> iterator = firstPage.iterator();
+
+                                    while (iterator.hasNext()) {
+                                        tb_industri industriInfo = iterator.next();
+                                        String nama = industriInfo.getNama();
+                                        String logo = industriInfo.getLogo();
+                                        int id_industri = industriInfo.getId_industri();
+                                        String id_industri_string = Integer.toString(id_industri);
+
+                                        Intent homeIndustri = new Intent(LoadingActivity.this, HomeIndustri.class);
+                                        homeIndustri.putExtra("email", email);
+                                        homeIndustri.putExtra("nama", nama);
+                                        homeIndustri.putExtra("logo", logo);
+                                        homeIndustri.putExtra("id_industri",id_industri_string);
+                                        LoadingActivity.this.startActivity(homeIndustri);
                                         LoadingActivity.this.finish();
                                     }
                                 }
