@@ -47,7 +47,7 @@ public class hasil_pencarian extends AppCompatActivity {
         String nama_industri = hasil;
 //        "nama = 'Aditya Herlambang'"
 //        String whereClause = "nama = '"+ nama_industri+"'";
-        String whereClause = "nama LIKE '%nama_industri%'";
+        String whereClause = "nama LIKE '%"+nama_industri+"%'";
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();
         dataQuery.setWhereClause(whereClause);
 
