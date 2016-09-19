@@ -64,24 +64,30 @@
         <activity
             android:name=".step_1_industri"
             android:label="Daftar Industri"
-            android:parentActivityName=".register2"/>
+            android:parentActivityName=".register2" />
         <activity
             android:name=".step_2_industri"
             android:label="Daftar Industri"
-            android:parentActivityName=".step_1_industri"/>
+            android:parentActivityName=".step_1_industri" />
         <activity android:name=".DetailSiswaOlehIndustri" />
         <activity android:name=".detail_industri" />
         <activity android:name=".Notifikasi_Industri" />
         <activity android:name=".TentangKami" />
         <activity android:name=".AkunIndustri" />
-        <activity android:name=".UpdateAkun" android:label="Akun Saya"/>
-        <activity android:name=".DetailSiswa"
-            android:label="Detail Akun Anda"/>
-        <activity android:name=".notifikasi_siswa"
-            android:label="Notifikasi Siswa"/>
-        <activity android:name=".UpdateAkunSiswa"
-            android:label="Edit Akun Anda"></activity>
-        <activity android:name=".LoadingActivity"/>
+        <activity
+            android:name=".UpdateAkun"
+            android:label="Akun Saya" />
+        <activity
+            android:name=".DetailSiswa"
+            android:label="Detail Akun Anda" />
+        <activity
+            android:name=".notifikasi_siswa"
+            android:label="Notifikasi Siswa" />
+        <activity
+            android:name=".UpdateAkunSiswa"
+            android:label="Edit Akun Anda" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".hasil_pencarian"></activity>
     </application>
 
 </manifest>

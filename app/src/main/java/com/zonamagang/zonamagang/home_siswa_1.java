@@ -193,12 +193,14 @@ public class home_siswa_1 extends AppCompatActivity {
         MenuInflater menuin = getMenuInflater();
         menuin.inflate(R.menu.menu_search, menu);
         MenuItem cari = menu.findItem(R.id.searchbox);
+
         final SearchView pencarian = (SearchView) MenuItemCompat.getActionView(cari);
         pencarian.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                    searchquery = query;
-                home_siswa_1.this.getQuery();
+                Intent intent = new Intent(home_siswa_1.this,hasil_pencarian.class);
+                intent.putExtra("hasil",query);
+                startActivity(intent);
                 return true;
             }
 
