@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void doLogin(View view) {
         setContentView(R.layout.loading_screen);
-
+        mLoginEmail.setEnabled(false);
+        mLoginPass.setEnabled(false);
         email = mLoginEmail.getText().toString();
         String pass = mLoginPass.getText().toString();
 
