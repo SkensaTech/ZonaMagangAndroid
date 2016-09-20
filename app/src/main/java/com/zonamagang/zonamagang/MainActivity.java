@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void doLogin(View view) {
         setContentView(R.layout.loading_screen);
-
+        mLoginEmail.setEnabled(false);
+        mLoginPass.setEnabled(false);
         email = mLoginEmail.getText().toString();
         String pass = mLoginPass.getText().toString();
 
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 //                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                                     new AlertDialog.Builder(context)
                                             .setTitle("Alert")
-                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setMessage("Failed to get Siswa info, "+fault.getMessage())
                                             .setPositiveButton("Back", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {

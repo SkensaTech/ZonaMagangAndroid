@@ -32,6 +32,7 @@ public class step_2_siswa extends AppCompatActivity {
     //Deklarasi
     String nisn,nama,alamat,jk,ttl,tl,tgl,sprovinsi,skota,sbidang,sskolah,email,pass;
     int pos,id_bidang,id_sekolah;
+    int xy = 0;
     Spinner sekolah,bidang;
     ProgressDialog dialog;
     List<tb_sekolah> listsekolah;
@@ -128,12 +129,13 @@ public class step_2_siswa extends AppCompatActivity {
                 nextpage.putExtra("tanggal",tgl);
                 nextpage.putExtra("provinsi",sprovinsi);
                 nextpage.putExtra("kota",skota);
-                nextpage.putExtra("id_sekolah",id_sekolah);
+                nextpage.putExtra("id_sekolah",xy);
                 nextpage.putExtra("id_bidang",id_bidang);
                 nextpage.putExtra("email",email);
                 nextpage.putExtra("pass",pass);
                // Toast.makeText(getApplicationContext(),scl+" "+bdg,Toast.LENGTH_SHORT).show();
               startActivity(nextpage);
+                finish();
 
             }
         });
@@ -147,19 +149,19 @@ public class step_2_siswa extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 tb_sekolah sekolahSelector = (tb_sekolah) parent.getSelectedItem();
-             id_sekolah = sekolahSelector.getId_sekolah();
+                id_sekolah = sekolahSelector.getId_sekolah();
+                xy = id_sekolah;
+
             if(id_sekolah == 0) {
                 bidang.setSelection(0);
 
                 bidang.setEnabled(false);
-            }
-                else{
+            }else{
 
                 /* Create an Intent that will start the Menu-Activity.. */
                         step_2_siswa.this.loopingBidangSekolah();
                         dialog.show();
-
-            }
+           }
                 bidang.setSelection(0);
 
             }
@@ -199,14 +201,14 @@ public class step_2_siswa extends AppCompatActivity {
 //                Intent reload = new Intent(getApplicationContext(),step_2_siswa.class);
 //                startActivity(reload);
 //                step_2_siswa.this.finish();
-                    Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode()+" ID Sekolah "+id_sekolah,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(step_2_siswa.this,"Error ! "+fault.getCode()+" ID Sekolah "+id_sekolah,Toast.LENGTH_SHORT).show();
             }
         });
       ArrayAdapter<tb_sekolah> sekolah_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listsekolah);
       sekolah.setAdapter(sekolah_adapter);
     }
   public void loopingBidangSekolah() {
-      Toast.makeText(getApplicationContext(),"Id Sekolah = "+id_sekolah,Toast.LENGTH_SHORT).show();
+//      Toast.makeText(getApplicationContext(),"Id Sekolah = "+xy,Toast.LENGTH_SHORT).show();
       BackendlessDataQuery query = new BackendlessDataQuery();
         query.setWhereClause("id_sekolah = " + id_sekolah);
          bidangss = new ArrayList<>();
@@ -237,9 +239,10 @@ public class step_2_siswa extends AppCompatActivity {
                             {
                                 tb_bidang bidangList = iterator.next();
                                 step_2_siswa.this.bidangss.add(new tb_bidang(bidangList.getId_bidang(),bidangList.getId_parent_bidang(),bidangList.getNama()));
-                                dialog.hide();
                             }
                             bidang.setEnabled(true);
+                            dialog.hide();
+
                         }
                         @Override
                         public void handleFault( BackendlessFault fault )
@@ -268,7 +271,7 @@ public class step_2_siswa extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tb_bidang parentBidangSelector = (tb_bidang) parent.getSelectedItem();
                 id_bidang = parentBidangSelector.getId_bidang();
-                Toast.makeText(getApplicationContext(),"Id Bidang = "+id_bidang,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"Id Bidang = "+id_bidang,Toast.LENGTH_SHORT).show();
 
             }
 

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -141,6 +142,7 @@ public class home_siswa_1 extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem.getIdentifier() == 1){
+//                            Toast.makeText(getApplicationContext(),"Fitur Pencarian masih dalam tahap pengembangan",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(home_siswa_1.this, search_filter.class);
                             startActivity(intent);
                         }

@@ -52,14 +52,15 @@ public class step_3_siswa extends AppCompatActivity {
         jeniskelamin = getIntent().getStringExtra("jeniskelamin");
         provinsi = getIntent().getStringExtra("provinsi");
         kota = getIntent().getStringExtra("kota");
-        sekolah = getIntent().getStringExtra("id_sekolah");
-        bidang = getIntent().getStringExtra("id_bidang");
+        id_sekolah = getIntent().getIntExtra("id_sekolah",0);
+        id_bidang = getIntent().getIntExtra("id_bidang",0);
         email = getIntent().getStringExtra("email");
         pass = getIntent().getStringExtra("pass");
         telp = notelp.getText().toString();
-        //coding untuk toolbar
-        id_sekolah = Integer.parseInt(sekolah);
-        id_bidang = Integer.parseInt(bidang);
+//        Toast.makeText(getApplicationContext(),"Sekolah : "+id_sekolah+"Id Bidang : "+id_bidang,Toast.LENGTH_LONG).show();
+
+//        id_sekolah = Integer.parseInt(sekolah);
+//        id_bidang = Integer.parseInt(bidang);
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -126,7 +127,7 @@ public class step_3_siswa extends AppCompatActivity {
 
             public void handleFault( BackendlessFault fault )
             {
-                Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(step_3_siswa.this,"There's an Error ! Code = "+fault.getCode(),Toast.LENGTH_SHORT).show();
                 String error = fault.getCode();
                 if (error.equals("error")){
                     Intent intent = new Intent(getApplicationContext(),register1.class);
@@ -146,6 +147,8 @@ public class step_3_siswa extends AppCompatActivity {
             {
                 id_siswa = siswaInfo.getId_siswa() + 1;
                 step_3_siswa.this.saveSiswaInfo();
+//                Toast.makeText(getApplicationContext(),"Id Siswa",Toast.LENGTH_LONG).show();
+
             }
             @Override
             public void handleFault( BackendlessFault fault )
@@ -192,6 +195,7 @@ public class step_3_siswa extends AppCompatActivity {
                       Backendless.Persistence.save( saveSiswa, new AsyncCallback<tb_siswa>() {
                             public void handleResponse( tb_siswa response )
                             {
+                                Toast.makeText(step_3_siswa.this,"Simpan Data",Toast.LENGTH_LONG).show();
                                 step_3_siswa.this.registerSuccess();
                             }
 
@@ -241,7 +245,7 @@ public class step_3_siswa extends AppCompatActivity {
                 Intent loginIntent = new Intent(step_3_siswa.this,MainActivity.class);
                 Toast.makeText(getApplicationContext(),"Silahkan Cek Email Untuk Verifikasi",Toast.LENGTH_LONG).show();
                 startActivity(loginIntent);
-
+                finish();
             }
 
             public void handleFault( BackendlessFault fault )
