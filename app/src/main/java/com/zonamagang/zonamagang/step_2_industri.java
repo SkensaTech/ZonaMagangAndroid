@@ -178,7 +178,7 @@ public class step_2_industri extends AppCompatActivity {
             @Override
             public void handleFault(BackendlessFault fault) {
                 // an error has occurred, the error code can be retrieved with fault.getCode()
-                Toast.makeText(step_2_industri.this, "findLast industri error, " + fault.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(step_2_industri.this, "findLast industri error, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                 id_industri = 1;
                 step_2_industri.this.getLastTbBidangIndustri();
             }
@@ -284,7 +284,7 @@ public class step_2_industri extends AppCompatActivity {
             }
 
             public void handleFault(BackendlessFault fault) {
-                // an error has occurred, the error code can be retrieved with fault.getCode()
+                Toast.makeText(step_2_industri.this, "Error ! " + fault.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

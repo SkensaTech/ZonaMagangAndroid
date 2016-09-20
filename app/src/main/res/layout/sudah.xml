@@ -35,7 +35,7 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/gambarSiswa"
+                            android:id="@+id/baruItemFoto"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:src="@drawable/asu"
@@ -48,7 +48,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:layout_toRightOf="@+id/gambarSiswa"
+                            android:layout_toRightOf="@+id/baruItemFoto"
                             android:text="Denandra Prasetya" />
 
                         <TextView
@@ -57,14 +57,14 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/namaSiswa"
                             android:layout_marginBottom="8dp"
-                            android:layout_toRightOf="@id/gambarSiswa"
+                            android:layout_toRightOf="@id/baruItemFoto"
                             android:text="SMKN 1 Denpasar" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/sekolahSiswa"
-                            android:layout_toRightOf="@+id/gambarSiswa"
+                            android:layout_toRightOf="@+id/baruItemFoto"
                             android:text="RPL" />
 
                     </RelativeLayout>

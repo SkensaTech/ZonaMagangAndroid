@@ -5,11 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,36 +13,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessCollection;
 import com.backendless.BackendlessUser;
-import com.backendless.UserService;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.BackendlessDataQuery;
-import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.squareup.picasso.Picasso;
 import com.zonamagang.zonamagang.LoadingActivity;
-import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_magang;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 import com.zonamagang.zonamagang.R;
 import com.zonamagang.zonamagang.detail_industri;
-import com.zonamagang.zonamagang.dialogInterviewFragment;
 import com.zonamagang.zonamagang.home_siswa_1;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -90,7 +73,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
         TextView kuotaIndustri = (TextView) listItemView.findViewById(R.id.kuotaIndustri);
         kuotaIndustri.setText("Kuota : "+industriNow.getKuota()+" orang");
 
-        ImageView logo = (ImageView) listItemView.findViewById(R.id.gambarSiswa);
+        ImageView logo = (ImageView) listItemView.findViewById(R.id.baruItemFoto);
         String logoUrl = industriNow.getLogo();
         Picasso.with(getContext()).load(logoUrl).into(logo);
 
