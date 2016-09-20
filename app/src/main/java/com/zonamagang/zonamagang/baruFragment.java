@@ -84,7 +84,7 @@ public class baruFragment extends Fragment{
                 id_industri = firstPageIndustri.get(0).getId_industri();
 
                 BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
-                dataQueryTbMagang.setWhereClause("id_industri = " +id_industri+" AND status_diterima = 1");
+                dataQueryTbMagang.setWhereClause("id_industri. = " +id_industri+" AND status_diterima = 1");
                 BackendlessCollection<tb_magang> magangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQuery);
                 List<tb_magang> firstPageMagang = magangInfo.getCurrentPage();
                 if(firstPageMagang.size() > 0){
