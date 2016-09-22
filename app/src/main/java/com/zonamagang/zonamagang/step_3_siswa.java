@@ -23,6 +23,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.files.BackendlessFile;
 import com.zonamagang.zonamagang.Model.last_id;
+import com.zonamagang.zonamagang.Model.tb_error;
 import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 
@@ -32,6 +33,7 @@ public class step_3_siswa extends AppCompatActivity {
     String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass,foto;
     String telp;
     Bitmap bMap_image;
+    public static String user_id;
 
     EditText notelp;
     tb_siswa saveSiswa;
@@ -122,6 +124,7 @@ public class step_3_siswa extends AppCompatActivity {
             public void handleResponse( BackendlessUser registeredUser )
             {
                 //registered tapi belum login
+                user_id = registeredUser.getObjectId();
                 step_3_siswa.this.addSiswaInfo();
             }
 
@@ -134,6 +137,7 @@ public class step_3_siswa extends AppCompatActivity {
                     startActivity(intent);
                     step_3_siswa.this.finish();
                     Toast.makeText(step_3_siswa.this,"Maaf, Email yang anda gunakan telah terdaftar",Toast.LENGTH_SHORT).show();
+
                 }
                 // ada error. bisa di retrieved with fault.getCode()
 
@@ -202,6 +206,8 @@ public class step_3_siswa extends AppCompatActivity {
                             public void handleFault( BackendlessFault fault )
                             {
                                 Toast.makeText(step_3_siswa.this,"Data Siswa Info = "+fault.getMessage(),Toast.LENGTH_LONG).show();
+                                String error1 = "Error Add Siswa "+fault.getCode();
+                                step_3_siswa.this.send_error(error1);
                             }
                         });
                     }
@@ -261,5 +267,23 @@ public class step_3_siswa extends AppCompatActivity {
         Intent intent = new Intent(step_3_siswa.this,register1.class);
         startActivity(intent);
         this.finish();
+    }
+    public void send_error(String error){
+        tb_error tabel_error = new tb_error();
+
+        tabel_error.setUser_id(user_id);
+        tabel_error.setError(error);
+
+        Backendless.Persistence.save(tabel_error, new AsyncCallback<tb_error>() {
+            @Override
+            public void handleResponse(tb_error response) {
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
     }
 }
