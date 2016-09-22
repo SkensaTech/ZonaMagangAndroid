@@ -52,6 +52,11 @@ public class search_filter extends AppCompatActivity {
         provinsis.add("Bali");
         ArrayAdapter<String> provinsi_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, provinsis);
         provinsi.setAdapter(provinsi_adapter);
+        provinsi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            }
+        });
 
 
         //kota
@@ -59,8 +64,6 @@ public class search_filter extends AppCompatActivity {
         List<String> kotas = new ArrayList<>();
         kotas.add("--Pilih Kota--");
         kotas.add("Denpasar");
-        kotas.add("Singaraja");
-        kotas.add("Gianyar");
 
         ArrayAdapter<String> kotas_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, kotas);
         kota.setAdapter(kotas_adapter);
@@ -68,12 +71,24 @@ public class search_filter extends AppCompatActivity {
 
         //bidang
         Spinner bidang = (Spinner) findViewById(R.id.spinnerBidang);
-        List<String> bidangs = new ArrayList<>();
+        final List<String> bidangs = new ArrayList<>();
         bidangs.add("--Pilih Bidang--");
-        bidangs.add("Rekayasa Perangkat Lunak");
-        bidangs.add("Teknik Komputer Jaringan");
-        bidangs.add("Akomodasi Perhotelan");
+        Backendless.Persistence.of(tb_bidang.class).find(new AsyncCallback<BackendlessCollection<tb_bidang>>() {
+            @Override
+            public void handleResponse(BackendlessCollection<tb_bidang> response) {
+                List<tb_bidang> curpage = response.getCurrentPage();
+                int size = curpage.size();
+                for (int i = 0;i < size;i++){
+                    String bidang_item = curpage.get(i).getNama();
+                    bidangs.add(bidang_item);
+                }
+            }
 
+            @Override
+            public void handleFault(BackendlessFault fault) {
+
+            }
+        });
         ArrayAdapter<String> bidang_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, bidangs);
         bidang.setAdapter(bidang_adapter);
 

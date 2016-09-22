@@ -87,7 +87,8 @@
             android:name=".UpdateAkunSiswa"
             android:label="Edit Akun Anda" />
         <activity android:name=".LoadingActivity" />
-        <activity android:name=".hasil_pencarian"></activity>
+        <activity android:name=".hasil_pencarian" />
+        <activity android:name=".home_admin"></activity>
     </application>
 
 </manifest>
