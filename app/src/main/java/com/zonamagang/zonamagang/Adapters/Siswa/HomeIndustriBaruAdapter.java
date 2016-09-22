@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class HomeIndustriBaruAdapter extends ArrayAdapter<HomeIndustriSiswaCusto
     int mYear,mMonth,mDay;
     int tahun,bulan,hari;
     int id_industri;
+    int lastIdNotif;
     ProgressDialog progressDialog;
 
     public HomeIndustriBaruAdapter(Activity context, ArrayList<HomeIndustriSiswaCustom> industri){super(context,0,industri);}
@@ -148,21 +150,96 @@ public class HomeIndustriBaruAdapter extends ArrayAdapter<HomeIndustriSiswaCusto
                                                                         public void handleResponse( tb_magang response )
                                                                         {
                                                                             // Contact instance has been updated
-                                                                            progressDialog.hide();
-                                                                            new AlertDialog.Builder(getContext())
-                                                                                    .setTitle("Tanggal interview telah ditentukan !")
-                                                                                    .setMessage("Notifikasi tentang tanggal interview telah dikirim ke siswa tersebut.")
-                                                                                    .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
-                                                                                        @Override
-                                                                                        public void onClick(DialogInterface dialog, int which) {
-                                                                                            Intent loadingIntent = new Intent(getContext(), LoadingActivity.class);
-                                                                                            String gotoWhere = "HomeIndustri";
-                                                                                            loadingIntent.putExtra("tujuan",gotoWhere);
-                                                                                            getContext().startActivity(loadingIntent);
-                                                                                            dialog.dismiss();
+
+                                                                            //Notif Development
+                                                                            Backendless.Persistence.of( tb_notif.class).findLast( new AsyncCallback<tb_notif>(){
+                                                                                @Override
+                                                                                public void handleResponse( tb_notif lastTbNotif )
+                                                                                {
+                                                                                    lastIdNotif = lastTbNotif.getId_notif() + 1;
+
+                                                                                    tb_notif notif = new tb_notif();
+                                                                                    notif.setId_penerima(id_siswa_now);
+                                                                                    Log.e("HomeIndustriBaruAdapter","id siswa = "+id_siswa_now);
+                                                                                    notif.setId_pengirim( id_industri );
+                                                                                    notif.setId_notif(lastIdNotif);
+                                                                                    notif.setIsi_notif("Selamat ! anda diterima magang pada industri tersebut. Silahkan datang ke industri ini pada tanggal "+hari+"-"+bulan+"-"+tahun);
+
+                                                                                    // save object asynchronously
+                                                                                    Backendless.Persistence.save( notif, new AsyncCallback<tb_notif>() {
+                                                                                        public void handleResponse( tb_notif response )
+                                                                                        {
+                                                                                            // new Contact instance has been saved
+                                                                                            progressDialog.hide();
+                                                                                            new AlertDialog.Builder(getContext())
+                                                                                                    .setTitle("Tanggal interview telah ditentukan !")
+                                                                                                    .setMessage("Notifikasi tentang tanggal interview telah dikirim ke siswa tersebut.")
+                                                                                                    .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
+                                                                                                        @Override
+                                                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                                                            Intent loadingIntent = new Intent(getContext(), LoadingActivity.class);
+                                                                                                            String gotoWhere = "HomeIndustri";
+                                                                                                            loadingIntent.putExtra("tujuan",gotoWhere);
+                                                                                                            getContext().startActivity(loadingIntent);
+                                                                                                            dialog.dismiss();
+                                                                                                        }
+                                                                                                    })
+                                                                                                    .show();
                                                                                         }
-                                                                                    })
-                                                                                    .show();
+
+                                                                                        public void handleFault( BackendlessFault fault )
+                                                                                        {
+                                                                                            // an error has occurred, the error code can be retrieved with fault.getCode()
+                                                                                        }
+                                                                                    });
+
+                                                                                }
+                                                                                @Override
+                                                                                public void handleFault( BackendlessFault fault )
+                                                                                {
+                                                                                    lastIdNotif = 1;
+
+                                                                                    tb_notif notif = new tb_notif();
+                                                                                    notif.setId_penerima(id_siswa_now);
+                                                                                    Log.e("HomeIndustriBaruAdapter","id siswa = "+id_siswa_now);
+                                                                                    notif.setId_pengirim( id_industri );
+                                                                                    notif.setId_notif(lastIdNotif);
+                                                                                    notif.setIsi_notif("Selamat ! anda diterima magang pada industri tersebut. Silahkan datang ke industri ini pada tanggal "+hari+"-"+bulan+"-"+tahun);
+
+                                                                                    // save object asynchronously
+                                                                                    Backendless.Persistence.save( notif, new AsyncCallback<tb_notif>() {
+                                                                                        public void handleResponse( tb_notif response )
+                                                                                        {
+                                                                                            // new Contact instance has been saved
+                                                                                            progressDialog.hide();
+                                                                                            new AlertDialog.Builder(getContext())
+                                                                                                    .setTitle("Tanggal interview telah ditentukan !")
+                                                                                                    .setMessage("Notifikasi tentang tanggal interview telah dikirim ke siswa tersebut.")
+                                                                                                    .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
+                                                                                                        @Override
+                                                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                                                            Intent loadingIntent = new Intent(getContext(), LoadingActivity.class);
+                                                                                                            String gotoWhere = "HomeIndustri";
+                                                                                                            loadingIntent.putExtra("tujuan",gotoWhere);
+                                                                                                            getContext().startActivity(loadingIntent);
+                                                                                                            dialog.dismiss();
+                                                                                                        }
+                                                                                                    })
+                                                                                                    .show();
+                                                                                        }
+
+                                                                                        public void handleFault( BackendlessFault fault )
+                                                                                        {
+                                                                                            // an error has occurred, the error code can be retrieved with fault.getCode()
+                                                                                            Log.e("HomeIndustriBaruAdapter","Error notif = "+fault.getMessage());
+                                                                                        }
+                                                                                    });
+
+                                                                                }
+                                                                            });
+
+                                                                            //Notif Development END
+
                                                                         }
                                                                         @Override
                                                                         public void handleFault( BackendlessFault fault )
