@@ -6,6 +6,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -17,6 +18,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -50,8 +52,10 @@ public class home_siswa_1 extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewIndustriAdapter adapter;
     private Drawer result = null;
-    String email, foto, nama, searchquery="";
+    String email, foto, nama, searchquery,bidang,kota,provinsi;
     boolean doubleBackToExit = false;
+    MenuItem cari;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,17 @@ public class home_siswa_1 extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         nama = getIntent().getStringExtra("nama");
         foto = getIntent().getStringExtra("foto");
+
+        if(getIntent().getStringExtra("bidang") != null){
+            bidang = getIntent().getStringExtra("bidang");
+            kota = getIntent().getStringExtra("kota");
+            provinsi = getIntent().getStringExtra("provinsi");
+        }
+        if(getIntent().getStringExtra("searchquery") != null){
+            if(!getIntent().getStringExtra("searchquery").equals("")){
+                searchquery = getIntent().getStringExtra("searchquery");
+            }
+        }
 
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
@@ -145,6 +160,9 @@ public class home_siswa_1 extends AppCompatActivity {
                         if (drawerItem.getIdentifier() == 1){
 //                            Toast.makeText(getApplicationContext(),"Fitur Pencarian masih dalam tahap pengembangan",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(home_siswa_1.this, search_filter.class);
+                            intent.putExtra("email",email);
+                            intent.putExtra("nama",nama);
+                            intent.putExtra("foto",foto);
                             startActivity(intent);
                         }
                         else if (drawerItem.getIdentifier() == 3){
@@ -189,20 +207,40 @@ public class home_siswa_1 extends AppCompatActivity {
 
     }
 
+    public MenuItem getCariMenu(){
+        return cari;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuin = getMenuInflater();
         menuin.inflate(R.menu.menu_search, menu);
-        MenuItem cari = menu.findItem(R.id.searchbox);
+        cari = menu.findItem(R.id.searchbox);
+        cari.setEnabled(false);
+
 
         final SearchView pencarian = (SearchView) MenuItemCompat.getActionView(cari);
         pencarian.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Intent intent = new Intent(home_siswa_1.this,hasil_pencarian.class);
-                intent.putExtra("hasil",query);
-                startActivity(intent);
+                Log.e("home_siswa_1","search clicked");
+
+                bidang = null;
+
+                searchquery = query;
+                adapter = new ViewIndustriAdapter(getSupportFragmentManager());
+                viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+                viewPager.setAdapter(adapter);
                 return true;
+//                Intent intent = getIntent();
+//                intent.putExtra("searchquery",query);
+//                intent.putExtra("email",email);
+//                intent.putExtra("nama",nama);
+//                intent.putExtra("foto",foto);
+//                finish();
+//                startActivity(intent);
+//                return true;
             }
 
             @Override
@@ -233,6 +271,18 @@ public class home_siswa_1 extends AppCompatActivity {
 
     public String getQuery() {
         return searchquery;
+    }
+
+    public String getProvinsiSearch(){
+        return provinsi;
+    }
+
+    public String getKotaSearch(){
+        return kota;
+    }
+
+    public String getBidangSearch(){
+        return bidang;
     }
 
 }

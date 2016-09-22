@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,9 @@ public class sudahIndustriFragment extends Fragment {
     View rootView;
     int id_siswa,id_bidang,id_sekolah;
     String nama,email,notelp;
-    String id_user_now;
-
+    String id_user_now,searchvalue;
+    goAsyncTask industriSudah;
+    home_siswa_1 activity;
     /** Fixed **/
 
 
@@ -49,7 +51,27 @@ public class sudahIndustriFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
         rootView = inflater.inflate(R.layout.siswa_layout_sudah,container,false);
-        new goAsyncTask().execute();
+         activity = (home_siswa_1) getActivity();
+
+        goAsyncTask industriSudah = new goAsyncTask();
+
+        if(industriSudah.getStatus().equals(AsyncTask.Status.RUNNING))
+        {
+            industriSudah.cancel(true);
+            getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.GONE);
+        }
+
+        searchvalue = activity.getQuery();
+        if(((home_siswa_1) getActivity()).getBidangSearch() != null){
+            Log.e("baruIndustriFragment","kondisi 1 executed SUDAH");
+        }else if(searchvalue != null && !searchvalue.equals("")){
+            Log.e("baruIndustriFragment","kondisi 2 executed SUDAH");
+        }
+        else{
+            industriSudah.execute();
+            Log.e("baruIndustriFragment","kondisi 3 executed");
+        }
+
         return rootView;
     }
 
@@ -126,6 +148,7 @@ public class sudahIndustriFragment extends Fragment {
 
             listView.setAdapter(adapter);
             getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.GONE);
+            activity.getCariMenu().setEnabled(true);
         }
     }
 

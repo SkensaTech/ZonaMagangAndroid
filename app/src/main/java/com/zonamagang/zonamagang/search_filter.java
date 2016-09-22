@@ -1,6 +1,7 @@
 package com.zonamagang.zonamagang;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -33,9 +34,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class search_filter extends AppCompatActivity {
+public class search_filter extends AppCompatActivity{
     public static String prov,kab,bidang_industri;
     Spinner provinsi,kota,bidang;
+    String email,nama,foto;
     int[] xx;
     public static int id_bidang;
     ProgressDialog dialog;
@@ -43,14 +45,15 @@ public class search_filter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_filter);
-        dialog = ProgressDialog.show(search_filter.this, "",
-                "Mohon tunggu sebentar", true);
+
         //coding toolbar
         Toolbar x = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(x);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        email = getIntent().getStringExtra("email");
+        nama = getIntent().getStringExtra("nama");
+        foto = getIntent().getStringExtra("foto");
 
         //coding spinner
 
@@ -79,6 +82,8 @@ public class search_filter extends AppCompatActivity {
         List<String> kotas = new ArrayList<>();
         kotas.add("--Pilih Kota--");
         kotas.add("Denpasar");
+        kotas.add("Badung");
+        kotas.add("Bangli");
 
         ArrayAdapter<String> kotas_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, kotas);
         kota.setAdapter(kotas_adapter);
@@ -111,7 +116,6 @@ public class search_filter extends AppCompatActivity {
                     String bidang_item = curpage.get(i).getNama();
                     int x = curpage.get(i).getId_bidang();
                     bidangs.add(bidang_item);
-                    dialog.hide();
 
 
                 }
@@ -137,37 +141,55 @@ public class search_filter extends AppCompatActivity {
             }
         });
 
-        Button btn = (Button) findViewById(R.id.cari);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-                String where = "id_bidang = "+id_bidang;
-                BackendlessDataQuery queryy = new BackendlessDataQuery();
-                queryy.setWhereClause(where);
-                Backendless.Persistence.of(tb_bidang_industri.class).find(queryy, new AsyncCallback<BackendlessCollection<tb_bidang_industri>>() {
-                    @Override
-                    public void handleResponse(BackendlessCollection<tb_bidang_industri> bidang_industri) {
-                        List<tb_bidang_industri> curpage = bidang_industri.getCurrentPage();
-                        int size = curpage.size();
-                        for(int i = 0;i < size;i++){
-                            int id_industri = curpage.get(i).getId_industri();
-                            Toast.makeText(search_filter.this, ""+id_industri, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void handleFault(BackendlessFault fault) {
-
-                        Toast.makeText(search_filter.this, "Bidang Industri "+fault.getCode(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-        });
+//        Button btn = (Button) findViewById(R.id.cari);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.show();
+//                String where = "id_bidang = "+id_bidang;
+//                BackendlessDataQuery queryy = new BackendlessDataQuery();
+//                queryy.setWhereClause(where);
+//                Backendless.Persistence.of(tb_bidang_industri.class).find(queryy, new AsyncCallback<BackendlessCollection<tb_bidang_industri>>() {
+//                    @Override
+//                    public void handleResponse(BackendlessCollection<tb_bidang_industri> bidang_industri) {
+//                        List<tb_bidang_industri> curpage = bidang_industri.getCurrentPage();
+//                        int size = curpage.size();
+//                        for(int i = 0;i < size;i++){
+//                            int id_industri = curpage.get(i).getId_industri();
+//                            Toast.makeText(search_filter.this, ""+id_industri, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void handleFault(BackendlessFault fault) {
+//
+//                        Toast.makeText(search_filter.this, "Bidang Industri "+fault.getCode(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//            }
+//        });
     }
 
-    public void doSearch(){
+    public void doSearch(View view){
+        Spinner spinnerBidang = (Spinner)findViewById(R.id.spinnerBidang);
+        Spinner spinnerProvinsi = (Spinner)findViewById(R.id.spinnerProvinsi);
+        Spinner spinnerKota = (Spinner)findViewById(R.id.spinnerKota);
+
+        String bidang = spinnerBidang.getSelectedItem().toString();
+        String provinsi = spinnerProvinsi.getSelectedItem().toString();
+        String kota = spinnerKota.getSelectedItem().toString();
+
+        Intent homeSiswa = new Intent(search_filter.this, home_siswa_1.class);
+        homeSiswa.putExtra("bidang", bidang);
+        homeSiswa.putExtra("provinsi", provinsi);
+        homeSiswa.putExtra("kota", kota);
+        homeSiswa.putExtra("email",email);
+        homeSiswa.putExtra("nama",nama);
+        homeSiswa.putExtra("foto",foto);
+        startActivity(homeSiswa);
+        finish();
+
 
     }
 }
