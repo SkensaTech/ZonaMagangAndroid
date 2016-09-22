@@ -67,14 +67,14 @@ public class home_siswa_1 extends AppCompatActivity {
         setSupportActionBar(x);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
 
         adapter = new ViewIndustriAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 

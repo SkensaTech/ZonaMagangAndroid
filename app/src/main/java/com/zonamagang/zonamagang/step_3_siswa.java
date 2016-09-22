@@ -30,8 +30,8 @@ import com.zonamagang.zonamagang.Model.tb_siswa;
 public class step_3_siswa extends AppCompatActivity {
 
     ImageView mLogo;
-    String nisn,nama,alamat,tempat,tgl,jeniskelamin,provinsi,kota,sekolah,bidang,email,pass,foto;
-    String telp;
+    String nisn="0",nama="0",alamat="0",tempat="0",tgl="0",jeniskelamin="0",provinsi="0",kota="0",sekolah="0",bidang="0",email="0",pass="0",foto="0";
+    String telp="0";
     Bitmap bMap_image;
     public static String user_id;
 
