@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
@@ -62,7 +63,9 @@ public class notifikasi_siswa extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ProgressBar progressBar = (ProgressBar)findViewById(R.id.notif_siswa_progressbar);
+        progressBar.setVisibility(View.VISIBLE);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Cari Industri");
         final PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Beranda");

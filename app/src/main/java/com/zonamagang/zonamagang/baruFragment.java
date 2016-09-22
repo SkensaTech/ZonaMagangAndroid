@@ -90,6 +90,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     String whereClause = "id_user = " + id_user_now;
                     BackendlessDataQuery dataQuery = new BackendlessDataQuery();
                     dataQuery.setWhereClause(whereClause);
+                    dataQuery.setPageSize(80);
                     BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find(dataQuery);
                     List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
                     id_industri = firstPageIndustri.get(0).getId_industri();
@@ -101,6 +102,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 try{
                     BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
                     dataQueryTbMagang.setWhereClause("id_industri = " +id_industri+" AND status_diterima = 1");
+                    dataQueryTbMagang.setPageSize(80);
                     BackendlessCollection<tb_magang> magangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQueryTbMagang);
                     List<tb_magang> firstPageMagang = magangInfo.getCurrentPage();
                         for(int i = 0; i < firstPageMagang.size(); i++){
@@ -110,6 +112,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                             try {
                                 BackendlessDataQuery dataQuerySiswa = new BackendlessDataQuery();
                                 dataQuerySiswa.setWhereClause("id_siswa = " + id_siswa);
+                                dataQuerySiswa.setPageSize(80);
                                 BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of(tb_siswa.class).find(dataQuerySiswa);
                                 List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
                                 int id_siswa = firstPageSiswa.get(0).getId_siswa();
@@ -120,6 +123,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                     //cari sekolah
                                     BackendlessDataQuery dataQuerySekolah = new BackendlessDataQuery();
                                     dataQuerySekolah.setWhereClause("id_sekolah = " + id_sekolah);
+                                    dataQuerySekolah.setPageSize(80);
                                     BackendlessCollection<tb_sekolah> sekolahInfo = Backendless.Persistence.of(tb_sekolah.class).find(dataQuerySekolah);
                                     List<tb_sekolah> firstPageSekolah = sekolahInfo.getCurrentPage();
                                     nama_sekolah = firstPageSekolah.get(0).getNama();
@@ -135,6 +139,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                     //cari bidang
                                     BackendlessDataQuery dataQueryBidang = new BackendlessDataQuery();
                                     dataQueryBidang.setWhereClause("id_bidang = " + id_bidang);
+                                    dataQueryBidang.setPageSize(80);
                                     BackendlessCollection<tb_bidang> bidangInfo = Backendless.Persistence.of(tb_bidang.class).find(dataQueryBidang);
                                     List<tb_bidang> firstPageBidang = bidangInfo.getCurrentPage();
                                     bidang = firstPageBidang.get(0).getNama();
@@ -173,7 +178,7 @@ public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             HomeIndustriBaruAdapter adapter = new HomeIndustriBaruAdapter(getActivity(), listSiswa);
 
             listView.setAdapter(adapter);
-            getActivity().findViewById(R.id.home_industri_progressBar).setVisibility(View.GONE);
+//            getActivity().findViewById(R.id.home_industri_progressBar).setVisibility(View.GONE);
             swipeLayout.setRefreshing(false);
         }
     }

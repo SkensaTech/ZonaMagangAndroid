@@ -4,11 +4,16 @@ import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
@@ -46,6 +51,8 @@ public class notifikasi_siswa_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.notifikasi_siswa_layout, container, false);
+        Toolbar toolbar = (Toolbar)rootView.findViewById(R.id.toolbar);
+        toolbar.setTitle("Notifikasi Siswa");
         listNotif = new ArrayList<>();
         Log.e(TAG,"Notifikasi siswa fragment jalan.");
 
@@ -86,24 +93,24 @@ public class notifikasi_siswa_fragment extends Fragment {
                     BackendlessDataQuery query2 = new BackendlessDataQuery(whereClause2);
                     BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find(query2);
                     List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
-                    if(firstPageIndustri.size() > 0){
+//                    if(firstPageIndustri.size() > 0){
                         Log.e(TAG,"Start add industri.");
-                        int id_industri = firstPageIndustri.get(i).getId_industri();
-                        String nama = firstPageIndustri.get(i).getNama();
-                        String alamat = firstPageIndustri.get(i).getAlamat();
-                        String no_telp = firstPageIndustri.get(i).getNo_telp();
-                        String email = firstPageIndustri.get(i).getEmail();
-                        int kuota = firstPageIndustri.get(i).getKuota();
-                        String logo = firstPageIndustri.get(i).getLogo();
+                        int id_industri = firstPageIndustri.get(0).getId_industri();
+                        String nama = firstPageIndustri.get(0).getNama();
+                        String alamat = firstPageIndustri.get(0).getAlamat();
+                        String no_telp = firstPageIndustri.get(0).getNo_telp();
+                        String email = firstPageIndustri.get(0).getEmail();
+                        int kuota = firstPageIndustri.get(0).getKuota();
+                        String logo = firstPageIndustri.get(0).getLogo();
 
                         Log.e(TAG,"something added");
 
                         notifikasi_siswa_fragment.this.listNotif.add(
                                 new notifikasi_siswa_costum(id_industri, nama, alamat, no_telp, email, kuota, logo, isiNotif)
                         );
-                    }else{
-                        Log.e(TAG,"industri tidak ditemukan.");
-                    }
+//                    }else{
+//                        Log.e(TAG,"industri tidak ditemukan.");
+//                    }
                 }
             }
             catch(Exception exception){
@@ -118,6 +125,9 @@ public class notifikasi_siswa_fragment extends Fragment {
             ListView listView = (ListView) rootView.findViewById(R.id.notifikasi_siswa_layout_listView);
             notifikasi_siswa_adapter adapter = new notifikasi_siswa_adapter(getActivity(), listNotif);
             listView.setAdapter(adapter);
+
+            ProgressBar progressBar = (ProgressBar)getActivity().findViewById(R.id.notif_siswa_progressbar);
+            progressBar.setVisibility(View.GONE);
 
             Log.e(TAG,"End Loading.");
         }

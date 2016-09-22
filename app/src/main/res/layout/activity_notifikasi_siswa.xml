@@ -27,13 +27,19 @@
 
     </LinearLayout>
 
-    <ProgressBar
-        style="@android:style/Widget.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/notif_siswa_progressbar"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notif_siswa_progressbar"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"/>
+    </RelativeLayout>
+
 
     <fragment class="com.zonamagang.zonamagang.notifikasi_siswa_fragment"
         android:id="@+id/notif_fragment"

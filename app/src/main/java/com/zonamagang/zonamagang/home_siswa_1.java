@@ -70,6 +70,7 @@ public class home_siswa_1 extends AppCompatActivity {
 
         adapter = new ViewIndustriAdapter(getSupportFragmentManager());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+
         viewPager.setAdapter(adapter);
 
 

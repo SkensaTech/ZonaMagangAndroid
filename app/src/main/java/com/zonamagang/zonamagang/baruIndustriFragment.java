@@ -73,11 +73,14 @@ public class baruIndustriFragment extends Fragment {
                 String whereClause = "id_user = " + id_user_now;
                 BackendlessDataQuery dataQuery = new BackendlessDataQuery();
                 dataQuery.setWhereClause(whereClause);
+                dataQuery.setPageSize(80);
                 BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of(tb_siswa.class).find(dataQuery);
                 List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
                 id_siswa = firstPageSiswa.get(0).getId_siswa();
 
-                BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find();
+                BackendlessDataQuery dataQuery2 = new BackendlessDataQuery();
+                dataQuery2.setPageSize(80);
+                BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find(dataQuery2);
                 List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
                 for (int i = 0; i < firstPageIndustri.size(); i++) {
                     int id_industri = firstPageIndustri.get(i).getId_industri();
@@ -91,6 +94,7 @@ public class baruIndustriFragment extends Fragment {
                     String whereClauseTbMagang = "id_siswa = " + id_siswa + " AND id_industri = " + id_industri;
                     BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
                     dataQueryTbMagang.setWhereClause(whereClauseTbMagang);
+                    dataQueryTbMagang.setPageSize(80);
                     try {
                         BackendlessCollection<tb_magang> tbMagangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQueryTbMagang);
                         List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
@@ -120,7 +124,7 @@ public class baruIndustriFragment extends Fragment {
             HomeSiswaIndustriAdapter adapter = new HomeSiswaIndustriAdapter(getActivity(), listIndustri);
 
             listView.setAdapter(adapter);
-            getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.GONE);
+//            getActivity().findViewById(R.id.home_siswa_1_progressBar).setVisibility(View.GONE);
         }
     }
 
