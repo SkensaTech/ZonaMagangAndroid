@@ -112,7 +112,7 @@ public class HomeIndustriBaruAdapter extends ArrayAdapter<HomeIndustriSiswaCusto
 
                                         progressDialog = new ProgressDialog(getContext()); // this = YourActivity
                                         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                        progressDialog.setMessage("Menentukan tanggal interview...");
+                                        progressDialog.setMessage("Menentukan tanggal interview....");
                                         progressDialog.setIndeterminate(true);
                                         progressDialog.setCanceledOnTouchOutside(false);
                                         progressDialog.show();

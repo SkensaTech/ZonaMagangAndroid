@@ -134,7 +134,7 @@ public class LoadingActivity extends Activity {
 //                                    Toast.makeText(MainActivity.this, "Failed to get industri info, " + fault.getMessage(), Toast.LENGTH_LONG).show();
                                     new AlertDialog.Builder(getApplicationContext())
                                             .setTitle("Alert")
-                                            .setMessage("Failed to get industri info, "+fault.getMessage())
+                                            .setMessage("Failed to get industri info., "+fault.getMessage())
                                             .setPositiveButton("Back", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {

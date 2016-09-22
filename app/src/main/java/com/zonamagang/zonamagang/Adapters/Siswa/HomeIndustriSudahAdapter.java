@@ -149,8 +149,6 @@ public class HomeIndustriSudahAdapter extends ArrayAdapter<HomeIndustriSiswaCust
                                                                         }
                                                                     })
                                                                     .show();
-                                                            Intent detailIndustriIntent = new Intent(getContext(), home_siswa_1.class);
-                                                            getContext().startActivity(detailIndustriIntent);
                                                         }
                                                         public void handleFault( BackendlessFault fault )
                                                         {

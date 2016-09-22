@@ -116,6 +116,12 @@ public class HomeSiswaSudahIndustriAdapter extends ArrayAdapter<CustomIndustri> 
 
                     public void onClick(DialogInterface dialog, int which) {
 
+                        progressDialog = new ProgressDialog(getContext()); // this = YourActivity
+                        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        progressDialog.setMessage("Membatalkan pendaftaran..");
+                        progressDialog.setIndeterminate(true);
+                        progressDialog.setCanceledOnTouchOutside(false);
+                        progressDialog.show();
 
                         BackendlessUser userNow = Backendless.UserService.CurrentUser();
                         String id_user_now = userNow.getProperty("id_user").toString();
@@ -168,6 +174,8 @@ public class HomeSiswaSudahIndustriAdapter extends ArrayAdapter<CustomIndustri> 
     }
 
     public void hapusDiTbMagang(){
+
+
 
         String whereClause = "id_industri = "+id_industri_now+" AND id_siswa = "+id_siswa;
         BackendlessDataQuery dataQuery = new BackendlessDataQuery();

@@ -50,7 +50,6 @@ public class baruIndustriFragment extends Fragment {
         home_siswa_1 activity = (home_siswa_1) getActivity();
         String searchvalue = activity.getQuery();
 
-        Toast.makeText(getActivity(),searchvalue,Toast.LENGTH_LONG).show();
         new goAsyncTask().execute();
 
         return rootView;
