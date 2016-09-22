@@ -55,7 +55,7 @@ public class HomeIndustriBaruAdapter extends ArrayAdapter<HomeIndustriSiswaCusto
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
         if(listItemView == null){
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.siswa_industri_belum_item,parent,false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.baru_item,parent,false);
         }
 
         siswaNow = getItem(position);
@@ -90,7 +90,7 @@ public class HomeIndustriBaruAdapter extends ArrayAdapter<HomeIndustriSiswaCusto
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 builder.setTitle("Konfirmasi");
-                builder.setMessage("Apakah anda yakin mendaftar di industri ini ?");
+                builder.setMessage("Apakah anda yakin ingin menentukan tanggal interview untuk siswa ini ?");
 
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 

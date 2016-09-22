@@ -185,6 +185,10 @@ public class tb_industri
   public void setObjectId( String objectId ) {
     this.objectId = objectId;
   }
+
+  public tb_industri(){
+
+}
                                                     
   public tb_industri save()
   {

@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,22 +44,30 @@ import java.util.List;
 /**
  * Created by Skensa Tech on 16/08/2016.
  */
-public class baruFragment extends Fragment{
+public class baruFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private Button button;
     ArrayList<HomeIndustriSiswaCustom> listSiswa;
     View rootView;
     int id_siswa,id_industri;
     String id_user_now;
+    SwipeRefreshLayout swipeLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.baru, container, false);
-
         new listingSiswa().execute();
 
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swiperefresh);
+        swipeLayout.setOnRefreshListener(this);
+
         return rootView;
+    }
+
+    @Override
+    public void onRefresh() {
+        new listingSiswa().execute();
     }
 
     private class listingSiswa extends AsyncTask<Void, Void, Void> {
@@ -76,66 +86,81 @@ public class baruFragment extends Fragment{
         protected Void doInBackground(Void... params) {
             try {
 
-                String whereClause = "id_user = " + id_user_now;
-                BackendlessDataQuery dataQuery = new BackendlessDataQuery();
-                dataQuery.setWhereClause(whereClause);
-                BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find(dataQuery);
-                List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
-                id_industri = firstPageIndustri.get(0).getId_industri();
-
-                BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
-                dataQueryTbMagang.setWhereClause("id_industri = " +id_industri+" AND status_diterima = 1");
-                BackendlessCollection<tb_magang> magangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQuery);
-                List<tb_magang> firstPageMagang = magangInfo.getCurrentPage();
-                if(firstPageMagang.size() > 0){
-                    for(int i = 0; i < firstPageMagang.size(); i++){
-                        firstPageMagang.get(i).getId_siswa();
-
-                        Toast.makeText(getContext(),"loop magang",Toast.LENGTH_SHORT).show();
-
-                        BackendlessDataQuery dataQuerySiswa= new BackendlessDataQuery();
-                        dataQuerySiswa.setWhereClause("id_siswa = "+id_siswa);
-                        BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of(tb_siswa.class).find(dataQuery);
-                        List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
-                        int id_siswa = firstPageSiswa.get(0).getId_siswa();
-                        int id_sekolah = firstPageSiswa.get(0).getId_sekolah();
-
-                        //cari sekolah
-                        BackendlessDataQuery dataQuerySekolah= new BackendlessDataQuery();
-                        dataQuerySekolah.setWhereClause("id_sekolah = "+id_sekolah);
-                        BackendlessCollection<tb_sekolah> sekolahInfo = Backendless.Persistence.of(tb_sekolah.class).find(dataQuery);
-                        List<tb_sekolah> firstPageSekolah = sekolahInfo.getCurrentPage();
-                        String nama_sekolah = firstPageSekolah.get(0).getNama();
-                        //end cari sekolah
-
-                        int id_bidang = firstPageSiswa.get(0).getId_bidang();
-
-                        //cari bidang
-                        BackendlessDataQuery dataQueryBidang= new BackendlessDataQuery();
-                        dataQueryBidang.setWhereClause("id_bidang = "+id_bidang);
-                        BackendlessCollection<tb_bidang> bidangInfo = Backendless.Persistence.of(tb_bidang.class).find(dataQuery);
-                        List<tb_bidang> firstPageBidang = bidangInfo.getCurrentPage();
-                        String bidang = firstPageBidang.get(0).getNama();
-                        //end cari bidang
-
-                        String nama_siswa = firstPageSiswa.get(0).getNama();
-                        String foto = firstPageSiswa.get(0).getFoto();
-
-                        baruFragment.this.listSiswa.add(
-                                new HomeIndustriSiswaCustom(id_siswa, nama_sekolah, nama_siswa, bidang, foto)
-                        );
-
-
-
-                    }
+                try{
+                    String whereClause = "id_user = " + id_user_now;
+                    BackendlessDataQuery dataQuery = new BackendlessDataQuery();
+                    dataQuery.setWhereClause(whereClause);
+                    BackendlessCollection<tb_industri> industriInfo = Backendless.Persistence.of(tb_industri.class).find(dataQuery);
+                    List<tb_industri> firstPageIndustri = industriInfo.getCurrentPage();
+                    id_industri = firstPageIndustri.get(0).getId_industri();
+                    Log.e("baruFragment","id_industri = "+id_industri);
+                }catch(Exception exception){
+                    Log.e("baruFragment","id industri tidak ditemukan ! = "+exception.getMessage());
                 }
-                else{
-                    Toast.makeText(getContext(),"Belum ada siswa yang mendaftar",Toast.LENGTH_SHORT).show();
+
+                try{
+                    BackendlessDataQuery dataQueryTbMagang = new BackendlessDataQuery();
+                    dataQueryTbMagang.setWhereClause("id_industri = " +id_industri+" AND status_diterima = 1");
+                    BackendlessCollection<tb_magang> magangInfo = Backendless.Persistence.of(tb_magang.class).find(dataQueryTbMagang);
+                    List<tb_magang> firstPageMagang = magangInfo.getCurrentPage();
+                        for(int i = 0; i < firstPageMagang.size(); i++){
+                            id_siswa = firstPageMagang.get(i).getId_siswa();
+                            Log.e("baruFragment","id_siswa = "+id_siswa);
+
+                            try {
+                                BackendlessDataQuery dataQuerySiswa = new BackendlessDataQuery();
+                                dataQuerySiswa.setWhereClause("id_siswa = " + id_siswa);
+                                BackendlessCollection<tb_siswa> siswaInfo = Backendless.Persistence.of(tb_siswa.class).find(dataQuerySiswa);
+                                List<tb_siswa> firstPageSiswa = siswaInfo.getCurrentPage();
+                                int id_siswa = firstPageSiswa.get(0).getId_siswa();
+                                int id_sekolah = firstPageSiswa.get(0).getId_sekolah();
+
+                                String nama_sekolah = "";
+                                try {
+                                    //cari sekolah
+                                    BackendlessDataQuery dataQuerySekolah = new BackendlessDataQuery();
+                                    dataQuerySekolah.setWhereClause("id_sekolah = " + id_sekolah);
+                                    BackendlessCollection<tb_sekolah> sekolahInfo = Backendless.Persistence.of(tb_sekolah.class).find(dataQuerySekolah);
+                                    List<tb_sekolah> firstPageSekolah = sekolahInfo.getCurrentPage();
+                                    nama_sekolah = firstPageSekolah.get(0).getNama();
+                                    //end cari sekolah
+                                } catch (Exception exception) {
+                                    Log.e("baruFragment", "Cari sekolah gagal ! = " + exception.getMessage());
+                                }
+
+                                int id_bidang = firstPageSiswa.get(0).getId_bidang();
+
+                                String bidang = "";
+                                try {
+                                    //cari bidang
+                                    BackendlessDataQuery dataQueryBidang = new BackendlessDataQuery();
+                                    dataQueryBidang.setWhereClause("id_bidang = " + id_bidang);
+                                    BackendlessCollection<tb_bidang> bidangInfo = Backendless.Persistence.of(tb_bidang.class).find(dataQueryBidang);
+                                    List<tb_bidang> firstPageBidang = bidangInfo.getCurrentPage();
+                                    bidang = firstPageBidang.get(0).getNama();
+                                    //end cari bidang
+                                } catch (Exception exception) {
+                                    Log.e("baruFragment", "Cari bidang gagal ! = " + exception.getMessage());
+                                }
+
+                                String nama_siswa = firstPageSiswa.get(0).getNama();
+                                String foto = firstPageSiswa.get(0).getFoto();
+
+                                baruFragment.this.listSiswa.add(
+                                        new HomeIndustriSiswaCustom(id_siswa, nama_sekolah, nama_siswa, bidang, foto)
+                                );
+                            }catch(Exception exception){
+                                Log.e("baruFragment","tidak ada di id_siswa");
+                            }
+
+                        }
+                }catch(Exception exception){
+                    Log.e("baruFragment","tidak ada di tb_magang ! = "+exception.getMessage());
                 }
 
             }
             catch(Exception exception){
-
+                Log.e("baruFragment","Terjadi Error ! = "+exception.getMessage());
             }
 
             return null;
@@ -149,6 +174,7 @@ public class baruFragment extends Fragment{
 
             listView.setAdapter(adapter);
             getActivity().findViewById(R.id.home_industri_progressBar).setVisibility(View.GONE);
+            swipeLayout.setRefreshing(false);
         }
     }
 
