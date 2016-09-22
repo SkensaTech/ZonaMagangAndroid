@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adminIndustriFoto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/asu"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/nama_industri"
+                android:layout_height="wrap_content"
+                tools:text="PT Bamboo Media"
+                android:textSize="16dp"
+                android:layout_marginBottom="10dp"
+
+                android:textColor="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Jl Hayam Wuruk no 189 Denpasar,Bali"
+                android:textSize="14dp"
+                android:id="@+id/alamat_industri"
+                android:layout_marginBottom="5dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/telp_industri"
+                tools:text="0361-14045"
+                android:textSize="14dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
