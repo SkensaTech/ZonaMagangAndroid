@@ -36,9 +36,9 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Z4COMP"
+                    android:text="Bamboomedia"
                     android:layout_alignTop="@+id/logo_industri"
-                    android:layout_toEndOf="@+id/logo_industri" />
+                    android:layout_toRightOf="@+id/logo_industri" />
 
                 <TextView
                     android:id="@+id/isi_notif"
@@ -47,7 +47,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Selamat, industri ini menerima permintaan magang anda"
                     android:layout_below="@+id/nama_industri"
-                    android:layout_toEndOf="@+id/logo_industri" />
+                    android:layout_toRightOf="@+id/logo_industri" />
 
             </RelativeLayout>
 

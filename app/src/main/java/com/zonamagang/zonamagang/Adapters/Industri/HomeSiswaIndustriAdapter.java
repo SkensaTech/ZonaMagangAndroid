@@ -25,6 +25,7 @@ import com.backendless.persistence.BackendlessDataQuery;
 import com.squareup.picasso.Picasso;
 import com.zonamagang.zonamagang.LoadingActivity;
 import com.zonamagang.zonamagang.Model.tb_magang;
+import com.zonamagang.zonamagang.Model.tb_notif;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 import com.zonamagang.zonamagang.R;
 import com.zonamagang.zonamagang.detail_industri;
@@ -45,7 +46,7 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
     int tahun_akhir,bulan_akhir,hari_akhir;
     CustomIndustri industriNow;
     ProgressDialog progressDialog;
-    int lastIdMagang,id_industri_now;
+    int lastIdMagang,id_industri_now,lastIdNotif;
 
     public HomeSiswaIndustriAdapter(Activity context, ArrayList<CustomIndustri> industri){super(context,0,industri);}
 
