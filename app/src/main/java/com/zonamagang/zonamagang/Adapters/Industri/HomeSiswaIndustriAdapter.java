@@ -68,6 +68,9 @@ public class HomeSiswaIndustriAdapter extends ArrayAdapter<CustomIndustri> {
         TextView telpIndustri = (TextView) listItemView.findViewById(R.id.telpIndustri);
         telpIndustri.setText(industriNow.getNo_telp());
 
+        TextView pimpinan = (TextView) listItemView.findViewById(R.id.pimpinan);
+        pimpinan.setText(industriNow.getPimpinan());
+
         TextView emailIndustri = (TextView) listItemView.findViewById(R.id.emailIndustri);
         emailIndustri.setText(industriNow.getEmail());
 

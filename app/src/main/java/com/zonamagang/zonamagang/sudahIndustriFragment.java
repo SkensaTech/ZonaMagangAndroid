@@ -108,6 +108,7 @@ public class sudahIndustriFragment extends Fragment {
                     String alamat = firstPageIndustri.get(i).getAlamat();
                     String no_telp = firstPageIndustri.get(i).getNo_telp();
                     String email = firstPageIndustri.get(i).getEmail();
+                    String pimpinan = firstPageIndustri.get(i).getPimpinan();
                     int kuota = firstPageIndustri.get(i).getKuota();
                     String logo = firstPageIndustri.get(i).getLogo();
 
@@ -122,7 +123,7 @@ public class sudahIndustriFragment extends Fragment {
                             int status_diterima = firstPageTbMagang.get(0).getStatus_diterima();
                             if(status_diterima == 1){
                                 sudahIndustriFragment.this.listIndustri.add(
-                                        new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo)
+                                        new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo, pimpinan)
                                 );
                             }
                         }

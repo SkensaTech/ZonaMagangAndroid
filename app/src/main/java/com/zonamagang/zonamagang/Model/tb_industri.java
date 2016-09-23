@@ -27,6 +27,7 @@ public class tb_industri
   private String profil;
   private String logo;
   private String email;
+  private String pimpinan;
   public String getObjectId()
   {
     return objectId;
@@ -172,6 +173,14 @@ public class tb_industri
   public String getProfil()
   {
     return profil;
+  }
+
+  public String getPimpinan() {
+    return pimpinan;
+  }
+
+  public void setPimpinan(String pimpinan) {
+    this.pimpinan = pimpinan;
   }
 
   public void setLogo(String logo) {

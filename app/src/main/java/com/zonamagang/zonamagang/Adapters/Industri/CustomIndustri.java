@@ -12,11 +12,12 @@ public class CustomIndustri {
     public String email;
     public int kuota;
     public String logo;
+    public String pimpinan;
 
     public CustomIndustri() {
     }
 
-    public CustomIndustri(int id_industri, String nama, String alamat, String no_telp, String email, int kuota, String logo) {
+    public CustomIndustri(int id_industri, String nama, String alamat, String no_telp, String email, int kuota, String logo, String pimpinan) {
         this.id_industri = id_industri;
         this.nama = nama;
         this.alamat = alamat;
@@ -24,6 +25,7 @@ public class CustomIndustri {
         this.email = email;
         this.kuota = kuota;
         this.logo = logo;
+        this.pimpinan = pimpinan;
     }
 
     public String getLogo() {
@@ -52,6 +54,14 @@ public class CustomIndustri {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setPimpinan(String pimpinan) {
+        this.pimpinan = pimpinan;
+    }
+
+    public String getPimpinan() {
+        return pimpinan;
     }
 
     public int getKuota() {

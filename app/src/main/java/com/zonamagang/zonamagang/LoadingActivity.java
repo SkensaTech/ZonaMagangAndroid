@@ -117,11 +117,13 @@ public class LoadingActivity extends Activity {
                                         String logo = industriInfo.getLogo();
                                         int id_industri = industriInfo.getId_industri();
                                         String id_industri_string = Integer.toString(id_industri);
+                                        String pimpinan = industriInfo.getPimpinan();
 
                                         Intent homeIndustri = new Intent(LoadingActivity.this, HomeIndustri.class);
                                         homeIndustri.putExtra("email", email);
                                         homeIndustri.putExtra("nama", nama);
                                         homeIndustri.putExtra("logo", logo);
+                                        homeIndustri.putExtra("pimpinan", pimpinan);
                                         homeIndustri.putExtra("id_industri",id_industri_string);
                                         LoadingActivity.this.startActivity(homeIndustri);
                                         LoadingActivity.this.finish();

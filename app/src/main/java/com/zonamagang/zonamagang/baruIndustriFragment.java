@@ -129,6 +129,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                         String alamat = firstPageIndustri.get(i).getAlamat();
                         String no_telp = firstPageIndustri.get(i).getNo_telp();
                         String email = firstPageIndustri.get(i).getEmail();
+                        String pimpinan = firstPageIndustri.get(i).getPimpinan();
                         int kuota = firstPageIndustri.get(i).getKuota();
                         String logo = firstPageIndustri.get(i).getLogo();
 
@@ -141,7 +142,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                             List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
                             if(firstPageTbMagang.size() < 1){
                                 baruIndustriFragment.this.listIndustri.add(
-                                        new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo)
+                                        new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo, pimpinan)
                                 );
                             }
 
@@ -205,6 +206,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                     String alamat = firstPageIndustri.get(i).getAlamat();
                     String no_telp = firstPageIndustri.get(i).getNo_telp();
                     String email = firstPageIndustri.get(i).getEmail();
+                    String pimpinan = firstPageIndustri.get(i).getPimpinan();
                     int kuota = firstPageIndustri.get(i).getKuota();
                     String logo = firstPageIndustri.get(i).getLogo();
 
@@ -217,7 +219,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                         List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
                         if(firstPageTbMagang.size() < 1){
                             baruIndustriFragment.this.listIndustri.add(
-                                    new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo)
+                                    new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo, pimpinan)
                             );
                         }
 
@@ -279,6 +281,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                     String alamat = firstPageIndustri.get(i).getAlamat();
                     String no_telp = firstPageIndustri.get(i).getNo_telp();
                     String email = firstPageIndustri.get(i).getEmail();
+                    String pimpinan = firstPageIndustri.get(i).getPimpinan();
                     int kuota = firstPageIndustri.get(i).getKuota();
                     String logo = firstPageIndustri.get(i).getLogo();
 
@@ -291,7 +294,7 @@ public class baruIndustriFragment extends Fragment implements SwipeRefreshLayout
                         List<tb_magang> firstPageTbMagang = tbMagangInfo.getCurrentPage();
                         if(firstPageTbMagang.size() < 1){
                             baruIndustriFragment.this.listIndustri.add(
-                                    new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo)
+                                    new CustomIndustri(id_industri, nama, alamat, no_telp, email, kuota, logo, pimpinan)
                             );
                         }
 

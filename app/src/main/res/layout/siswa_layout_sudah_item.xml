@@ -71,6 +71,14 @@
                     android:text="bamboomedia@gmail.com" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pimpinanSudah"
+                    android:text="pimpinan"
+                    android:layout_toRightOf="@id/gambarSiswaSudah"
+                    android:layout_below="@+id/kuotaIndustriSudah"/>
+
+                <TextView
                     android:id="@+id/kuotaIndustriSudah"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -2,6 +2,8 @@ package com.zonamagang.zonamagang;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -20,10 +22,16 @@ import com.zonamagang.zonamagang.Model.tb_industri;
 import com.zonamagang.zonamagang.Model.tb_sekolah;
 import com.zonamagang.zonamagang.Model.tb_siswa;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class hasil_pencarian extends AppCompatActivity {
+public class hasil_pencarian extends AppCompatActivity{
+
+    private RecyclerView.Adapter adapter;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<String> industriList = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,8 @@ public class hasil_pencarian extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         String hasil = getIntent().getStringExtra("hasil");
         TextView ambil = (TextView)findViewById(R.id.hasil);
