@@ -16,21 +16,21 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return baruFragment.newInstance(0, "Belum");
+                return baruFragment.newInstance(0, "Pendaftar");
             case 1:
-                return sudahFragment.newInstance(1, "Sudah");
+                return sudahFragment.newInstance(1, "Konfirmasi");
             default:
-                return baruFragment.newInstance(0,"Sudah");
+                return baruFragment.newInstance(0,"Konfirmasi");
         }
     }
 
     @Override
     public CharSequence getPageTitle(int position){
         if(position==0){
-            return "Belum";
+            return "Pendaftar";
         }
         if(position==1){
-            return "Sudah";
+            return "Konfirmasi";
         }
         else{
             return "";
