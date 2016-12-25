@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.backendless.Backendless;
-import com.backendless.BackendlessUser;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -38,7 +36,6 @@ public class AkunIndustri extends AppCompatActivity {
             noTelpIndustri,profilIndustri,
             deskripsiIndustri,kemampuanIndustri;
 
-    BackendlessUser userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

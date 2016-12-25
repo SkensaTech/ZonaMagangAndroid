@@ -26,10 +26,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.backendless.Backendless;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
-
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -46,6 +42,8 @@ import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class home_siswa_1 extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -55,17 +53,39 @@ public class home_siswa_1 extends AppCompatActivity {
     String email, foto, nama, searchquery,bidang,kota,provinsi;
     boolean doubleBackToExit = false;
     MenuItem cari;
+    private static final String TAG = "home_siswa_1";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Backendless.initApp(this, Constants.APP_ID, Constants.APP_SECRET, Constants.APP_VERSION);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_siswa_1);
 
-        email = getIntent().getStringExtra("email");
-        nama = getIntent().getStringExtra("nama");
-        foto = getIntent().getStringExtra("foto");
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            if(extras.containsKey("nama")){
+                HashMap<String,Boolean> Users = (HashMap<String,Boolean>) intent.getSerializableExtra("Users");
+                String alamat = intent.getStringExtra("alamat");
+                HashMap<String,Boolean> bidang = (HashMap<String,Boolean>) intent.getSerializableExtra("bidang");
+                foto = intent.getStringExtra("foto");
+                nama = intent.getStringExtra("nama");
+                email = intent.getStringExtra("email");
+                String nisn = intent.getStringExtra("nisn");
+                String sekolah = intent.getStringExtra("sekolah");
+                String tempat_lahir = intent.getStringExtra("tempat_lahir");
+                String tgl_lahir = intent.getStringExtra("tgl_lahir");
+            }
+            else{
+                email = "user email";
+                nama = "User";
+                foto = "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png";
+            }
+        }else{
+            email = " ";
+            nama = "Pengunjung";
+            foto = "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png";
+        }
 
         if(getIntent().getStringExtra("bidang") != null){
             bidang = getIntent().getStringExtra("bidang");
@@ -111,7 +131,9 @@ public class home_siswa_1 extends AppCompatActivity {
             }
         });
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
+
+        PrimaryDrawerItem item0 = new PrimaryDrawerItem().withIdentifier(0).withIcon(getResources().getDrawable(R.drawable.ic_login)).withName("Login");
+        PrimaryDrawerItem item1 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(1).withIcon(getResources().getDrawable(R.drawable.ic_search_black_24dp)).withName("Cari Industri");
         SecondaryDrawerItem item2 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(2).withIcon(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp)).withName("Beranda");
         SecondaryDrawerItem item3 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(3).withIcon(getResources().getDrawable(R.drawable.ic_notifications_black_24dp)).withName("Notifikasi");
         SecondaryDrawerItem item4 = (SecondaryDrawerItem) new SecondaryDrawerItem().withIdentifier(4).withIcon(getResources().getDrawable(R.drawable.ic_supervisor_account_black_24dp)).withName("Tentang Kami");
@@ -136,71 +158,116 @@ public class home_siswa_1 extends AppCompatActivity {
                 .build();
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        result = new DrawerBuilder()
-                .withAccountHeader(headerprofil)
-                .withActivity(this)
-                .withToolbar(x)
-                .addDrawerItems(
-                        item1,
-                        new DividerDrawerItem(),
-                        item2,
-                        new DividerDrawerItem(),
-                        item3,
-                        new DividerDrawerItem(),
-                        item4,
-                        new DividerDrawerItem(),
-                        item5,
-                        new DividerDrawerItem(),
-                        item6,
-                        new DividerDrawerItem()
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem.getIdentifier() == 1){
-//                            Toast.makeText(getApplicationContext(),"Fitur Pencarian masih dalam tahap pengembangan",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(home_siswa_1.this, search_filter.class);
-                            intent.putExtra("email",email);
-                            intent.putExtra("nama",nama);
-                            intent.putExtra("foto",foto);
-                            startActivity(intent);
-                        }
-                        else if (drawerItem.getIdentifier() == 3){
-                            Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
-                            startActivity(itent);
+        if(extras == null || !extras.containsKey("nama")){
+            Log.d(TAG,"WITH LOGIN ITEM");
+            result = new DrawerBuilder()
+                    .withAccountHeader(headerprofil)
+                    .withActivity(this)
+                    .withToolbar(x)
+                    .addDrawerItems(
+                            item0,
+                            new DividerDrawerItem(),
+                            item1,
+                            new DividerDrawerItem(),
+                            item2,
+                            new DividerDrawerItem(),
+                            item3,
+                            new DividerDrawerItem(),
+                            item4,
+                            new DividerDrawerItem(),
+                            item5,
+                            new DividerDrawerItem(),
+                            item6,
+                            new DividerDrawerItem()
+                    )
+                    .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        @Override
+                        public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                            if (drawerItem.getIdentifier() == 0){
+                                Intent intent = new Intent(home_siswa_1.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                            else if (drawerItem.getIdentifier() == 1){
+                                Intent intent = new Intent(home_siswa_1.this, search_filter.class);
+                                intent.putExtra("email",email);
+                                intent.putExtra("nama",nama);
+                                intent.putExtra("foto",foto);
+                                startActivity(intent);
+                            }
+                            else if (drawerItem.getIdentifier() == 3){
+                                Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
+                                startActivity(itent);
 //                            finish();
-                        }
-                        else if(drawerItem.getIdentifier() == 4){
-                            Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
-                            startActivity(itent);
-                        }
-                        else if (drawerItem.getIdentifier() == 5){
-                            Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
-                            startActivity(intent);
-                        }
-                        else if(drawerItem.getIdentifier() == 6){
-                            setContentView(R.layout.loading_screen);
-                            Backendless.UserService.logout(new AsyncCallback<Void>()
-                            {
-                                public void handleResponse( Void response )
-                                {
-                                    // user has been logged out..
-                                    Intent MainActivityIntent = new Intent(home_siswa_1.this,MainActivity.class);
-                                    startActivity(MainActivityIntent);
-                                }
+                            }
+                            else if(drawerItem.getIdentifier() == 4){
+                                Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
+                                startActivity(itent);
+                            }
+                            else if (drawerItem.getIdentifier() == 5){
+                                Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
+                                startActivity(intent);
+                            }
+                            else if(drawerItem.getIdentifier() == 6){
+                                setContentView(R.layout.loading_screen);
+                            }
 
-                                public void handleFault( BackendlessFault fault )
-                                {
-                                    // something went wrong and logout failed, to get the error code call fault.getCode()
-                                    Toast.makeText(home_siswa_1.this,"Logout failed",Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            return false;
                         }
+                    })
+                    .build();
+        }
+        else{
+            result = new DrawerBuilder()
+                    .withAccountHeader(headerprofil)
+                    .withActivity(this)
+                    .withToolbar(x)
+                    .addDrawerItems(
+                            item1,
+                            new DividerDrawerItem(),
+                            item2,
+                            new DividerDrawerItem(),
+                            item3,
+                            new DividerDrawerItem(),
+                            item4,
+                            new DividerDrawerItem(),
+                            item5,
+                            new DividerDrawerItem(),
+                            item6,
+                            new DividerDrawerItem()
+                    )
+                    .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                        @Override
+                        public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                            if (drawerItem.getIdentifier() == 1){
+//                            Toast.makeText(getApplicationContext(),"Fitur Pencarian masih dalam tahap pengembangan",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(home_siswa_1.this, search_filter.class);
+                                intent.putExtra("email",email);
+                                intent.putExtra("nama",nama);
+                                intent.putExtra("foto",foto);
+                                startActivity(intent);
+                            }
+                            else if (drawerItem.getIdentifier() == 3){
+                                Intent itent = new Intent(home_siswa_1.this, notifikasi_siswa.class);
+                                startActivity(itent);
+//                            finish();
+                            }
+                            else if(drawerItem.getIdentifier() == 4){
+                                Intent itent = new Intent(home_siswa_1.this,TentangKami.class);
+                                startActivity(itent);
+                            }
+                            else if (drawerItem.getIdentifier() == 5){
+                                Intent intent = new Intent(home_siswa_1.this,DetailSiswa.class);
+                                startActivity(intent);
+                            }
+                            else if(drawerItem.getIdentifier() == 6){
+                                setContentView(R.layout.loading_screen);
+                            }
 
-                        return false;
-                    }
-                })
-                .build();
+                            return false;
+                        }
+                    })
+                    .build();
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);

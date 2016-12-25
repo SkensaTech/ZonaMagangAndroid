@@ -2,23 +2,13 @@ package com.zonamagang.zonamagang;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.backendless.Backendless;
-import com.backendless.BackendlessCollection;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
-import com.backendless.persistence.BackendlessDataQuery;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -27,17 +17,12 @@ import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import com.zonamagang.zonamagang.Adapters.Siswa.notifikasi_siswa_adapter;
-import com.zonamagang.zonamagang.Model.tb_notif;
-import com.zonamagang.zonamagang.Model.tb_industri;
-import com.zonamagang.zonamagang.Model.tb_parent_bidang;
+import com.zonamagang.zonamagang.Model.notif;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -50,12 +35,11 @@ public class notifikasi_siswa extends AppCompatActivity {
     String nama, email, foto;
     String nama_industri, logo_industri, isi_notif;
     private notifikasi_siswa_adapter adapter;
-    List<tb_notif> listNotif;
+    List<notif> listNotif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Backendless.initApp(this,Constants.APP_ID,Constants.APP_SECRET,Constants.APP_VERSION);
         setContentView(R.layout.activity_notifikasi_siswa);
 
         email = getIntent().getStringExtra("email");

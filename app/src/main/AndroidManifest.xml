@@ -11,9 +11,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:noHistory="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:noHistory="true">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".HomeIndustri"
             android:label="Beranda"
@@ -89,7 +89,8 @@
             android:label="Edit Akun Anda" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".hasil_pencarian" />
-        <activity android:name=".home_admin"></activity>
+        <activity android:name=".home_admin" />
+        <activity android:name=".ActivityMasukSebagai"></activity>
     </application>
 
 </manifest>

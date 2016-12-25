@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.zonamagang.zonamagang.Model.tb_industri;
+import com.zonamagang.zonamagang.Model.industri;
 import com.zonamagang.zonamagang.R;
 
 import java.util.List;
@@ -18,11 +18,11 @@ import java.util.List;
 /**
  * Created by ASUS on 9/22/2016.
  */
-public class daftar_industri_adapter extends ArrayAdapter<tb_industri> {
+public class daftar_industri_adapter extends ArrayAdapter<industri> {
     Context context;
     int layout;
-    List<tb_industri> listIndustri;
-    public daftar_industri_adapter(Context context,int layout,List<tb_industri> listIndustri){
+    List<industri> listIndustri;
+    public daftar_industri_adapter(Context context,int layout,List<industri> listIndustri){
         super(context,layout,listIndustri);
         this.context = context;
         this.layout = layout;
@@ -45,12 +45,12 @@ public class daftar_industri_adapter extends ArrayAdapter<tb_industri> {
         else {
             holder = (Holder) v.getTag();
         }
-        tb_industri industri = listIndustri.get(position);
-        holder.judul.setText(industri.getNama());
-        holder.alamat.setText(industri.getAlamat());
-        holder.telp.setText(industri.getNo_telp());
-        String fotoUrl = industri.getLogo();
-        Picasso.with(getContext()).load(fotoUrl).into(holder.img);
+        industri industri = listIndustri.get(position);
+//        holder.judul.setText(industri.getNama());
+//        holder.alamat.setText(industri.getAlamat());
+//        holder.telp.setText(industri.getNo_telp());
+//       String fotoUrl = industri.getLogo();
+//        Picasso.with(getContext()).load(fotoUrl).into(holder.img);
         return  v;
     }
     static class Holder{

@@ -7,24 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.backendless.Backendless;
-import com.backendless.BackendlessCollection;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
-import com.backendless.persistence.BackendlessDataQuery;
 import com.squareup.picasso.Picasso;
-import com.zonamagang.zonamagang.Model.tb_bidang;
-import com.zonamagang.zonamagang.Model.tb_industri;
-
-import java.util.Iterator;
-import java.util.List;
 
 public class detail_industri extends AppCompatActivity {
     String nama,alamat,email,no_telp,profil,jobdesc,kualifikasi;
-    int id_industri;
-    int kuota;
+    String kuota;
     String logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,39 +23,17 @@ public class detail_industri extends AppCompatActivity {
         setSupportActionBar(bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        id_industri = Integer.parseInt(getIntent().getStringExtra("id_industri"));
+        Intent intent = getIntent();
+        nama = intent.getStringExtra("nama");
+        alamat = intent.getStringExtra("alamat");
+        email = intent.getStringExtra("email");
+        no_telp = intent.getStringExtra("no_telp");
+        profil = intent.getStringExtra("profil");
+        jobdesc = intent.getStringExtra("jobdesc");
+        kualifikasi = intent.getStringExtra("kualifikasi");
+        kuota = intent.getStringExtra("kuota");
+        logo = intent.getStringExtra("logo");
 
-        BackendlessDataQuery dataQuery = new BackendlessDataQuery();
-        dataQuery.setWhereClause("id_industri = "+id_industri);
-        Backendless.Persistence.of(tb_industri.class).find( dataQuery, new AsyncCallback<BackendlessCollection<tb_industri>>(){
-            @Override
-            public void handleResponse( BackendlessCollection<tb_industri> hasil )
-            {
-                List<tb_industri> firstPage = hasil.getCurrentPage();
-
-                Iterator<tb_industri> iterator = firstPage.iterator();
-
-                while( iterator.hasNext() )
-                {
-                    tb_industri industriInfo = iterator.next();
-                    nama = industriInfo.getNama();
-                    alamat = industriInfo.getAlamat();
-                    email = industriInfo.getEmail();
-                    no_telp = industriInfo.getNo_telp();
-                    jobdesc = industriInfo.getJobdesc();
-                    kualifikasi = industriInfo.getKualifikasi();
-                    kuota = industriInfo.getKuota();
-                    logo = industriInfo.getLogo();
-                    profil = industriInfo.getProfil();
-                    detail_industri.this.isiLayoutItem();
-                }
-            }
-            @Override
-            public void handleFault( BackendlessFault fault )
-            {
-                Toast.makeText(detail_industri.this,"Error ! "+fault.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
 
         this.isiLayoutItem();
     }

@@ -110,7 +110,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/industri"
+                android:layout_below="@+id/MasukSebagaiIndustri"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorUnderlineDivider" />
             <!--end divider-->

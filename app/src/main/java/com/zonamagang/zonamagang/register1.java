@@ -3,12 +3,9 @@ package com.zonamagang.zonamagang;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 public class register1 extends AppCompatActivity {
 
@@ -21,7 +18,7 @@ public class register1 extends AppCompatActivity {
         setContentView(R.layout.activity_register1);
 
         siswa = (Button) findViewById(R.id.siswa);
-        industri = (Button) findViewById(R.id.industri);
+        industri = (Button) findViewById(R.id.MasukSebagaiIndustri);
         siswa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {

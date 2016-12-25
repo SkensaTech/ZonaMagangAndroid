@@ -1,25 +1,47 @@
 package com.zonamagang.zonamagang.Model;
 
 /**
- * Created by ASUS on 8/25/2016.
+ * Created by Herlambang on 8/25/2016.
  */
 public class Users {
+    public String Users_level;
     public String email;
-    public int id_user;
+    public String status_aktif;
+    public String Users_level_id;
 
-    public String getEmail(){
+    public Users(){
+
+    }
+
+    public String getUsers_level() {
+        return Users_level;
+    }
+
+    public void setUsers_level(String users_level) {
+        Users_level = users_level;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getId_user(){
-        return id_user;
+    public String getStatus_aktif() {
+        return status_aktif;
     }
 
-    public void setId_user(int id_user){
-        this.id_user = id_user;
+    public void setStatus_aktif(String status_aktif) {
+        this.status_aktif = status_aktif;
+    }
+
+    public String getUsers_level_id() {
+        return Users_level_id;
+    }
+
+    public void setUsers_level_id(String users_level_id) {
+        Users_level_id = users_level_id;
     }
 }
