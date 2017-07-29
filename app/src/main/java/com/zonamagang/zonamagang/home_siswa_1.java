@@ -278,46 +278,6 @@ public class home_siswa_1 extends AppCompatActivity {
         return cari;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuin = getMenuInflater();
-        menuin.inflate(R.menu.menu_search, menu);
-        cari = menu.findItem(R.id.searchbox);
-        cari.setEnabled(false);
-
-
-        final SearchView pencarian = (SearchView) MenuItemCompat.getActionView(cari);
-        pencarian.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Log.e("home_siswa_1","search clicked");
-
-                bidang = null;
-
-                searchquery = query;
-                adapter = new ViewIndustriAdapter(getSupportFragmentManager());
-                viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-                viewPager.setAdapter(adapter);
-                return true;
-//                Intent intent = getIntent();
-//                intent.putExtra("searchquery",query);
-//                intent.putExtra("email",email);
-//                intent.putExtra("nama",nama);
-//                intent.putExtra("foto",foto);
-//                finish();
-//                startActivity(intent);
-//                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-
-    }
 
     @Override
     public void onBackPressed(){
